@@ -8,6 +8,12 @@ use function Pest\Laravel\assertDatabaseHas;
 uses(RefreshDatabase::class);
 
 describe('Poll creation', function () {
+    it('requires a poll name', function () {
+        Volt::test('polls.create')
+            ->set('name', '')
+            ->call('save')
+            ->assertHasErrors(['name' => 'required']);
+    });
     it('creates a poll with the given name', function () {
         $pollName = 'Test Poll';
 
