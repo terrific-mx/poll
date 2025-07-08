@@ -20,4 +20,24 @@ describe('Poll creation', function () {
             'name' => $pollName,
         ]);
     });
+
+    it('creates a poll with answers', function () {
+        $pollName = 'Poll with Answers';
+        $answers = ['Yes', 'No', 'Maybe'];
+
+        Volt::test('polls.create')
+            ->set('name', $pollName)
+            ->set('answers', $answers)
+            ->call('save')
+            ->assertOk();
+
+        $poll = Poll::where('name', $pollName)->first();
+        expect($poll)->not->toBeNull();
+        foreach ($answers as $answer) {
+            assertDatabaseHas('answers', [
+                'poll_id' => $poll->id,
+                'text' => $answer,
+            ]);
+        }
+    });
 });
