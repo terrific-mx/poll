@@ -5,10 +5,16 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Volt\Volt;
 
 use function Pest\Laravel\assertDatabaseHas;
+use function Pest\Laravel\get;
+use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
 
 describe('Poll creation', function () {
+    it('the /polls/create route is accessible', function () {
+        actingAs(\App\Models\User::factory()->create());
+        get('/polls/create')->assertOk();
+    });
     it('requires a poll name', function () {
         Volt::test('polls.create')
             ->set('name', '')
