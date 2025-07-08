@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Answer extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
+
     public function poll()
     {
         return $this->belongsTo(Poll::class);
