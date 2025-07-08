@@ -9,6 +9,9 @@ new class extends Component {
 
     public function save()
     {
+        $this->validate([
+            'name' => 'required',
+        ]);
         $poll = Poll::create([
             'name' => $this->name,
         ]);
