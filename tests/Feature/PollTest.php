@@ -5,9 +5,8 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Volt\Volt;
 
-use function Pest\Laravel\assertDatabaseHas;
-use function Pest\Laravel\get;
 use function Pest\Laravel\actingAs;
+use function Pest\Laravel\assertDatabaseHas;
 
 uses(RefreshDatabase::class);
 
