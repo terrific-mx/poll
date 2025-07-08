@@ -10,5 +10,5 @@ class Poll extends Model
     /** @use HasFactory<\Database\Factories\PollFactory> */
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $guarded = [];
 }
