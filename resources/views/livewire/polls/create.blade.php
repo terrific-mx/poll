@@ -5,12 +5,16 @@ use App\Models\Poll;
 
 new class extends Component {
     public string $name = '';
+    public array $answers = [];
 
     public function save()
     {
-        Poll::create([
+        $poll = Poll::create([
             'name' => $this->name,
         ]);
+        foreach ($this->answers as $answer) {
+            $poll->answers()->create(['text' => $answer]);
+        }
     }
 }; ?>
 

@@ -5,15 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Poll extends Model
+class Answer extends Model
 {
-    /** @use HasFactory<\Database\Factories\PollFactory> */
     use HasFactory;
-
     protected $guarded = [];
-
-    public function answers()
+    public function poll()
     {
-        return $this->hasMany(Answer::class);
+        return $this->belongsTo(Poll::class);
     }
 }
