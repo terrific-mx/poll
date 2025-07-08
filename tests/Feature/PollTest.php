@@ -10,7 +10,7 @@ describe('Poll creation', function () {
     it('creates a poll with the given name', function () {
         $pollName = 'Test Poll';
 
-        Volt::test('poll.create')
+        Volt::test('polls.create')
             ->set('name', $pollName)
             ->call('save')
             ->assertOk();
