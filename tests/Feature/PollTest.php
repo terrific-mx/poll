@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Poll;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Volt\Volt;
 
@@ -12,8 +13,10 @@ uses(RefreshDatabase::class);
 
 describe('Poll creation', function () {
     it('the /polls/create route is accessible', function () {
-        actingAs(\App\Models\User::factory()->create());
-        get('/polls/create')->assertOk();
+        /** @var User */
+        $user = User::factory()->create();
+
+        actingAs($user)->get('/polls/create')->assertOk();
     });
     it('requires a poll name', function () {
         Volt::test('polls.create')
