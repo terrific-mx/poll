@@ -14,6 +14,12 @@ new class extends Component {
 ?>
 
 <div>
+    <div class="mb-4 flex justify-end">
+        <flux:button href="{{ route('polls.create') }}" variant="primary" icon="plus" wire:navigate>
+            New Poll
+        </flux:button>
+    </div>
+
     @foreach ($polls as $poll)
         <div class="mb-2 p-2 border rounded">
             <strong>{{ $poll->name }}</strong><br>
