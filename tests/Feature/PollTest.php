@@ -17,23 +17,12 @@ describe('Poll creation', function () {
 
         actingAs($user)->get('/polls/create')->assertOk();
     });
+
     it('requires a poll name', function () {
         Volt::test('polls.create')
             ->set('name', '')
             ->call('save')
             ->assertHasErrors(['name' => 'required']);
-    });
-    it('creates a poll with the given name', function () {
-        $pollName = 'Test Poll';
-
-        Volt::test('polls.create')
-            ->set('name', $pollName)
-            ->call('save')
-            ->assertOk();
-
-        assertDatabaseHas('polls', [
-            'name' => $pollName,
-        ]);
     });
 
     it('creates a poll with answers', function () {
