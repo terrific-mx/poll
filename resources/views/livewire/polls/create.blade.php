@@ -12,9 +12,11 @@ new class extends Component {
         $this->validate([
             'name' => 'required',
         ]);
+
         $poll = Poll::create([
             'name' => $this->name,
         ]);
+
         foreach ($this->answers as $answer) {
             $poll->answers()->create(['text' => $answer]);
         }

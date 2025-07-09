@@ -1,10 +1,11 @@
 <?php
 
-use App\Models\Poll;
 use App\Models\Answer;
+use App\Models\Poll;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use function Pest\Laravel\post;
+
 use function Pest\Laravel\assertDatabaseHas;
+use function Pest\Laravel\post;
 
 uses(RefreshDatabase::class);
 

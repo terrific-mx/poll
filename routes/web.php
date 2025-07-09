@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\PollResponseController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
-use App\Http\Controllers\PollResponseController;
 
 Route::get('/', function () {
     return view('welcome');
