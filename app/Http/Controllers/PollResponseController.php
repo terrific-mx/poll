@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Poll;
-use Illuminate\Support\Facades\DB;
+use App\Models\Response;
 
 class PollResponseController extends Controller
 {
@@ -14,12 +14,11 @@ class PollResponseController extends Controller
             'answer_id' => ['required', 'exists:answers,id'],
         ]);
 
-        // Store the response
-        DB::table('responses')->insert([
+
+        // Store the response using Eloquent
+        Response::create([
             'poll_id' => $poll->id,
             'answer_id' => $validated['answer_id'],
-            'created_at' => now(),
-            'updated_at' => now(),
         ]);
 
         return redirect()->back();
