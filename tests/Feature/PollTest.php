@@ -26,18 +26,22 @@ describe('Poll creation', function () {
     });
 
     it('creates a poll with answers', function () {
-        $pollName = 'Poll with Answers';
+        $name = 'Poll with Answers';
+        $question = 'What is your favorite option?';
         $answers = ['Yes', 'No', 'Maybe'];
 
         Volt::test('polls.create')
-            ->set('name', $pollName)
+            ->set('name', $name)
+            ->set('question', $question)
             ->set('answers', $answers)
             ->call('save')
             ->assertOk();
 
-        $poll = Poll::where('name', $pollName)->with('answers')->first();
+        $poll = Poll::with('answers')->first();
 
         expect($poll)->not->toBeNull();
+        expect($poll->name)->toBe($name);
+        expect($poll->question)->toBe($question);
         expect($poll->answers)->toHaveCount(count($answers));
         foreach ($answers as $answer) {
             expect($poll->answers->pluck('text'))->toContain($answer);

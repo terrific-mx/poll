@@ -5,6 +5,7 @@ use App\Models\Poll;
 
 new class extends Component {
     public string $name = '';
+    public string $question = '';
     public array $answers = [''];
 
     public function addAnswer()
@@ -22,12 +23,14 @@ new class extends Component {
     {
         $this->validate([
             'name' => 'required',
+            'question' => 'required',
             'answers' => 'array|min:1',
             'answers.*' => 'required|string',
         ]);
 
         $poll = Poll::create([
             'name' => $this->name,
+            'question' => $this->question,
         ]);
 
         foreach ($this->answers as $answer) {
@@ -36,6 +39,7 @@ new class extends Component {
 
         // Optionally reset form
         $this->name = '';
+        $this->question = '';
         $this->answers = [''];
     }
 }; ?>
