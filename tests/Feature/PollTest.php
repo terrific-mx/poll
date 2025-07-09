@@ -11,21 +11,20 @@ use function Pest\Laravel\assertDatabaseHas;
 uses(RefreshDatabase::class);
 
 describe('Poll creation', function () {
-    it('the /polls/create route is accessible', function () {
+    it('allows an authenticated user to access the /polls/create route', function () {
         /** @var User */
         $user = User::factory()->create();
-
         actingAs($user)->get('/polls/create')->assertOk();
     });
 
-    it('requires a poll name', function () {
+    it('fails if the poll name is missing', function () {
         Volt::test('polls.create')
             ->set('name', '')
             ->call('save')
             ->assertHasErrors(['name' => 'required']);
     });
 
-    it('requires a poll question', function () {
+    it('fails if the poll question is missing', function () {
         Volt::test('polls.create')
             ->set('name', 'Test Poll')
             ->set('question', '')
@@ -33,7 +32,7 @@ describe('Poll creation', function () {
             ->assertHasErrors(['question' => 'required']);
     });
 
-    it('requires at least one answer', function () {
+    it('fails if no answers are provided', function () {
         Volt::test('polls.create')
             ->set('name', 'Test Poll')
             ->set('question', 'Test Question')
@@ -42,7 +41,7 @@ describe('Poll creation', function () {
             ->assertHasErrors(['answers' => 'min']);
     });
 
-    it('requires all answers to be non-empty', function () {
+    it('fails if any answer is empty', function () {
         Volt::test('polls.create')
             ->set('name', 'Test Poll')
             ->set('question', 'Test Question')
@@ -51,7 +50,7 @@ describe('Poll creation', function () {
             ->assertHasErrors(['answers.1' => 'required']);
     });
 
-    it('creates a poll with answers', function () {
+    it('creates a poll with valid answers', function () {
         $name = 'Poll with Answers';
         $question = 'What is your favorite option?';
         $answers = ['Yes', 'No', 'Maybe'];
