@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Http\Controllers\PollResponseController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -10,6 +11,9 @@ Route::get('/', function () {
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
+// Public poll response route
+Route::post('/p/{poll}', [PollResponseController::class, 'store']);
 
 Route::middleware(['auth'])->group(function () {
     Volt::route('polls/create', 'polls.create')->name('polls.create');
