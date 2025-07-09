@@ -45,7 +45,9 @@ new class extends Component {
 }; ?>
 
 <form wire:submit.prevent="save" class="space-y-6 max-w-lg mx-auto mt-8">
+
     <flux:input wire:model="name" label="Poll Name" placeholder="Enter poll name" />
+    <flux:input wire:model="question" label="Poll Question" placeholder="Enter poll question" />
 
     <div class="space-y-1">
         <div class="space-y-6">
