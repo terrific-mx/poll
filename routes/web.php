@@ -8,7 +8,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
     Volt::route('polls/create', 'polls.create')->name('polls.create');
