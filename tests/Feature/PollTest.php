@@ -35,13 +35,12 @@ describe('Poll creation', function () {
             ->call('save')
             ->assertOk();
 
-        $poll = Poll::where('name', $pollName)->first();
+        $poll = Poll::where('name', $pollName)->with('answers')->first();
+
         expect($poll)->not->toBeNull();
+        expect($poll->answers)->toHaveCount(count($answers));
         foreach ($answers as $answer) {
-            assertDatabaseHas('answers', [
-                'poll_id' => $poll->id,
-                'text' => $answer,
-            ]);
+            expect($poll->answers->pluck('text'))->toContain($answer);
         }
     });
 });
