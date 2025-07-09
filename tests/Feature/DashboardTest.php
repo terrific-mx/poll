@@ -1,8 +1,7 @@
 <?php
 
-use App\Models\User;
-
 use App\Models\Poll;
+use App\Models\User;
 
 uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
 
