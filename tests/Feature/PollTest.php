@@ -25,6 +25,32 @@ describe('Poll creation', function () {
             ->assertHasErrors(['name' => 'required']);
     });
 
+    it('requires a poll question', function () {
+        Volt::test('polls.create')
+            ->set('name', 'Test Poll')
+            ->set('question', '')
+            ->call('save')
+            ->assertHasErrors(['question' => 'required']);
+    });
+
+    it('requires at least one answer', function () {
+        Volt::test('polls.create')
+            ->set('name', 'Test Poll')
+            ->set('question', 'Test Question')
+            ->set('answers', [])
+            ->call('save')
+            ->assertHasErrors(['answers' => 'min']);
+    });
+
+    it('requires all answers to be non-empty', function () {
+        Volt::test('polls.create')
+            ->set('name', 'Test Poll')
+            ->set('question', 'Test Question')
+            ->set('answers', ['Yes', ''])
+            ->call('save')
+            ->assertHasErrors(['answers.1' => 'required']);
+    });
+
     it('creates a poll with answers', function () {
         $name = 'Poll with Answers';
         $question = 'What is your favorite option?';
