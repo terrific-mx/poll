@@ -4,7 +4,7 @@
         <p class="mb-4 text-gray-700">{{ $poll->question }}</p>
 
         @if($poll->answers && $poll->answers->count())
-            <form method="POST" action="{{ url('/p/' . $poll->id) }}">
+            <form method="POST" action="{{ route('polls.public.store', $poll->id) }}">
                 @csrf
                 <div class="mb-4">
                     @foreach($poll->answers as $answer)
