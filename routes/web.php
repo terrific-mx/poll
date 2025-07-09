@@ -13,7 +13,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Volt::route('polls/create', 'polls.create')->name('polls.create');
 });
 
-// Public poll response route
+// Public poll routes
+Route::get('/p/{poll}', function (\App\Models\Poll $poll) {
+    // For now, just return a 200 OK response (can be replaced with a view later)
+    return response()->noContent(200);
+});
 Route::post('/p/{poll}', [PollResponseController::class, 'store']);
 
 Route::middleware(['auth'])->group(function () {
