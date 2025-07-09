@@ -9,7 +9,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('dashboard', 'dashboard')->name('dashboard');
+    Volt::route('dashboard', 'dashboard')->name('dashboard');
     Volt::route('polls/create', 'polls.create')->name('polls.create');
 });
 
