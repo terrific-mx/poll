@@ -18,6 +18,7 @@ class PollFactory extends Factory
     {
         return [
             'name' => $this->faker->sentence(3),
+            'question' => $this->faker->sentence(8),
         ];
     }
 }
