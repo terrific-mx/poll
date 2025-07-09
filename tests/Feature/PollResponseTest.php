@@ -24,9 +24,7 @@ it('allows a guest to submit a poll response', function () {
 
     $response->assertStatus(302)->assertSessionHasNoErrors();
 
-    // Assert the response is stored in the database
-    assertDatabaseHas('responses', [
-        'poll_id' => $poll->id,
-        'answer_id' => $answer->id,
-    ]);
+    // Assert the response is stored using Pest expectation API
+    expect($poll->responses()->where('answer_id', $answer->id)->exists())
+        ->toBeTrue();
 });
