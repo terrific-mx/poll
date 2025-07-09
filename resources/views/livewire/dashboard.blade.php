@@ -23,6 +23,7 @@ new class extends Component {
     @foreach ($polls as $poll)
         <div class="mb-2 p-2 border rounded">
             <strong>{{ $poll->name }}</strong><br>
+            <span class="block text-gray-700 mb-1">Question: {{ $poll->question }}</span>
             <small>Created: {{ $poll->created_at }}</small>
         </div>
     @endforeach
