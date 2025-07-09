@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class PollResponseController extends Controller
 {
+    public function show(Poll $poll)
+    {
+        // Return a view for the public poll
+        return view('polls.show', compact('poll'));
+    }
+
     public function store(Request $request, Poll $poll)
     {
         $validated = $request->validate([
