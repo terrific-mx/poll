@@ -8,73 +8,49 @@ use function Pest\Laravel\post;
 
 uses(RefreshDatabase::class);
 
-it('allows a guest to submit a poll response', function () {
-    // Create a poll with answers
-    $poll = Poll::factory()
-        ->has(Answer::factory()->count(3))
-        ->create();
+describe('Poll Response Submission', function () {
+    beforeEach(function () {
+        $this->poll = Poll::factory()
+            ->has(Answer::factory()->count(3))
+            ->create();
+        $this->answer = $this->poll->answers->first();
+    });
 
-    $answer = $poll->answers->first();
+    it('stores a response when a guest submits a valid answer', function () {
+        $response = post("/p/{$this->poll->id}", [
+            'answer_id' => $this->answer->id,
+        ]);
+        $response->assertStatus(302)->assertSessionHasNoErrors();
+        expect($this->poll->responses()->first()->exists())
+            ->toBeTrue();
+    });
 
-    // Post a response as a guest
-    $response = post("/p/{$poll->id}", [
-        'answer_id' => $answer->id,
-    ]);
+    it('redirects to the thank you page after a successful poll response', function () {
+        $response = post("/p/{$this->poll->id}", [
+            'answer_id' => $this->answer->id,
+        ]);
+        $response->assertRedirect("/p/{$this->poll->id}/thank-you");
+    });
 
-    $response->assertStatus(302)->assertSessionHasNoErrors();
+    it('stores the contact email with the poll response when provided', function () {
+        $email = 'test@example.com';
+        $response = post("/p/{$this->poll->id}", [
+            'answer_id' => $this->answer->id,
+            'contact_email' => $email,
+        ]);
+        $response->assertStatus(302)->assertSessionHasNoErrors();
+        $pollResponse = $this->poll->responses()->first();
+        expect($pollResponse)->not->toBeNull();
+        expect($pollResponse->contact_email)->toBe($email);
+    });
 
-    // Assert the response is stored using Pest expectation API
-    expect($poll->responses()->where('answer_id', $answer->id)->exists())
-        ->toBeTrue();
-});
-
-it('redirects to thank you page after submitting a poll response', function () {
-    $poll = Poll::factory()
-        ->has(Answer::factory()->count(3))
-        ->create();
-
-    $answer = $poll->answers->first();
-
-    $response = post("/p/{$poll->id}", [
-        'answer_id' => $answer->id,
-    ]);
-
-    $response->assertRedirect("/p/{$poll->id}/thank-you");
-});
-
-it('stores the contact email with the poll response when provided', function () {
-    $poll = Poll::factory()
-        ->has(Answer::factory()->count(3))
-        ->create();
-
-    $answer = $poll->answers->first();
-    $email = 'test@example.com';
-
-    $response = post("/p/{$poll->id}", [
-        'answer_id' => $answer->id,
-        'contact_email' => $email,
-    ]);
-
-    $response->assertStatus(302)->assertSessionHasNoErrors();
-
-    $storedResponse = $poll->responses()->first();
-    expect($storedResponse)->not->toBeNull();
-    expect($storedResponse->contact_email ?? null)->toBe($email);
-});
-
-it('rejects an invalid contact email when submitting a poll response', function () {
-    $poll = Poll::factory()
-        ->has(Answer::factory()->count(3))
-        ->create();
-
-    $answer = $poll->answers->first();
-    $invalidEmail = 'not-an-email';
-
-    $response = post("/p/{$poll->id}", [
-        'answer_id' => $answer->id,
-        'contact_email' => $invalidEmail,
-    ]);
-
-    $response->assertSessionHasErrors(['contact_email']);
-    expect($poll->responses()->count())->toBe(0);
+    it('rejects an invalid contact email and does not store the response', function () {
+        $invalidEmail = 'not-an-email';
+        $response = post("/p/{$this->poll->id}", [
+            'answer_id' => $this->answer->id,
+            'contact_email' => $invalidEmail,
+        ]);
+        $response->assertSessionHasErrors(['contact_email']);
+        expect($this->poll->responses()->count())->toBe(0);
+    });
 });
