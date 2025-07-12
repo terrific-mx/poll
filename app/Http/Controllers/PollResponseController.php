@@ -14,11 +14,6 @@ class PollResponseController extends Controller
         return view('polls.show', compact('poll'));
     }
 
-    public function thankYou(Poll $poll)
-    {
-        return view('polls.thank-you', compact('poll'));
-    }
-
     public function store(Request $request, Poll $poll)
     {
         $validated = $request->validate([
