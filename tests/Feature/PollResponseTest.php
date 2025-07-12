@@ -27,3 +27,20 @@ it('allows a guest to submit a poll response', function () {
     expect($poll->responses()->where('answer_id', $answer->id)->exists())
         ->toBeTrue();
 });
+
+it('redirects to thank you page after submitting a poll response', function () {
+    // Create a poll with answers
+    $poll = Poll::factory()
+        ->has(Answer::factory()->count(3))
+        ->create();
+
+    $answer = $poll->answers->first();
+
+    // Post a response as a guest
+    $response = post("/p/{$poll->id}", [
+        'answer_id' => $answer->id,
+    ]);
+
+    // Assert redirect to thank you page
+    $response->assertRedirect("/p/{$poll->id}/thank-you");
+});
