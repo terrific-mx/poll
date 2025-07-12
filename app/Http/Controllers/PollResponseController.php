@@ -18,12 +18,13 @@ class PollResponseController extends Controller
     {
         $validated = $request->validate([
             'answer_id' => ['required', 'exists:answers,id'],
+            'contact_email' => ['nullable', 'email'],
         ]);
 
-        // Store the response using Eloquent
         Response::create([
             'poll_id' => $poll->id,
             'answer_id' => $validated['answer_id'],
+            'contact_email' => $validated['contact_email'] ?? null,
         ]);
 
         return redirect()->route('polls.public.thankyou', $poll);

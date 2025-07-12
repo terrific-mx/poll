@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('poll_id')->constrained()->cascadeOnDelete();
             $table->foreignId('answer_id')->constrained()->cascadeOnDelete();
+            $table->string('contact_email')->nullable();
             $table->timestamps();
         });
     }
