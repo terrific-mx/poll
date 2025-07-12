@@ -57,8 +57,24 @@ it('stores the contact email with the poll response when provided', function () 
 
     $response->assertStatus(302)->assertSessionHasNoErrors();
 
-    // Assert the response is stored with the contact email
     $storedResponse = $poll->responses()->first();
     expect($storedResponse)->not->toBeNull();
     expect($storedResponse->contact_email ?? null)->toBe($email);
+});
+
+it('rejects an invalid contact email when submitting a poll response', function () {
+    $poll = Poll::factory()
+        ->has(Answer::factory()->count(3))
+        ->create();
+
+    $answer = $poll->answers->first();
+    $invalidEmail = 'not-an-email';
+
+    $response = post("/p/{$poll->id}", [
+        'answer_id' => $answer->id,
+        'contact_email' => $invalidEmail,
+    ]);
+
+    $response->assertSessionHasErrors(['contact_email']);
+    expect($poll->responses()->count())->toBe(0);
 });
