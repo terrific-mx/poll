@@ -1,4 +1,4 @@
-<x-layouts.auth>
+<x-layouts.poll>
     <div class="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow">
         <h1 class="text-2xl font-bold mb-2">{{ $poll->name }}</h1>
         <p class="mb-4 text-gray-700">{{ $poll->question }}</p>
@@ -22,4 +22,4 @@
             <p class="text-gray-500">No answers available for this poll.</p>
         @endif
     </div>
-</x-layouts.auth>
+</x-layouts.poll>
