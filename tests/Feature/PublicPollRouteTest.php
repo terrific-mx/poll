@@ -7,13 +7,13 @@ use function Pest\Laravel\get;
 
 uses(RefreshDatabase::class);
 
-it('returns ok for the public poll route', function () {
-    // Given a poll exists
-    $poll = Poll::factory()->create();
+describe('Public Poll Route', function () {
+    beforeEach(function () {
+        $this->poll = Poll::factory()->create();
+    });
 
-    // When a guest visits the poll route
-    $response = get("/p/{$poll->id}");
-
-    // Then the response is OK
-    $response->assertOk();
+    it('allows guests to view a public poll', function () {
+        $response = get("/p/{$this->poll->id}");
+        $response->assertOk();
+    });
 });
