@@ -1,25 +1,21 @@
 <x-layouts.poll>
-    <div class="max-w-xl mx-auto mt-10 p-6 bg-white rounded shadow">
-        <h1 class="text-2xl font-bold mb-2">{{ $poll->name }}</h1>
-        <p class="mb-4 text-gray-700">{{ $poll->question }}</p>
+    <div class="p-4 max-w-full md:p-6 md:max-w-sm mx-auto">
+        <flux:heading size="lg">{{ $poll->question }}</flux:heading>
 
         @if($poll->answers && $poll->answers->count())
-            <form method="POST" action="{{ route('polls.public.store', $poll->id) }}">
+            <form action="{{ route('polls.public.store', $poll->id) }}" method="POST" class="mt-8">
                 @csrf
-                <div class="mb-4">
-                    @foreach($poll->answers as $answer)
-                        <div class="mb-2">
-                            <label class="inline-flex items-center">
-                                <input type="radio" name="answer_id" value="{{ $answer->id }}" class="form-radio" required>
-                                <span class="ml-2">{{ $answer->text }}</span>
-                            </label>
-                        </div>
-                    @endforeach
+                <div>
+                    <flux:radio.group required>
+                        @foreach($poll->answers as $answer)
+                            <flux:radio :value="$answer->id" :label="$answer->text" />
+                        @endforeach
+                    </flux:radio.group>
                 </div>
-                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Submit</button>
+                <flux:button type="submit" variant="primary" class="w-full mt-8">Vote now</flux:button>
             </form>
         @else
-            <p class="text-gray-500">No answers available for this poll.</p>
+            <flux:text class="mt-8 text-center">No answers available for this poll.</flux:text>
         @endif
     </div>
 </x-layouts.poll>
