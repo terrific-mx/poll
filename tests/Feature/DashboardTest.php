@@ -2,12 +2,15 @@
 
 use App\Models\Poll;
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-uses(\Illuminate\Foundation\Testing\RefreshDatabase::class);
+use function Pest\Laravel\get;
+
+uses(RefreshDatabase::class);
 
 describe('Dashboard', function () {
     it('redirects guests to the login page', function () {
-        $response = $this->get('/dashboard');
+        $response = get('/dashboard');
         $response->assertRedirect('/login');
     });
 
@@ -18,13 +21,13 @@ describe('Dashboard', function () {
         });
 
         it('can be visited', function () {
-            $response = $this->get('/dashboard');
+            $response = get('/dashboard');
             $response->assertStatus(200);
         });
 
         it('lists polls', function () {
             $polls = Poll::factory()->count(3)->create();
-            $response = $this->get('/dashboard');
+            $response = get('/dashboard');
             $response->assertOk();
             foreach ($polls as $poll) {
                 $response->assertSee($poll->title);
