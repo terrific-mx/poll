@@ -6,24 +6,29 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Volt\Volt;
 
 use function Pest\Laravel\actingAs;
+use function Pest\Laravel\get;
 
 uses(RefreshDatabase::class);
 
 describe('Poll creation', function () {
-    it('allows an authenticated user to access the /polls/create route', function () {
+    beforeEach(function () {
         /** @var User */
-        $user = User::factory()->create();
-        actingAs($user)->get('/polls/create')->assertOk();
+        $this->user = User::factory()->create();
+        actingAs($this->user);
     });
 
-    it('fails if the poll name is missing', function () {
+    it('allows an authenticated user to view the poll creation form', function () {
+        get('/polls/create')->assertOk();
+    });
+
+    it('requires a poll name to be provided', function () {
         Volt::test('polls.create')
             ->set('name', '')
             ->call('save')
             ->assertHasErrors(['name' => 'required']);
     });
 
-    it('fails if the poll question is missing', function () {
+    it('requires a poll question to be provided', function () {
         Volt::test('polls.create')
             ->set('name', 'Test Poll')
             ->set('question', '')
@@ -31,7 +36,7 @@ describe('Poll creation', function () {
             ->assertHasErrors(['question' => 'required']);
     });
 
-    it('fails if no answers are provided', function () {
+    it('requires at least one answer option', function () {
         Volt::test('polls.create')
             ->set('name', 'Test Poll')
             ->set('question', 'Test Question')
@@ -40,7 +45,7 @@ describe('Poll creation', function () {
             ->assertHasErrors(['answers' => 'min']);
     });
 
-    it('fails if any answer is empty', function () {
+    it('requires all answer options to be non-empty', function () {
         Volt::test('polls.create')
             ->set('name', 'Test Poll')
             ->set('question', 'Test Question')
@@ -49,7 +54,7 @@ describe('Poll creation', function () {
             ->assertHasErrors(['answers.1' => 'required']);
     });
 
-    it('creates a poll with valid answers', function () {
+    it('creates a poll when all fields are valid', function () {
         $name = 'Poll with Answers';
         $question = 'What is your favorite option?';
         $answers = ['Yes', 'No', 'Maybe'];
@@ -63,10 +68,11 @@ describe('Poll creation', function () {
 
         $poll = Poll::with('answers')->first();
 
-        expect($poll)->not->toBeNull();
-        expect($poll->name)->toBe($name);
-        expect($poll->question)->toBe($question);
-        expect($poll->answers)->toHaveCount(count($answers));
+        expect($poll)
+            ->not->toBeNull()
+            ->and($poll->name)->toBe($name)
+            ->and($poll->question)->toBe($question)
+            ->and($poll->answers)->toHaveCount(count($answers));
         foreach ($answers as $answer) {
             expect($poll->answers->pluck('text'))->toContain($answer);
         }
