@@ -41,3 +41,24 @@ it('redirects to thank you page after submitting a poll response', function () {
 
     $response->assertRedirect("/p/{$poll->id}/thank-you");
 });
+
+it('stores the contact email with the poll response when provided', function () {
+    $poll = Poll::factory()
+        ->has(Answer::factory()->count(3))
+        ->create();
+
+    $answer = $poll->answers->first();
+    $email = 'test@example.com';
+
+    $response = post("/p/{$poll->id}", [
+        'answer_id' => $answer->id,
+        'contact_email' => $email,
+    ]);
+
+    $response->assertStatus(302)->assertSessionHasNoErrors();
+
+    // Assert the response is stored with the contact email
+    $storedResponse = $poll->responses()->first();
+    expect($storedResponse)->not->toBeNull();
+    expect($storedResponse->contact_email ?? null)->toBe($email);
+});
