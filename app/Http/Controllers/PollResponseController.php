@@ -14,6 +14,11 @@ class PollResponseController extends Controller
         return view('polls.show', compact('poll'));
     }
 
+    public function thankYou(Poll $poll)
+    {
+        return view('polls.thank-you', compact('poll'));
+    }
+
     public function store(Request $request, Poll $poll)
     {
         $validated = $request->validate([
@@ -26,6 +31,6 @@ class PollResponseController extends Controller
             'answer_id' => $validated['answer_id'],
         ]);
 
-        return redirect()->back();
+        return redirect()->route('polls.public.thankyou', $poll);
     }
 }

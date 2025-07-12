@@ -16,6 +16,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // Public poll routes
 Route::get('/p/{poll}', [PollResponseController::class, 'show'])->name('polls.public.show');
 Route::post('/p/{poll}', [PollResponseController::class, 'store'])->name('polls.public.store');
+Route::get('/p/{poll}/thank-you', [PollResponseController::class, 'thankYou'])->name('polls.public.thankyou');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
