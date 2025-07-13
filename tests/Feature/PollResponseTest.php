@@ -30,7 +30,7 @@ describe('Poll Response Submission', function () {
         Volt::test('polls.vote', ['poll' => $this->poll])
             ->set('answer_id', $this->answer->id)
             ->call('submit')
-            ->assertRedirect(route('polls.public.thank-you', $this->poll->id));
+            ->assertRedirect(route('polls.public.thankyou', $this->poll->id));
     });
 
 
