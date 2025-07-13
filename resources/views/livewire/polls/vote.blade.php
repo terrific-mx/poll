@@ -33,23 +33,21 @@ new #[Layout('components.layouts.poll')] class extends Component {
     }
 }; ?>
 
-<div>
-    <form wire:submit.prevent="submit">
-        <div>
-            <label for="answer_id">Select an answer:</label>
-            <select wire:model="answer_id" id="answer_id" required>
-                <option value="">-- Choose --</option>
-                @foreach ($poll->answers as $answer)
-                    <option value="{{ $answer->id }}">{{ $answer->text }}</option>
-                @endforeach
-            </select>
-            @error('answer_id') <span class="text-red-500">{{ $message }}</span> @enderror
-        </div>
-        <div>
-            <label for="contact_email">Contact Email (optional):</label>
-            <input type="email" wire:model="contact_email" id="contact_email" />
-            @error('contact_email') <span class="text-red-500">{{ $message }}</span> @enderror
-        </div>
-        <button type="submit">Submit</button>
-    </form>
+<div class="p-4 max-w-full md:p-6 md:max-w-sm mx-auto">
+    <flux:heading size="lg">{{ $poll->question }}</flux:heading>
+
+    @if($poll->answers && $poll->answers->count())
+        <form wire:submit="submit" class="mt-8">
+            <div>
+                <flux:radio.group wire:model="answer_id" required>
+                    @foreach($poll->answers as $answer)
+                        <flux:radio :value="$answer->id" :label="$answer->text" />
+                    @endforeach
+                </flux:radio.group>
+            </div>
+            <flux:button type="submit" variant="primary" class="w-full mt-8">Vote now</flux:button>
+        </form>
+    @else
+        <flux:text class="mt-8 text-center">No answers available for this poll.</flux:text>
+    @endif
 </div>

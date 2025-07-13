@@ -15,7 +15,6 @@ describe('Poll Response Submission', function () {
         $this->answer = $this->poll->answers->first();
     });
 
-
     it('stores a response when a guest submits a valid answer', function () {
         Volt::test('polls.vote', ['poll' => $this->poll])
             ->set('answer_id', $this->answer->id)
@@ -25,14 +24,12 @@ describe('Poll Response Submission', function () {
             ->toBeTrue();
     });
 
-
     it('redirects to the thank you page after a successful poll response', function () {
         Volt::test('polls.vote', ['poll' => $this->poll])
             ->set('answer_id', $this->answer->id)
             ->call('submit')
             ->assertRedirect(route('polls.public.thankyou', $this->poll->id));
     });
-
 
     it('stores the contact email with the poll response when provided', function () {
         $email = 'test@example.com';
