@@ -7,8 +7,7 @@ use Livewire\Volt\Component;
 
 use App\Models\Poll;
 use App\Models\Answer;
-use App\Models\Response;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 
 new #[Layout('components.layouts.poll')] class extends Component {
     public Poll $poll;
@@ -16,9 +15,14 @@ new #[Layout('components.layouts.poll')] class extends Component {
     public $contact_email = null;
     public $showThankYouMessage = false;
 
+    public function rendering(View $view): void
+    {
+        $view->title($this->poll->question);
+    }
+
     public function submit()
     {
-        $validated = $this->validate([
+        $this->validate([
             'answer_id' => 'required|exists:answers,id',
             'contact_email' => ['nullable', 'email'],
         ]);
