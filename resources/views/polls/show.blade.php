@@ -1,4 +1,4 @@
-<x-layouts.poll>
+<x-layouts.poll :title="$poll->question">
     <div class="p-4 max-w-full md:p-6 md:max-w-sm mx-auto">
         <flux:heading size="lg">{{ $poll->question }}</flux:heading>
 
@@ -8,7 +8,7 @@
                 <div>
                     <flux:radio.group required>
                         @foreach($poll->answers as $answer)
-                            <flux:radio :value="$answer->id" :label="$answer->text" />
+                            <flux:radio name="answer_id" :value="$answer->id" :label="$answer->text" />
                         @endforeach
                     </flux:radio.group>
                 </div>
