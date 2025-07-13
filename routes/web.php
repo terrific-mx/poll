@@ -13,9 +13,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Volt::route('polls/create', 'polls.create')->name('polls.create');
 });
 
-// Public poll routes
-Route::get('/p/{poll}', [PollResponseController::class, 'show'])->name('polls.public.show');
-Route::post('/p/{poll}', [PollResponseController::class, 'store'])->name('polls.public.store');
+
+// Public poll routes using Volt component
+Volt::route('p/{poll}', 'polls.vote')->name('polls.public.show');
 use App\Http\Controllers\ThankYouController;
 Route::get('/p/{poll}/thank-you', [ThankYouController::class, 'show'])->name('polls.public.thankyou');
 
