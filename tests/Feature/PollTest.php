@@ -78,3 +78,14 @@ describe('Poll creation', function () {
         }
     });
 });
+
+describe('Public Poll Route', function () {
+    beforeEach(function () {
+        $this->poll = Poll::factory()->create();
+    });
+
+    it('allows guests to view a public poll', function () {
+        $response = get("/p/{$this->poll->id}");
+        $response->assertOk();
+    });
+});
