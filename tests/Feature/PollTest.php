@@ -16,6 +16,7 @@ describe('Poll Creation', function () {
         beforeEach(function () {
             /** @var User */
             $this->user = User::factory()->create();
+
             actingAs($this->user);
         });
 
