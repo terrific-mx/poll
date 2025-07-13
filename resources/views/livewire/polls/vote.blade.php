@@ -1,5 +1,7 @@
 <?php
 
+
+use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 
 
@@ -8,7 +10,7 @@ use App\Models\Answer;
 use App\Models\Response;
 use Illuminate\Support\Facades\Redirect;
 
-new class extends Component {
+new #[Layout('components.layouts.poll')] class extends Component {
     public Poll $poll;
     public $answer_id = null;
     public $contact_email = null;
