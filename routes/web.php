@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
-use App\Http\Controllers\ThankYouController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,10 +12,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Volt::route('polls/create', 'polls.create')->name('polls.create');
 });
 
-// Public poll routes using Volt component
-Volt::route('p/{poll}', 'polls.vote')->name('polls.public.show');
-
-Route::get('/p/{poll}/thank-you', [ThankYouController::class, 'show'])->name('polls.public.thankyou');
+Volt::route('p/{poll}', 'polls.vote')->name('polls.vote');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

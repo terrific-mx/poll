@@ -25,7 +25,7 @@ new class extends Component {
             <strong>{{ $poll->name }}</strong><br>
             <span class="block text-gray-700 mb-1">Question: {{ $poll->question }}</span>
             <small>Created: {{ $poll->created_at }}</small><br>
-            <a href="{{ route('polls.public.show', $poll) }}" class="text-blue-600 underline text-sm" target="_blank">
+            <a href="{{ route('polls.vote', $poll) }}" class="text-blue-600 underline text-sm" target="_blank">
             View Public Poll
             </a>
         </div>
