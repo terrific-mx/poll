@@ -8,7 +8,20 @@ use Livewire\Volt\Volt;
 
 uses(RefreshDatabase::class);
 
-it('stores poll votes', function () {
+it('creates a vote when a user submits a valid answer to a poll', function () {
+    $poll = Poll::factory()->create();
+    $answers = Answer::factory()->count(2)->for($poll)->create();
+
+    Volt::test('polls.vote', ['poll' => $poll])
+        ->set('answer', $answers->first()->id)
+        ->call('vote');
+
+    expect(Vote::count())->toBe(1);
+    expect(Vote::first()->poll->is($poll))->toBeTrue();
+    expect(Vote::first()->answer->is($answers->first()))->toBeTrue();
+});
+
+it('stores contact iformation when a user submits a valid answer and contact', function () {
     $poll = Poll::factory()->create();
     $answers = Answer::factory()->count(2)->for($poll)->create();
 
@@ -18,6 +31,5 @@ it('stores poll votes', function () {
         ->call('vote');
 
     expect(Vote::count())->toBe(1);
-    expect(Vote::first()->poll->is($poll))->toBeTrue();
-    expect(Vote::first()->answer->is($answers->first()))->toBeTrue();
+    expect(Vote::first()->contact)->toBe('test@example.com');
 });
