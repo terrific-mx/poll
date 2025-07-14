@@ -9,9 +9,11 @@ use Livewire\Volt\Component;
 
 new #[Layout('components.layouts.poll')] class extends Component {
     public Poll $poll;
+    public ?Collection $answers;
+    public $showThankYouMessage = false;
+
     public $answer;
     public $contact = null;
-    public ?Collection $answers;
 
     public function mount()
     {
@@ -23,19 +25,27 @@ new #[Layout('components.layouts.poll')] class extends Component {
         $this->poll->addResponse(
             Answer::find($this->answer), $this->contact
         );
+
+        $this->showThankYouMessage = true;
     }
 }; ?>
 
 <div>
-    <form wire:submit="vote" class="space-y-4">
-        <flux:radio.group wire:model="answer" :label="$poll->question">
-            @foreach($answers as $answer)
-                <flux:radio :value="$answer->id" :label="$answer->text" />
-            @endforeach
-        </flux:radio.group>
+    @unless($showThankYouMessage)
+        <form wire:submit="vote" class="space-y-4">
+            <flux:radio.group wire:model="answer" :label="$poll->question">
+                @foreach($answers as $answer)
+                    <flux:radio :value="$answer->id" :label="$answer->text" />
+                @endforeach
+            </flux:radio.group>
 
-        <flux:input wire:model="contact" label="Email" class="max-w-sm" />
+            <flux:input wire:model="contact" label="Email" class="max-w-sm" />
 
-        <flux:button type="submit" variant="primary" class="mt-6">Submit response</flux:button>
-    </form>
+            <flux:button type="submit" variant="primary" class="mt-6">Submit response</flux:button>
+        </form>
+    @else
+        <div>
+            <h1>Thank you for your response.</h1>
+        </div>
+    @endunless
 </div>
