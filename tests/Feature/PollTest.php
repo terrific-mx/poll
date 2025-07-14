@@ -6,6 +6,8 @@ use App\Models\Response;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Volt\Volt;
 
+use function Pest\Laravel\get;
+
 uses(RefreshDatabase::class);
 
 it('creates a vote when a user submits a valid answer to a poll', function () {
@@ -32,6 +34,12 @@ it('stores contact iformation when a user submits a valid answer and contact', f
 
     expect(Response::count())->toBe(1);
     expect(Response::first()->contact)->toBe('test@example.com');
+});
+
+it('show the submit response view to users', function() {
+    Poll::factory()->has(Answer::factory()->count(2))->create();
+
+    get('/p/1')->assertOk();
 });
 
 it('validates email')->todo();

@@ -15,6 +15,11 @@ class Poll extends Model
         return $this->hasMany(Response::class);
     }
 
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
+
     public function addResponse(Answer $answer, ?string $contact)
     {
         $this->responses()->create([
