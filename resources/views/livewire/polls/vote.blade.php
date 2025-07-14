@@ -5,6 +5,7 @@ use App\Models\Poll;
 use App\Models\Response;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Url;
 use Livewire\Volt\Component;
 
 new #[Layout('components.layouts.poll')] class extends Component {
@@ -13,6 +14,8 @@ new #[Layout('components.layouts.poll')] class extends Component {
     public $showThankYouMessage = false;
 
     public $answer;
+
+    #[Url('c')]
     public $contact = null;
 
     public function mount()
