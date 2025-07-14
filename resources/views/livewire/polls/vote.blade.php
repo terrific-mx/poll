@@ -36,6 +36,6 @@ new #[Layout('components.layouts.poll')] class extends Component {
 
         <flux:input wire:model="contact" label="Email" class="max-w-sm" />
 
-        <flux:button type="submit" class="mt-6">Submit response</flux:button>
+        <flux:button type="submit" variant="primary" class="mt-6">Submit response</flux:button>
     </form>
 </div>
