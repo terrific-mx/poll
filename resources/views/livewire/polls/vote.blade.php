@@ -8,10 +8,13 @@ use Livewire\Volt\Component;
 use App\Models\Poll;
 use App\Models\Answer;
 use Illuminate\View\View;
+use Livewire\Attributes\Url;
 
 new #[Layout('components.layouts.poll')] class extends Component {
     public Poll $poll;
     public $answer_id = null;
+
+    #[Url('c')]
     public $contact_email = null;
     public $showThankYouMessage = false;
 
@@ -51,6 +54,7 @@ new #[Layout('components.layouts.poll')] class extends Component {
                             @endforeach
                         </flux:radio.group>
                     </div>
+                    <flux:input wire:model="contact_email" :value="$contact_email" type="email" class="mt-4" />
                     <flux:button type="submit" variant="primary" class="w-full mt-8">Vote now</flux:button>
                 </form>
             @else
