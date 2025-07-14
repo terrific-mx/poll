@@ -36,3 +36,4 @@ it('stores contact iformation when a user submits a valid answer and contact', f
 
 it('validates email')->todo();
 it('validates answers exist in the poll')->todo();
+it('creates a poll with a name, question and at least two answers when logged it')->todo();
