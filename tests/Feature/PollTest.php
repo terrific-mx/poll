@@ -33,3 +33,6 @@ it('stores contact iformation when a user submits a valid answer and contact', f
     expect(Vote::count())->toBe(1);
     expect(Vote::first()->contact)->toBe('test@example.com');
 });
+
+it('validates email')->todo();
+it('validates answers exist in the poll')->todo();
