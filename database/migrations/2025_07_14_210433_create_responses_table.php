@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('votes', function (Blueprint $table) {
+        Schema::create('responses', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Poll::class);
             $table->foreignIdFor(Answer::class);

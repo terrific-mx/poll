@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Poll;
-use App\Models\Vote;
+use App\Models\Response;
 use Livewire\Volt\Component;
 
 new class extends Component {
@@ -11,7 +11,7 @@ new class extends Component {
 
     public function vote()
     {
-        Vote::create([
+        Response::create([
             'poll_id' => $this->poll->id,
             'answer_id' => $this->answer,
             'contact' => $this->contact,
