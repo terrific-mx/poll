@@ -9,4 +9,17 @@ class Poll extends Model
 {
     /** @use HasFactory<\Database\Factories\PollFactory> */
     use HasFactory;
+
+    public function responses()
+    {
+        return $this->hasMany(Response::class);
+    }
+
+    public function addResponse(Answer $answer, ?string $contact)
+    {
+        $this->responses()->create([
+            'answer_id' => $answer->id,
+            'contact' => $contact,
+        ]);
+    }
 }
