@@ -51,11 +51,13 @@ it('creates a poll with required fields and minimun answers', function () {
     Volt::test('polls.create')
         ->set('name', 'Test Poll')
         ->set('question', 'Question?')
+        ->set('answers', [['text' => 'A'], ['text' => 'B']])
         ->call('save');
 
     expect(Poll::first())
         ->name->toBe('Test Poll')
-        ->question->toBe('Question?');
+        ->question->toBe('Question?')
+        ->answers->count()->toBe(2);
 });
 
 it('shows create poll page to authenticated users', function() {
