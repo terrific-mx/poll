@@ -45,7 +45,7 @@ it('show the submit response view to users', function() {
 it('validates email')->todo();
 it('validates answers exist in the poll')->todo();
 
-it('creates a poll with a name question and at least two answers', function () {
+it('creates a poll with required fields and minimun answers', function () {
     Volt::test('polls.create')
         ->set('name', 'Test Poll')
         ->set('question', 'Question?')
