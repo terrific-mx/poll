@@ -56,5 +56,7 @@ it('creates a poll with a name question and at least two answers', function () {
     expect($poll->question)->toBe('Question?');
 });
 
+it('redirects to login when visiting the create poll as guests')->todo();
+it('authenticated users can see the create poll page')->todo();
 it('validates name required')->todo();
 it('validates question required')->todo();
