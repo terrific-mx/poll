@@ -73,3 +73,6 @@ it('redirects guests to the login page when accesing the create poll route', fun
 
 it('validates name required')->todo();
 it('validates question required')->todo();
+
+it('updates a poll with all required fields')->todo();
+it('deletes a poll')->todo();
