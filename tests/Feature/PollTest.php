@@ -51,9 +51,9 @@ it('creates a poll with required fields and minimun answers', function () {
         ->set('question', 'Question?')
         ->call('save');
 
-    expect($poll = Poll::first())->not->toBeNull();
-    expect($poll->name)->toBe('Test Poll');
-    expect($poll->question)->toBe('Question?');
+    expect(Poll::first())
+        ->name->toBe('Test Poll')
+        ->question->toBe('Question?');
 });
 
 it('redirects to login when visiting the create poll as guests')->todo();
