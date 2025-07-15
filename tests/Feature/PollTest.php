@@ -58,13 +58,15 @@ it('creates a poll with required fields and minimun answers', function () {
         ->question->toBe('Question?');
 });
 
-it('redirects to login when visiting the create poll as guests')->todo();
-
 it('shows create poll page to authenticated users', function() {
     /** @var User */
     $user = User::factory()->create();
 
     actingAs($user)->get('/polls/create')->assertOk();
+});
+
+it('redirects guests to the login page when accesing the create poll route', function() {
+    get('/polls/create')->assertRedirect('/login');
 });
 
 it('validates name required')->todo();
