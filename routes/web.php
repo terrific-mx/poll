@@ -9,9 +9,11 @@ Route::get('/', function () {
 
 Volt::route('p/{poll}', 'polls.vote')->name('polls.vote');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::view('dashboard', 'dashboard')->name('dashboard');
+
+    Volt::route('polls/create', 'polls.create')->name('polls.create');
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
