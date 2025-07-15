@@ -2,8 +2,8 @@
 
 use App\Models\Answer;
 use App\Models\Poll;
-use App\Models\Response;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\View\View;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Url;
 use Livewire\Volt\Component;
@@ -17,6 +17,11 @@ new #[Layout('components.layouts.poll')] class extends Component {
 
     #[Url('c')]
     public $contact = null;
+
+    public function rendering(View $view)
+    {
+        $view->title($this->poll->question);
+    }
 
     public function mount()
     {
