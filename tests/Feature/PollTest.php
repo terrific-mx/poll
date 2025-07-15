@@ -42,6 +42,16 @@ it('show the submit response view to users', function() {
     get('/p/1')->assertOk();
 });
 
+it('creates a poll with a name question and at least two answers', function () {
+    Volt::test('polls.create')
+        ->set('name', 'Test Poll')
+        ->set('question', 'Question?')
+        ->call('save');
+
+    expect($poll = Poll::first())->not->toBeNull();
+    expect($poll->name)->toBe('Test Poll');
+    expect($poll->question)->toBe('Question?');
+});
+
 it('validates email')->todo();
 it('validates answers exist in the poll')->todo();
-it('creates a poll with a name, question and at least two answers when logged it')->todo();
