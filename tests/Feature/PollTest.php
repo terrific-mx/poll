@@ -3,9 +3,11 @@
 use App\Models\Answer;
 use App\Models\Poll;
 use App\Models\Response;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Volt\Volt;
 
+use function Pest\Laravel\actingAs;
 use function Pest\Laravel\get;
 
 uses(RefreshDatabase::class);
@@ -57,6 +59,13 @@ it('creates a poll with required fields and minimun answers', function () {
 });
 
 it('redirects to login when visiting the create poll as guests')->todo();
-it('authenticated users can see the create poll page')->todo();
+
+it('shows create poll page to authenticated users', function() {
+    /** @var User */
+    $user = User::factory()->create();
+
+    actingAs($user)->get('/polls/create')->assertOk();
+});
+
 it('validates name required')->todo();
 it('validates question required')->todo();
