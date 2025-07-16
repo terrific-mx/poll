@@ -3,10 +3,12 @@
 use Livewire\Volt\Component;
 use App\Models\Response;
 use App\Models\Answer;
+use App\Models\Poll;
 use Livewire\Attributes\Url;
 
 new class extends Component {
-    public $poll;
+    public Poll $poll;
+
     public $answer_id;
 
     #[Url('c')]

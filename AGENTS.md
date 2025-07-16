@@ -1,23 +1,27 @@
 # AGENTS.md
 
-This repository is a Vite-based frontend app using Laravel and TailwindCSS. There are no explicit linting, formatting, or test configurations in the root. Please follow these guidelines when contributing as an agent:
-
-## Build & Dev Commands
-- Build: `npm run build` (runs `vite build`)
-- Dev server: `npm run dev` (runs `vite`)
-- No test or lint commands are defined in package.json.
+## Build, Lint, and Test Commands
+- **Build frontend:** `npm run build`
+- **Dev frontend:** `npm run dev`
+- **Run backend:** `php artisan serve`
+- **Run all tests:** `./vendor/bin/pest`
+- **Run a single test:** `./vendor/bin/pest tests/Feature/YourTest.php` (or specify any test file)
+- **Database migrations:** `php artisan migrate`
+- **Seed database:** `php artisan db:seed`
 
 ## Code Style Guidelines
-- Use ES6+ module imports (`import ... from ...`).
-- Prefer functional components and hooks if using React.
-- Use consistent indentation (2 spaces recommended).
-- Name files, variables, and functions descriptively (camelCase for JS, PascalCase for components).
-- Use TypeScript types if present; otherwise, add JSDoc comments for type hints.
-- Handle errors gracefully; avoid silent failures.
-- Keep code DRY and modular.
-- Organize CSS in `resources/css/`, JS in `resources/js/`.
-- Follow TailwindCSS utility-first conventions for styling.
-- Document public APIs and complex logic inline.
-- No Cursor or Copilot rules are present.
+- **Imports:** Use ES module syntax for JS; Composer autoload for PHP.
+- **Formatting:** Follow default Prettier (JS) and PSR-12 (PHP) styles.
+- **Types:** Use PHP type hints and strict validation in Livewire components.
+- **Naming:** Descriptive, feature-oriented names for files, classes, and components.
+- **Styling:** Use TailwindCSS utility classes in Blade and JS.
+- **Error Handling:** Validate all inputs in Livewire; use Laravel validation rules.
+- **JS/CSS:** Keep assets modular in `resources/js/` and `resources/css/`.
+- **Volt Components:** Use anonymous classes extending `Livewire\\Volt\\Component`.
+- **URL-bound properties:** Use `#[Url('param')]` for Livewire query params.
+- **Testing:** Use Pest for all PHP tests; feature tests simulate user flows, unit tests cover model logic.
 
-If you add linting, formatting, or test tools, update this file accordingly.
+## Additional Conventions
+- **External dependencies:** Managed via Composer (PHP) and npm (JS/CSS).
+- **Directory structure:** See Copilot instructions for key folders and files.
+- **If unclear:** Ask for clarification or check Copilot instructions.
