@@ -1,11 +1,11 @@
 # AGENTS.md
 
 ## Build, Lint, and Test Commands
-- **Build frontend:** `npm run build`
-- **Dev frontend:** `npm run dev`
-- **Run backend:** `php artisan serve`
+- **Frontend build:** `npm run build`
+- **Frontend dev server:** `npm run dev`
+- **Backend server:** `php artisan serve`
 - **Run all tests:** `./vendor/bin/pest`
-- **Run a single test:** `./vendor/bin/pest tests/Feature/YourTest.php` (or specify any test file)
+- **Run a single test:** `./vendor/bin/pest tests/Feature/YourTest.php` (or any test file)
 - **Database migrations:** `php artisan migrate`
 - **Seed database:** `php artisan db:seed`
 - **Lint PHP:** `vendor/bin/pint`
