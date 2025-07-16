@@ -38,7 +38,7 @@ it('stores contact iformation when a user submits a valid answer and contact', f
     expect(Response::first()->contact)->toBe('test@example.com');
 });
 
-it('show the submit response view to users', function() {
+it('shows the poll voting page to users', function() {
     Poll::factory()->has(Answer::factory()->count(2))->create();
 
     get('/p/1')->assertOk();
@@ -47,7 +47,7 @@ it('show the submit response view to users', function() {
 it('validates email')->todo();
 it('validates answers exist in the poll')->todo();
 
-it('creates a poll with required fields and minimun answers', function () {
+it('creates a poll when all required fields and at least two answers are provided', function () {
     Volt::test('polls.create')
         ->set('name', 'Test Poll')
         ->set('question', 'Question?')
