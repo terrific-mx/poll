@@ -9,6 +9,7 @@ class Poll extends Model
 {
     protected $guarded = [];
 
+    /** @use HasFactory<\Database\Factories\PollFactory> */
     use HasFactory;
 
     public function answers()
@@ -20,9 +21,6 @@ class Poll extends Model
     {
         return $this->hasMany(Response::class);
     }
-
-    /** @use HasFactory<\Database\Factories\PollFactory> */
-    use HasFactory;
 
     public function addResponse(Answer $answer, $contact_email = null)
     {

@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
-    protected $guarded = [];
-
+    /** @use HasFactory<\Database\Factories\AnswerFactory> */
     use HasFactory;
+
+    protected $guarded = [];
 
     public function poll()
     {
@@ -20,7 +21,4 @@ class Answer extends Model
     {
         return $this->hasMany(Response::class);
     }
-
-    /** @use HasFactory<\Database\Factories\AnswerFactory> */
-    use HasFactory;
 }
