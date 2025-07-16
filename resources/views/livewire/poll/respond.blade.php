@@ -2,6 +2,7 @@
 
 use Livewire\Volt\Component;
 use App\Models\Response;
+use App\Models\Answer;
 
 new class extends Component {
     public $poll;
@@ -17,11 +18,8 @@ new class extends Component {
 
     public function submit() {
         $this->validate();
-        Response::create([
-            'poll_id' => $this->poll->id,
-            'answer_id' => $this->answer_id,
-            'contact_email' => $this->contact_email,
-        ]);
+        $answer = Answer::findOrFail($this->answer_id);
+        $this->poll->addResponse($answer, $this->contact_email);
     }
 }; ?>
 
