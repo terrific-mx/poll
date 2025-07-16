@@ -33,12 +33,12 @@ describe('Poll Creation via Volt', function () {
     it('fails to create a poll with missing answers', function () {
         $user = User::factory()->create();
 
-        Volt::actingAs($user)->test('polls.create')
+        $component = Volt::actingAs($user)->test('polls.create')
             ->set('name', 'Color Poll')
             ->set('question', 'What is your favorite color?')
             ->set('answers', [])
             ->call('submit')
-            ->assertHasErrors(['answers' => 'min']);
+            ->assertHasErrors(['answers' => 'required']);
     });
 
     it('fails to create a poll with less than two answers', function () {
@@ -68,10 +68,13 @@ describe('Poll Creation via Volt', function () {
             ->assertHasNoErrors();
 
         $poll = Poll::first();
+
+        expect($poll)->not->toBeNull();
+
         expect($poll)
-            ->not->toBeNull()
             ->name->toBe($name)
             ->question->toBe($question);
+
         expect($poll->answers()->pluck('answer')->toArray())
             ->toEqualCanonicalizing($answers);
     });
