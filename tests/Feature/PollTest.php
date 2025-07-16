@@ -74,7 +74,19 @@ it('redirects guests to the login page when accesing the create poll route', fun
 it('validates name required')->todo();
 it('validates question required')->todo();
 
-it('updates a poll with all required fields')->todo();
+it('updates a poll with all required fields', function() {
+    $poll = Poll::factory()->has(Answer::factory()->count(2))->create();
+
+    Volt::test('polls.update', ['poll' => $poll])
+        ->set('name', 'New name')
+        ->set('answers', [['text' => 'New answer A'], ['text' => 'New answer B'], ['text' => 'New answer C']])
+        ->call('update');
+
+    expect($poll->fresh())
+        ->name->toBe('New name');
+    expect($poll->answers->count())->toBe(3);
+    expect($poll->answers->pluck('name'))->toContain('New answer A', 'New answer B', 'New answer C');
+})->todo();
 
 it('successfully deletes a poll', function() {
     $poll = Poll::factory()->create();
