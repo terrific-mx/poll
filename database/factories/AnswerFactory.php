@@ -18,6 +18,7 @@ class AnswerFactory extends Factory
     {
         return [
             'poll_id' => \App\Models\Poll::factory(),
+            'answer' => $this->faker->word(),
         ];
     }
 }

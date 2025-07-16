@@ -17,7 +17,8 @@ class PollFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->words(2, true),
+            'question' => $this->faker->sentence(),
         ];
     }
 }
