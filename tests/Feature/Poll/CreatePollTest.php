@@ -33,7 +33,7 @@ describe('Poll Creation via Volt', function () {
     it('fails to create a poll with missing answers', function () {
         $user = User::factory()->create();
 
-        $component = Volt::actingAs($user)->test('polls.create')
+        Volt::actingAs($user)->test('polls.create')
             ->set('name', 'Color Poll')
             ->set('question', 'What is your favorite color?')
             ->set('answers', [])
