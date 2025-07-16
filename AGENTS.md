@@ -8,20 +8,20 @@
 - **Run a single test:** `./vendor/bin/pest tests/Feature/YourTest.php` (or specify any test file)
 - **Database migrations:** `php artisan migrate`
 - **Seed database:** `php artisan db:seed`
+- **Lint PHP:** `vendor/bin/pint`
+- **Install dependencies:** `composer install` and `npm install`
 
 ## Code Style Guidelines
-- **Imports:** Use ES module syntax for JS; Composer autoload for PHP.
-- **Formatting:** Follow default Prettier (JS) and PSR-12 (PHP) styles.
+- **Imports:** Use ES module syntax for JS; Composer autoload (PSR-4) for PHP.
+- **Formatting:** Use Prettier for JS and Pint/PSR-12 for PHP.
 - **Types:** Use PHP type hints and strict validation in Livewire components.
-- **Naming:** Descriptive, feature-oriented names for files, classes, and components.
+- **Naming:** Prefer descriptive, feature-oriented names for files, classes, and components.
 - **Styling:** Use TailwindCSS utility classes in Blade and JS.
 - **Error Handling:** Validate all inputs in Livewire; use Laravel validation rules.
 - **JS/CSS:** Keep assets modular in `resources/js/` and `resources/css/`.
-- **Volt Components:** Use anonymous classes extending `Livewire\\Volt\\Component`.
+- **Volt Components:** Use anonymous classes extending `Livewire\Volt\Component`.
 - **URL-bound properties:** Use `#[Url('param')]` for Livewire query params.
 - **Testing:** Use Pest for all PHP tests; feature tests simulate user flows, unit tests cover model logic.
-
-## Additional Conventions
 - **External dependencies:** Managed via Composer (PHP) and npm (JS/CSS).
-- **Directory structure:** See Copilot instructions for key folders and files.
-- **If unclear:** Ask for clarification or check Copilot instructions.
+- **Directory structure:** See this file for key folders and files.
+- **If unclear:** Ask for clarification or check this file.
