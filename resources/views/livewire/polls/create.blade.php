@@ -26,7 +26,6 @@ new class extends Component {
         $poll = Poll::create([
             'name' => $this->name,
             'question' => $this->question,
-            'user_id' => auth()->id(),
         ]);
 
         $poll->answers()->createMany($this->answerData());
