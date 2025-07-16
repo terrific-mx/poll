@@ -75,4 +75,12 @@ it('validates name required')->todo();
 it('validates question required')->todo();
 
 it('updates a poll with all required fields')->todo();
-it('deletes a poll')->todo();
+
+it('successfully deletes a poll', function() {
+    $poll = Poll::factory()->create();
+
+    Volt::test('polls.delete', ['poll' => $poll])
+        ->call('delete');
+
+    expect($poll->fresh())->toBeNull();
+});
