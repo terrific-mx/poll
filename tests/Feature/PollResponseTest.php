@@ -6,6 +6,8 @@ use App\Models\Response;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Volt\Volt;
 
+use function Pest\Laravel\get;
+
 uses(RefreshDatabase::class);
 
 describe('Poll Response', function () {
@@ -65,5 +67,11 @@ describe('Poll Response', function () {
         expect($response->poll_id)->toBe($poll->id);
         expect($response->answer_id)->toBe($answer->id);
         expect($response->contact_email)->toBe($email);
+    });
+
+    it('successfully requests the /p/[pollID] route', function () {
+        Poll::factory()->create();
+
+        get('/p/1')->assertStatus(200);
     });
 });
