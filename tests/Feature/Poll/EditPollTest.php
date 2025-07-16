@@ -133,6 +133,6 @@ describe('Poll Editing via Volt', function () {
             ->set('question', 'Original Question')
             ->set('answers', ['Green', 'Green'])
             ->call('submit')
-            ->assertHasErrors(['answers' => 'distinct']);
+            ->assertHasErrors(['answers.0' => 'distinct']);
     });
 });
