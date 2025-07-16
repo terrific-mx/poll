@@ -32,7 +32,7 @@ new class extends Component {
         $poll->answers()->createMany($this->answerData());
     }
 
-    private function answerData(): array
+    private function answerData()
     {
         return collect($this->answers)
             ->map(fn($answer) => ['answer' => $answer])
