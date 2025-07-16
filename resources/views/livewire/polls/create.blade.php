@@ -29,9 +29,14 @@ new class extends Component {
             'user_id' => auth()->id(),
         ]);
 
-        $poll->answers()->createMany(
-            collect($this->answers)->map(fn($answer) => ['answer' => $answer])->toArray()
-        );
+        $poll->answers()->createMany($this->answerData());
+    }
+
+    private function answerData(): array
+    {
+        return collect($this->answers)
+            ->map(fn($answer) => ['answer' => $answer])
+            ->toArray();
     }
 }; ?>
 
