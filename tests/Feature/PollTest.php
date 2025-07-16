@@ -80,7 +80,7 @@ it('successfully deletes a poll', function() {
     $poll = Poll::factory()->create();
 
     Volt::test('polls.delete', ['poll' => $poll])
-        ->call('delete');
+        ->call('destroy');
 
     expect($poll->fresh())->toBeNull();
 });

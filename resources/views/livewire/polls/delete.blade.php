@@ -6,7 +6,7 @@ use Livewire\Volt\Component;
 new class extends Component {
     public Poll $poll;
 
-    public function delete()
+    public function destroy()
     {
         $this->poll->delete();
     }
