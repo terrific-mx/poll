@@ -21,4 +21,12 @@ class PollFactory extends Factory
             'question' => $this->faker->sentence(),
         ];
     }
+
+    public function withAnswers(array $answers): self
+    {
+        return $this->has(
+            \App\Models\Answer::factory()->sequence(...array_map(fn($a) => ['answer' => $a], $answers)),
+            'answers'
+        );
+    }
 }
