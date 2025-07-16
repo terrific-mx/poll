@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Answer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,11 +23,10 @@ class PollFactory extends Factory
         ];
     }
 
-    public function withAnswers(array $answers): self
+    public function withAnswers(array $answers)
     {
         return $this->has(
-            \App\Models\Answer::factory()->sequence(...array_map(fn($a) => ['answer' => $a], $answers)),
-            'answers'
+            Answer::factory()->sequence(...array_map(fn($a) => ['answer' => $a], $answers)),
         );
     }
 }
