@@ -135,4 +135,58 @@ describe('Poll Editing via Volt', function () {
             ->call('submit')
             ->assertHasErrors(['answers.0' => 'distinct']);
     });
+
+    it('can individually add answers to a poll', function () {
+        $poll = Poll::factory()
+            ->withAnswers(['Red', 'Blue'])
+            ->create([
+                'name' => 'Original Name',
+                'question' => 'Original Question',
+            ]);
+
+        Volt::test('polls.edit', ['poll' => $poll])
+            ->call('addAnswer', 'Green')
+            ->assertHasNoErrors();
+
+        $poll->refresh();
+        expect($poll->answers()->pluck('answer')->toArray())
+            ->toEqualCanonicalizing(['Red', 'Blue', 'Green']);
+    });
+
+    it('can individually edit an answer', function () {
+        $poll = Poll::factory()
+            ->withAnswers(['Red', 'Blue'])
+            ->create([
+                'name' => 'Original Name',
+                'question' => 'Original Question',
+            ]);
+
+        $answer = $poll->answers->first();
+        Volt::test('polls.edit', ['poll' => $poll])
+            ->call('editAnswer', $answer->id, 'Crimson')
+            ->assertHasNoErrors();
+
+        $poll->refresh();
+        expect($poll->answers()->pluck('answer')->toArray())
+            ->toEqualCanonicalizing(['Crimson', 'Blue']);
+    });
+
+    it('can individually delete an answer', function () {
+        $poll = Poll::factory()
+            ->withAnswers(['Red', 'Blue', 'Green'])
+            ->create([
+                'name' => 'Original Name',
+                'question' => 'Original Question',
+            ]);
+
+        $answer = $poll->answers->skip(1)->first();
+        Volt::test('polls.edit', ['poll' => $poll])
+            ->call('deleteAnswer', $answer->id)
+            ->assertHasNoErrors();
+
+        $poll->refresh();
+        expect($poll->answers()->pluck('answer')->toArray())
+            ->toEqualCanonicalizing(['Red', 'Green']);
+    });
+
 });
