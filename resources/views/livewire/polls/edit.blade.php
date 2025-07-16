@@ -13,7 +13,7 @@ new class extends Component {
 
     public function mount($poll)
     {
-        $this->poll = Poll::findOrFail($poll);
+        $this->poll = $poll instanceof Poll ? $poll : Poll::findOrFail($poll);
         $this->name = $this->poll->name;
         $this->question = $this->poll->question;
         $this->answers = $this->poll->answers()->pluck('answer')->toArray();

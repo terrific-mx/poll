@@ -16,7 +16,7 @@ describe('Poll Editing via Volt', function () {
                 'question' => 'Original Question',
             ]);
 
-        Volt::test('polls.edit', ['poll' => $poll->id])
+        Volt::test('polls.edit', ['poll' => $poll])
             ->set('name', '')
             ->set('question', 'Updated Question')
             ->set('answers', ['Green', 'Yellow'])
@@ -32,7 +32,7 @@ describe('Poll Editing via Volt', function () {
                 'question' => 'Original Question',
             ]);
 
-        Volt::test('polls.edit', ['poll' => $poll->id])
+        Volt::test('polls.edit', ['poll' => $poll])
             ->set('name', 'Updated Name')
             ->set('question', '')
             ->set('answers', ['Green', 'Yellow'])
@@ -48,7 +48,7 @@ describe('Poll Editing via Volt', function () {
                 'question' => 'Original Question',
             ]);
 
-        Volt::test('polls.edit', ['poll' => $poll->id])
+        Volt::test('polls.edit', ['poll' => $poll])
             ->set('name', 'Updated Name')
             ->set('question', 'Updated Question')
             ->set('answers', [])
@@ -64,7 +64,7 @@ describe('Poll Editing via Volt', function () {
                 'question' => 'Original Question',
             ]);
 
-        Volt::test('polls.edit', ['poll' => $poll->id])
+        Volt::test('polls.edit', ['poll' => $poll])
             ->set('name', 'Updated Name')
             ->set('question', 'Updated Question')
             ->set('answers', ['Green'])
@@ -84,7 +84,7 @@ describe('Poll Editing via Volt', function () {
         $newQuestion = 'Updated Question';
         $newAnswers = ['Green', 'Yellow'];
 
-        Volt::test('polls.edit', ['poll' => $poll->id])
+        Volt::test('polls.edit', ['poll' => $poll])
             ->set('name', $newName)
             ->set('question', $newQuestion)
             ->set('answers', $newAnswers)
@@ -108,7 +108,7 @@ describe('Poll Editing via Volt', function () {
 
         $updatedAnswers = ['Green', 'Yellow', 'Purple'];
 
-        Volt::test('polls.edit', ['poll' => $poll->id])
+        Volt::test('polls.edit', ['poll' => $poll])
             ->set('name', 'Original Name')
             ->set('question', 'Original Question')
             ->set('answers', $updatedAnswers)
@@ -128,7 +128,7 @@ describe('Poll Editing via Volt', function () {
                 'question' => 'Original Question',
             ]);
 
-        Volt::test('polls.edit', ['poll' => $poll->id])
+        Volt::test('polls.edit', ['poll' => $poll])
             ->set('name', 'Original Name')
             ->set('question', 'Original Question')
             ->set('answers', ['Green', 'Green'])
