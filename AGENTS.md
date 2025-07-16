@@ -1,21 +1,23 @@
 # AGENTS.md
 
-## Build, Lint, and Test Commands
-- **Development server:** `composer run dev` (or `npm run dev` for frontend assets)
-- **Run all tests:** `./vendor/bin/pest`
-- **Run a single test:** `./vendor/bin/pest --filter <TestName>`
-- **Lint PHP:** `composer run lint` (if defined)
-- **Lint JS/CSS:** `npm run lint` (if defined)
+This repository is a Vite-based frontend app using Laravel and TailwindCSS. There are no explicit linting, formatting, or test configurations in the root. Please follow these guidelines when contributing as an agent:
+
+## Build & Dev Commands
+- Build: `npm run build` (runs `vite build`)
+- Dev server: `npm run dev` (runs `vite`)
+- No test or lint commands are defined in package.json.
 
 ## Code Style Guidelines
-- **Imports:** Use PSR-4 autoloading; import classes at the top of PHP files.
-- **Formatting:** Follow PSR-12 for PHP; use Prettier/PSR-12 for JS/CSS if configured.
-- **Types:** Use PHP type hints and return types where possible.
-- **Naming:** Use StudlyCase for classes, camelCase for variables/methods, snake_case for database fields.
-- **Error Handling:** Use exceptions for error states; validate input in controllers and Volt components.
-- **Tests:** Use Pest with `it()` syntax; mark incomplete tests with `->todo()`; use model factories for test data.
-- **Volt:** Use Volt for interactive UI logic; test with `Volt::test()`.
-- **Polls:** Always require at least two answers per poll.
-- **Auth:** Some routes require authentication; see `tests/Feature/PollTest.php` for examples.
+- Use ES6+ module imports (`import ... from ...`).
+- Prefer functional components and hooks if using React.
+- Use consistent indentation (2 spaces recommended).
+- Name files, variables, and functions descriptively (camelCase for JS, PascalCase for components).
+- Use TypeScript types if present; otherwise, add JSDoc comments for type hints.
+- Handle errors gracefully; avoid silent failures.
+- Keep code DRY and modular.
+- Organize CSS in `resources/css/`, JS in `resources/js/`.
+- Follow TailwindCSS utility-first conventions for styling.
+- Document public APIs and complex logic inline.
+- No Cursor or Copilot rules are present.
 
-Refer to `.github/copilot-instructions.md` for more project-specific patterns and examples.
+If you add linting, formatting, or test tools, update this file accordingly.
