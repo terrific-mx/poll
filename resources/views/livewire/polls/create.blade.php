@@ -28,9 +28,10 @@ new class extends Component {
             'question' => $this->question,
             'user_id' => auth()->id(),
         ]);
-        foreach ($this->answers as $answer) {
-            $poll->answers()->create(['answer' => $answer]);
-        }
+
+        $poll->answers()->createMany(
+            collect($this->answers)->map(fn($answer) => ['answer' => $answer])->toArray()
+        );
     }
 }; ?>
 
