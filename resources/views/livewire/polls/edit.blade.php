@@ -1,8 +1,6 @@
 <div></div>
 <?php
 
-use App\Models\Poll;
-use App\Models\Answer;
 use Livewire\Volt\Component;
 
 new class extends Component {
@@ -11,9 +9,8 @@ new class extends Component {
     public string $question = '';
     public array $answers = [];
 
-    public function mount($poll)
+    public function mount()
     {
-        $this->poll = $poll instanceof Poll ? $poll : Poll::findOrFail($poll);
         $this->name = $this->poll->name;
         $this->question = $this->poll->question;
         $this->answers = $this->poll->answers()->pluck('answer')->toArray();
@@ -34,8 +31,8 @@ new class extends Component {
         ]);
 
         $this->poll->answers()->delete();
-        foreach ($this->answers as $answer) {
-            $this->poll->answers()->create(['answer' => $answer]);
-        }
+        $this->poll->answers()->createMany(
+            collect($this->answers)->map(fn($a) => ['answer' => $a])->toArray()
+        );
     }
 };
