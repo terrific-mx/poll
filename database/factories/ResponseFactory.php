@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Answer;
+use App\Models\Poll;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +19,8 @@ class ResponseFactory extends Factory
     public function definition(): array
     {
         return [
-            'poll_id' => \App\Models\Poll::factory(),
-            'answer_id' => \App\Models\Answer::factory(),
+            'poll_id' => Poll::factory(),
+            'answer_id' => Answer::factory(),
             'contact_email' => $this->faker->optional()->safeEmail(),
         ];
     }

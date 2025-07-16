@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Poll;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,7 @@ class AnswerFactory extends Factory
     public function definition(): array
     {
         return [
-            'poll_id' => \App\Models\Poll::factory(),
+            'poll_id' => Poll::factory(),
             'answer' => $this->faker->word(),
         ];
     }
