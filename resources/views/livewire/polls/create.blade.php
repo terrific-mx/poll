@@ -60,7 +60,7 @@ new class extends Component {
 
 <div class="max-w-md mx-auto">
     <flux:breadcrumbs>
-        <flux:breadcrumbs.item :href="route('polls.index')">Polls</flux:breadcrumbs.item>
+        <flux:breadcrumbs.item :href="route('polls.index')" wire:navigate>Polls</flux:breadcrumbs.item>
         <flux:breadcrumbs.item>Create</flux:breadcrumbs.item>
     </flux:breadcrumbs>
 
