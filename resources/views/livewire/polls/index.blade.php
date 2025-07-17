@@ -13,6 +13,7 @@ new class extends Component {
 }; ?>
 
 <div>
+    <flux:button :href="route('polls.create')">Create Poll</flux:button>
     <ul>
         @foreach($polls as $poll)
             <li>
