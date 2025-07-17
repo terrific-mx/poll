@@ -22,6 +22,6 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
 
-Volt::route('p/{poll}', 'poll.respond')->name('polls.respond');
+Volt::route('p/{poll}', 'polls.respond')->name('polls.respond');
 
 require __DIR__.'/auth.php';

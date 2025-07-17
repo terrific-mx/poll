@@ -182,7 +182,7 @@ describe('Poll Response', function () {
         $poll = Poll::factory()->create();
         $answer = Answer::factory()->for($poll)->create();
 
-        Volt::test('poll.respond', ['poll' => $poll])
+        Volt::test('polls.respond', ['poll' => $poll])
             ->set('answer_id', $answer->id)
             ->call('submit')
             ->assertHasNoErrors();
@@ -198,7 +198,7 @@ describe('Poll Response', function () {
         $answer = Answer::factory()->for($poll)->create();
         $email = 'user@example.com';
 
-        Volt::test('poll.respond', ['poll' => $poll])
+        Volt::test('polls.respond', ['poll' => $poll])
             ->set('answer_id', $answer->id)
             ->set('contact_email', $email)
             ->call('submit')
@@ -213,7 +213,7 @@ describe('Poll Response', function () {
 
     it('returns validation error if required fields are missing', function () {
         $poll = Poll::factory()->create();
-        Volt::test('poll.respond', ['poll' => $poll])
+        Volt::test('polls.respond', ['poll' => $poll])
             ->call('submit')
             ->assertHasErrors(['answer_id']);
     });
@@ -223,7 +223,7 @@ describe('Poll Response', function () {
         $answer = Answer::factory()->for($poll)->create();
         $email = 'contact@example.com';
 
-        Volt::test('poll.respond', ['poll' => $poll])
+        Volt::test('polls.respond', ['poll' => $poll])
             ->set('answer_id', $answer->id)
             ->set('contact_email', $email)
             ->call('submit')
@@ -247,7 +247,7 @@ describe('Poll Response', function () {
         $answer = Answer::factory()->for($poll)->create();
         $email = 'thankyou@example.com';
 
-        $component = Volt::test('poll.respond', ['poll' => $poll])
+        $component = Volt::test('polls.respond', ['poll' => $poll])
             ->set('answer_id', $answer->id)
             ->set('contact_email', $email)
             ->call('submit');
