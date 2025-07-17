@@ -1,8 +1,10 @@
 <?php
 
 use Livewire\Volt\Component;
+
 use App\Models\Poll;
 use App\Models\Answer;
+use Illuminate\Support\Arr;
 
 new class extends Component {
     public string $name = '';
@@ -11,17 +13,20 @@ new class extends Component {
 
     public function mount() {
         if (count($this->answers) < 2) {
-            $this->answers = array_pad($this->answers, 2, '');
+            $this->answers = Arr::add($this->answers, 0, '');
+            $this->answers = Arr::add($this->answers, 1, '');
         }
     }
 
     public function addAnswer() {
-        $this->answers[] = '';
+        $this->answers = Arr::add($this->answers, count($this->answers), '');
     }
 
     public function removeAnswer($index) {
         if (count($this->answers) > 2) {
-            array_splice($this->answers, $index, 1);
+            Arr::forget($this->answers, $index);
+
+            $this->answers = array_values($this->answers);
         }
     }
 
@@ -55,7 +60,7 @@ new class extends Component {
     }
 }; ?>
 
-<div>
+<div class="max-w-md mx-auto">
     <form wire:submit="submit" class="space-y-6">
         <flux:input
             type="text"
@@ -71,9 +76,9 @@ new class extends Component {
             placeholder="Enter poll question"
         />
 
-        <div class="space-y-2">
+        <div class="space-y-6">
             @foreach ($answers as $i => $answer)
-                <div class="flex items-center gap-2">
+                <div wire:key="answer-{{ $i }}" class="flex items-center gap-2">
                     <flux:input
                         type="text"
                         wire:model="answers.{{ $i }}"
