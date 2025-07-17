@@ -36,7 +36,7 @@ new #[Layout('components.layouts.poll')] class extends Component {
 
 <div class="max-w-sm mx-auto py-6">
     @if ($showThankYou)
-        <div class="text-center text-green-700 font-semibold py-8">Thank you for your response</div>
+        <p>Thank you for your response</p>
     @else
         <form wire:submit="submit">
             <flux:radio.group wire:model="answer_id" :label="$poll->question">
