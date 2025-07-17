@@ -74,4 +74,17 @@ describe('Poll Response', function () {
 
         get('/p/1')->assertStatus(200);
     });
+
+    it('shows a thank you message after submitting a response', function () {
+        $poll = Poll::factory()->create();
+        $answer = Answer::factory()->for($poll)->create();
+        $email = 'thankyou@example.com';
+
+        $component = Volt::test('poll.respond', ['poll' => $poll])
+            ->set('answer_id', $answer->id)
+            ->set('contact_email', $email)
+            ->call('submit');
+
+        $component->assertSee('Thank you for your response');
+    });
 });
