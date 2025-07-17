@@ -89,4 +89,33 @@ describe('Poll Creation via Volt', function () {
             ->get('/polls/create')
             ->assertOk();
     });
+
+    it('can add answers dynamically', function () {
+        $user = User::factory()->create();
+
+        $component = Volt::actingAs($user)
+            ->test('polls.create')
+            ->set('answers', ['Red', 'Blue']);
+
+        $component->call('addAnswer');
+        $answers = $component->get('answers');
+        expect($answers)->toHaveCount(3);
+        expect($answers[2])->toBe('');
+    });
+
+    it('can remove answers dynamically (but not below two)', function () {
+        $user = User::factory()->create();
+
+        $component = Volt::actingAs($user)
+            ->test('polls.create')
+            ->set('answers', ['Red', 'Blue', 'Green']);
+
+        $component->call('removeAnswer', 2);
+        $answers = $component->get('answers');
+        expect($answers)->toEqual(['Red', 'Blue']);
+
+        $component->call('removeAnswer', 1);
+        $answers = $component->get('answers');
+        expect($answers)->toEqual(['Red', 'Blue']);
+    });
 });
