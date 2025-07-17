@@ -23,11 +23,13 @@ new #[Layout('components.layouts.poll')] class extends Component {
 
     public function submit() {
         $this->validate();
+
         $answer = Answer::findOrFail($this->answer_id);
+
         $this->poll->addResponse($answer, $this->contact_email);
     }
 }; ?>
 
 <div>
-    {{ $poll->title }}
+    //
 </div>
