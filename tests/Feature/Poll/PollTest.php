@@ -13,14 +13,16 @@ use function Pest\Laravel\get;
 uses(RefreshDatabase::class);
 
 describe('Poll Creation', function () {
-    it('creates a poll when all required fields are provided', function () {
-        $user = User::factory()->create();
+    beforeEach(function () {
+        $this->user = User::factory()->create();
+    });
 
+    it('creates a poll when all required fields are provided', function () {
         $name = 'Color Poll';
         $question = 'What is your favorite color?';
         $answers = ['Red', 'Blue'];
 
-        Volt::actingAs($user)
+        Volt::actingAs($this->user)
             ->test('polls.create')
             ->set('name', $name)
             ->set('question', $question)
@@ -37,9 +39,7 @@ describe('Poll Creation', function () {
     });
 
     it('does not allow poll creation when the name is missing', function () {
-        $user = User::factory()->create();
-
-        Volt::actingAs($user)
+        Volt::actingAs($this->user)
             ->test('polls.create')
             ->set('name', '')
             ->set('question', 'What is your favorite color?')
@@ -49,9 +49,7 @@ describe('Poll Creation', function () {
     });
 
     it('does not allow poll creation when the question is missing', function () {
-        $user = User::factory()->create();
-
-        Volt::actingAs($user)
+        Volt::actingAs($this->user)
             ->test('polls.create')
             ->set('name', 'Color Poll')
             ->set('question', '')
@@ -61,9 +59,7 @@ describe('Poll Creation', function () {
     });
 
     it('does not allow poll creation when answers are missing', function () {
-        $user = User::factory()->create();
-
-        Volt::actingAs($user)
+        Volt::actingAs($this->user)
             ->test('polls.create')
             ->set('name', 'Color Poll')
             ->set('question', 'What is your favorite color?')
@@ -73,9 +69,7 @@ describe('Poll Creation', function () {
     });
 
     it('does not allow poll creation with less than two answers', function () {
-        $user = User::factory()->create();
-
-        Volt::actingAs($user)
+        Volt::actingAs($this->user)
             ->test('polls.create')
             ->set('name', 'Color Poll')
             ->set('question', 'What is your favorite color?')
@@ -85,18 +79,13 @@ describe('Poll Creation', function () {
     });
 
     it('shows the create poll page to a logged-in user', function () {
-        /** @var User $user */
-        $user = User::factory()->create();
-
-        actingAs($user)
+        actingAs($this->user)
             ->get('/polls/create')
             ->assertOk();
     });
 
     it('can add answers dynamically', function () {
-        $user = User::factory()->create();
-
-        $component = Volt::actingAs($user)
+        $component = Volt::actingAs($this->user)
             ->test('polls.create')
             ->set('answers', ['Red', 'Blue']);
 
@@ -107,9 +96,7 @@ describe('Poll Creation', function () {
     });
 
     it('can remove answers dynamically (but not below two)', function () {
-        $user = User::factory()->create();
-
-        $component = Volt::actingAs($user)
+        $component = Volt::actingAs($this->user)
             ->test('polls.create')
             ->set('answers', ['Red', 'Blue', 'Green']);
 
@@ -256,20 +243,24 @@ describe('Poll Response', function () {
     });
 });
 
-it('shows all the polls page', function () {
-    /** @var User $user */
-    $user = User::factory()->create();
+describe('Poll Listing', function () {
+    beforeEach(function () {
+        $this->user = User::factory()->create();
+    });
 
-    Poll::factory()->create();
-
-    actingAs($user)->get('/polls')->assertOk();
+    it('shows all the polls page', function () {
+        Poll::factory()->create();
+        actingAs($this->user)->get('/polls')->assertOk();
+    });
 });
 
-it('shows poll page', function () {
-    /** @var User $user */
-    $user = User::factory()->create();
+describe('Poll Details', function () {
+    beforeEach(function () {
+        $this->user = User::factory()->create();
+    });
 
-    Poll::factory()->create();
-
-    actingAs($user)->get("/polls/1")->assertOk();
+    it('shows poll page', function () {
+        Poll::factory()->create();
+        actingAs($this->user)->get("/polls/1")->assertOk();
+    });
 });
