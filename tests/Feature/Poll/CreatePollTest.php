@@ -10,10 +10,11 @@ use function Pest\Laravel\actingAs;
 uses(RefreshDatabase::class);
 
 describe('Poll Creation via Volt', function () {
-    it('fails to create a poll with missing name', function () {
+    it('does not allow poll creation when the name is missing', function () {
         $user = User::factory()->create();
 
-        Volt::actingAs($user)->test('polls.create')
+        Volt::actingAs($user)
+            ->test('polls.create')
             ->set('name', '')
             ->set('question', 'What is your favorite color?')
             ->set('answers', ['Red', 'Blue'])
@@ -21,10 +22,11 @@ describe('Poll Creation via Volt', function () {
             ->assertHasErrors(['name' => 'required']);
     });
 
-    it('fails to create a poll with missing question', function () {
+    it('does not allow poll creation when the question is missing', function () {
         $user = User::factory()->create();
 
-        Volt::actingAs($user)->test('polls.create')
+        Volt::actingAs($user)
+            ->test('polls.create')
             ->set('name', 'Color Poll')
             ->set('question', '')
             ->set('answers', ['Red', 'Blue'])
@@ -32,10 +34,11 @@ describe('Poll Creation via Volt', function () {
             ->assertHasErrors(['question' => 'required']);
     });
 
-    it('fails to create a poll with missing answers', function () {
+    it('does not allow poll creation when answers are missing', function () {
         $user = User::factory()->create();
 
-        Volt::actingAs($user)->test('polls.create')
+        Volt::actingAs($user)
+            ->test('polls.create')
             ->set('name', 'Color Poll')
             ->set('question', 'What is your favorite color?')
             ->set('answers', [])
@@ -43,10 +46,11 @@ describe('Poll Creation via Volt', function () {
             ->assertHasErrors(['answers' => 'required']);
     });
 
-    it('fails to create a poll with less than two answers', function () {
+    it('does not allow poll creation with less than two answers', function () {
         $user = User::factory()->create();
 
-        Volt::actingAs($user)->test('polls.create')
+        Volt::actingAs($user)
+            ->test('polls.create')
             ->set('name', 'Color Poll')
             ->set('question', 'What is your favorite color?')
             ->set('answers', ['Red'])
@@ -70,19 +74,15 @@ describe('Poll Creation via Volt', function () {
             ->assertHasNoErrors();
 
         $poll = Poll::first();
-
         expect($poll)->not->toBeNull();
-
-        expect($poll)
-            ->name->toBe($name)
-            ->question->toBe($question);
-
+        expect($poll->name)->toBe($name);
+        expect($poll->question)->toBe($question);
         expect($poll->answers()->pluck('text')->toArray())
             ->toEqualCanonicalizing($answers);
     });
 
-    it('returns OK for /polls/create route as a logged in user', function () {
-        /** @var User */
+    it('shows the create poll page to a logged-in user', function () {
+        /** @var User $user */
         $user = User::factory()->create();
 
         actingAs($user)
