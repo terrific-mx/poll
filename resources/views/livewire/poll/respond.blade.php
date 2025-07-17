@@ -30,7 +30,7 @@ new #[Layout('components.layouts.poll')] class extends Component {
     }
 }; ?>
 
-<div>
+<div class="max-w-sm mx-auto py-6">
     <form wire:submit="submit">
         <flux:radio.group wire:model="answer_id" :label="$poll->question">
             @foreach ($poll->answers as $answer)
