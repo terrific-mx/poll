@@ -21,4 +21,30 @@ new class extends Component {
             </li>
         @endforeach
     </ul>
+
+    <hr>
+<div
+    x-data="{
+        copied: false,
+        copyHtml() {
+            const html = this.$refs.answersList.outerHTML;
+            navigator.clipboard.write([
+                new ClipboardItem({ 'text/html': new Blob([html], { type: 'text/html' }) })
+            ]).then(() => {
+                this.copied = true;
+                setTimeout(() => this.copied = false, 1500);
+            });
+        }
+    }"
+    class="mt-6"
+>
+    <button @click="copyHtml" type="button" class="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring" x-text="copied ? 'Copied!' : 'Copy for Email'"></button>
+        <ul class="space-y-4 mt-4" x-ref="answersList">
+            @foreach($poll->answers as $answer)
+                <li>
+                    <a href="{{ route('polls.respond', $poll) }}">{{ $answer->text }}</a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
 </div>
