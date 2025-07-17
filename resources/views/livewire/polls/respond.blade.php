@@ -9,6 +9,7 @@ use Livewire\Attributes\Url;
 new #[Layout('components.layouts.poll')] class extends Component {
     public Poll $poll;
 
+    #[Url('a')]
     public $answer_id;
 
     #[Url('c')]

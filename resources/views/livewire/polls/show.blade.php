@@ -42,7 +42,7 @@ new class extends Component {
         <ul class="space-y-4 mt-4" x-ref="answersList">
             @foreach($poll->answers as $answer)
                 <li>
-                    <a href="{{ route('polls.respond', $poll) }}">{{ $answer->text }}</a>
+                    <a href="{{ route('polls.respond', ['poll' => $poll, 'a' => $answer->id]) }}">{{ $answer->text }}</a>
                 </li>
             @endforeach
         </ul>
