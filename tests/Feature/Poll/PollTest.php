@@ -13,6 +13,29 @@ use function Pest\Laravel\get;
 uses(RefreshDatabase::class);
 
 describe('Poll Creation', function () {
+    it('creates a poll when all required fields are provided', function () {
+        $user = User::factory()->create();
+
+        $name = 'Color Poll';
+        $question = 'What is your favorite color?';
+        $answers = ['Red', 'Blue'];
+
+        Volt::actingAs($user)
+            ->test('polls.create')
+            ->set('name', $name)
+            ->set('question', $question)
+            ->set('answers', $answers)
+            ->call('submit')
+            ->assertHasNoErrors();
+
+        $poll = Poll::first();
+        expect($poll)->not->toBeNull();
+        expect($poll->name)->toBe($name);
+        expect($poll->question)->toBe($question);
+        expect($poll->answers()->pluck('text')->toArray())
+            ->toEqualCanonicalizing($answers);
+    });
+
     it('does not allow poll creation when the name is missing', function () {
         $user = User::factory()->create();
 
@@ -59,29 +82,6 @@ describe('Poll Creation', function () {
             ->set('answers', ['Red'])
             ->call('submit')
             ->assertHasErrors(['answers' => 'min']);
-    });
-
-    it('creates a poll when all required fields are provided', function () {
-        $user = User::factory()->create();
-
-        $name = 'Color Poll';
-        $question = 'What is your favorite color?';
-        $answers = ['Red', 'Blue'];
-
-        Volt::actingAs($user)
-            ->test('polls.create')
-            ->set('name', $name)
-            ->set('question', $question)
-            ->set('answers', $answers)
-            ->call('submit')
-            ->assertHasNoErrors();
-
-        $poll = Poll::first();
-        expect($poll)->not->toBeNull();
-        expect($poll->name)->toBe($name);
-        expect($poll->question)->toBe($question);
-        expect($poll->answers()->pluck('text')->toArray())
-            ->toEqualCanonicalizing($answers);
     });
 
     it('shows the create poll page to a logged-in user', function () {
@@ -237,7 +237,7 @@ describe('Poll Response', function () {
     });
 
     it('successfully requests the poll response route', function () {
-        Poll::factory()->create();
+        Poll::factory()->has(Answer::factory()->count(2))->create();
 
         get('/p/1')->assertStatus(200);
     });
@@ -254,4 +254,13 @@ describe('Poll Response', function () {
 
         expect($component->get('showThankYou'))->toBeTrue();
     });
+});
+
+it('shows all the polls page', function () {
+    /** @var User $user */
+    $user = User::factory()->create();
+
+    Poll::factory()->create();
+
+    actingAs($user)->get('/polls')->assertOk();
 });
