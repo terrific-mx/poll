@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\User;
-use App\Models\Poll;
 use App\Models\Answer;
+use App\Models\Poll;
 use App\Models\Response;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Volt\Volt;
 
@@ -254,5 +254,4 @@ describe('Poll Response', function () {
 
         expect($component->get('showThankYou'))->toBeTrue();
     });
-})
-;
+});

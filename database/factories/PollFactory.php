@@ -26,7 +26,7 @@ class PollFactory extends Factory
     public function withAnswers(array $answers)
     {
         return $this->has(
-            Answer::factory()->sequence(...array_map(fn($a) => ['text' => $a], $answers)),
+            Answer::factory()->sequence(...array_map(fn ($a) => ['text' => $a], $answers)),
         );
     }
 }
