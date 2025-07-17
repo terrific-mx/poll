@@ -16,7 +16,7 @@ new class extends Component {
     <ul>
         @foreach($polls as $poll)
             <li>
-                <a href="{{ route('polls.respond', $poll) }}">{{ $poll->name }}</a>
+                <a href="{{ route('polls.show', $poll) }}">{{ $poll->name }}</a>
                 <span class="text-muted">({{ $poll->answers->count() }} answers)</span>
             </li>
         @endforeach

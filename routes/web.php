@@ -11,6 +11,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
     Volt::route('polls', 'polls.index')->name('polls.index');
     Volt::route('polls/create', 'polls.create')->name('polls.create');
+    Volt::route('polls/{poll}', 'polls.show')->name('polls.show');
 });
 
 Route::middleware(['auth'])->group(function () {

@@ -264,3 +264,12 @@ it('shows all the polls page', function () {
 
     actingAs($user)->get('/polls')->assertOk();
 });
+
+it('shows poll page', function () {
+    /** @var User $user */
+    $user = User::factory()->create();
+
+    Poll::factory()->create();
+
+    actingAs($user)->get("/polls/1")->assertOk();
+});
