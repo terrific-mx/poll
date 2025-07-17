@@ -1,4 +1,7 @@
+
 <?php
+
+use function Pest\Laravel\actingAs;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -77,5 +80,12 @@ describe('Poll Creation via Volt', function () {
 
         expect($poll->answers()->pluck('text')->toArray())
             ->toEqualCanonicalizing($answers);
+    });
+    
+    it('returns OK for /polls/create route as a logged in user', function () {
+        $user = User::factory()->create();
+        actingAs($user)
+            ->get('/polls/create')
+            ->assertOk();
     });
 });
