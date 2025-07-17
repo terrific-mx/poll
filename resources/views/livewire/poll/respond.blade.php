@@ -1,12 +1,12 @@
 <?php
 
 use Livewire\Volt\Component;
-use App\Models\Response;
 use App\Models\Answer;
 use App\Models\Poll;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Url;
 
-new class extends Component {
+new #[Layout('components.layouts.poll')] class extends Component {
     public Poll $poll;
 
     public $answer_id;
@@ -29,5 +29,5 @@ new class extends Component {
 }; ?>
 
 <div>
-    <!-- Minimal implementation for backend test passing -->
+    {{ $poll->title }}
 </div>

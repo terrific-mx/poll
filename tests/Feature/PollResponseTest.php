@@ -69,7 +69,7 @@ describe('Poll Response', function () {
         expect($response->contact_email)->toBe($email);
     });
 
-    it('successfully requests the /p/[pollID] route', function () {
+    it('successfully requests the poll response route', function () {
         Poll::factory()->create();
 
         get('/p/1')->assertStatus(200);
