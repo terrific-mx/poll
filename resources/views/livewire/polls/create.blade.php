@@ -34,7 +34,7 @@ new class extends Component {
     private function answerData()
     {
         return collect($this->answers)
-            ->map(fn($answer) => ['answer' => $answer])
+            ->map(fn($answer) => ['text' => $answer])
             ->toArray();
     }
 }; ?>

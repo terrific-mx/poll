@@ -19,7 +19,7 @@ class AnswerFactory extends Factory
     {
         return [
             'poll_id' => Poll::factory(),
-            'answer' => $this->faker->word(),
+            'text' => $this->faker->word(),
         ];
     }
 }

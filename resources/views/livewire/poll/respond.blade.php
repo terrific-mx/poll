@@ -41,7 +41,7 @@ new #[Layout('components.layouts.poll')] class extends Component {
         <form wire:submit="submit">
             <flux:radio.group wire:model="answer_id" :label="$poll->question">
                 @foreach ($poll->answers as $answer)
-                    <flux:radio value="{{ $answer->id }}" :label="$answer->answer" />
+                    <flux:radio value="{{ $answer->id }}" :label="$answer->text" />
                 @endforeach
             </flux:radio.group>
 

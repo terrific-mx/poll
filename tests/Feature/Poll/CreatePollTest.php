@@ -75,7 +75,7 @@ describe('Poll Creation via Volt', function () {
             ->name->toBe($name)
             ->question->toBe($question);
 
-        expect($poll->answers()->pluck('answer')->toArray())
+        expect($poll->answers()->pluck('text')->toArray())
             ->toEqualCanonicalizing($answers);
     });
 });
