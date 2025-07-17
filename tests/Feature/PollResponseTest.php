@@ -85,6 +85,6 @@ describe('Poll Response', function () {
             ->set('contact_email', $email)
             ->call('submit');
 
-        $component->assertSee('Thank you for your response');
+        expect($component->get('showThankYou'))->toBeTrue();
     });
 });
