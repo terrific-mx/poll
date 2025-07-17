@@ -59,11 +59,10 @@ new class extends Component {
 }; ?>
 
 <div class="max-w-md mx-auto">
-    <flux:link :href="route('polls.index')" class="text-sm" wire:navigate>
-        <span class="flex items-center gap-1">
-            <flux:icon.arrow-left variant="micro" /> Back
-        </span>
-    </flux:link>
+    <flux:breadcrumbs>
+        <flux:breadcrumbs.item :href="route('polls.index')">Polls</flux:breadcrumbs.item>
+        <flux:breadcrumbs.item>Create</flux:breadcrumbs.item>
+    </flux:breadcrumbs>
 
     <flux:heading level="1" size="lg" class="mt-8">Create Poll</flux:heading>
 
