@@ -3,12 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::redirect('/', 'polls')->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('dashboard', 'dashboard')->name('dashboard');
+    Route::redirect('dashboard', 'polls')->name('dashboard');
     Volt::route('polls', 'polls.index')->name('polls.index');
     Volt::route('polls/create', 'polls.create')->name('polls.create');
     Volt::route('polls/{poll}', 'polls.show')->name('polls.show');
