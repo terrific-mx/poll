@@ -94,20 +94,6 @@ describe('Poll Creation', function () {
         expect($answers)->toHaveCount(3);
         expect($answers[2])->toBe('');
     });
-
-    it('can remove answers dynamically (but not below two)', function () {
-        $component = Volt::actingAs($this->user)
-            ->test('polls.create')
-            ->set('answers', ['Red', 'Blue', 'Green']);
-
-        $component->call('removeAnswer', 2);
-        $answers = $component->get('answers');
-        expect($answers)->toEqual(['Red', 'Blue']);
-
-        $component->call('removeAnswer', 1);
-        $answers = $component->get('answers');
-        expect($answers)->toEqual(['Red', 'Blue']);
-    });
 });
 
 describe('Poll Editing', function () {

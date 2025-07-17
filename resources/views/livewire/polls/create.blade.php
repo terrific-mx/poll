@@ -23,11 +23,9 @@ new class extends Component {
     }
 
     public function removeAnswer($index) {
-        if (count($this->answers) > 2) {
-            Arr::forget($this->answers, $index);
+        Arr::forget($this->answers, $index);
 
-            $this->answers = array_values($this->answers);
-        }
+        $this->answers = array_values($this->answers);
     }
 
     public function rules(): array
@@ -61,45 +59,53 @@ new class extends Component {
 }; ?>
 
 <div class="max-w-md mx-auto">
-    <form wire:submit="submit" class="space-y-6">
+    <flux:link :href="route('polls.index')" class="text-sm" wire:navigate>
+        <span class="flex items-center gap-1">
+            <flux:icon.arrow-left variant="micro" /> Back
+        </span>
+    </flux:link>
+
+    <flux:heading level="1" size="lg" class="mt-8">Create Poll</flux:heading>
+
+    <form wire:submit="submit" class="space-y-6 mt-8">
         <flux:input
             type="text"
             wire:model="name"
             label="Poll Name"
-            placeholder="Enter poll name"
         />
 
         <flux:input
             type="text"
             wire:model="question"
             label="Poll Question"
-            placeholder="Enter poll question"
         />
 
-        <div class="space-y-6">
-            @foreach ($answers as $i => $answer)
-                <div wire:key="answer-{{ $i }}" class="flex items-center gap-2">
-                    <flux:input
-                        type="text"
-                        wire:model="answers.{{ $i }}"
-                        label="Answer {{ $i + 1 }}"
-                        placeholder="Enter answer {{ $i + 1 }}"
-                    />
-                    @if (count($answers) > 2)
-                        <button type="button" wire:click="removeAnswer({{ $i }})" class="text-red-500 px-2 py-1 rounded hover:bg-red-100">Remove</button>
-                    @endif
-                </div>
-            @endforeach
-        </div>
+        <flux:fieldset>
+            <flux:legend>Answers</flux:legend>
 
-        <div>
-            <button type="button" wire:click="addAnswer" class="mt-2 text-blue-600 px-3 py-1 rounded hover:bg-blue-100">+ Add Answer</button>
-        </div>
+            <div class="space-y-4">
+                @foreach ($answers as $i => $answer)
+                    <div wire:key="answer-{{ $i }}">
+                        <flux:field>
+                            <flux:label>Option {{ $i + 1 }}</flux:label>
+                            <div class="flex gap-2">
+                                <flux:input wire:model="answers.{{ $i }}" type="text" class="flex-1" />
+                                <flux:button wire:click="removeAnswer({{ $i }})">Remove</flux:button>
+                            </div>
+                        </flux:field>
+                    </div>
+                @endforeach
+
+                <div>
+                    <flux:button wire:click="addAnswer" size="sm" icon="plus">Add Answer</flux:button>
+                </div>
+            </div>
+        </flux:fieldset>
 
         <flux:error name="answers" />
 
         <div class="mt-4">
-            <flux:button type="submit">Create Poll</flux:button>
+            <flux:button type="submit" variant="primary">Save</flux:button>
         </div>
     </form>
 </div>
