@@ -48,6 +48,8 @@ new class extends Component {
         ]);
 
         $poll->answers()->createMany($this->answerData());
+
+        return $this->redirect(route('polls.show', $poll));
     }
 
     private function answerData()
