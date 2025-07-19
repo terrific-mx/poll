@@ -41,7 +41,7 @@ new class extends Component {
                     <div class="flex gap-6 py-6">
                         <div class="space-y-1.5">
                             <flux:heading size="lg">
-                                <a href="{{ route('polls.show', $poll) }}">{{ $poll->name }}</a>
+                                <a href="{{ route('polls.show', $poll) }}" wire:navigate>{{ $poll->name }}</a>
                             </flux:heading>
                             <flux:text size="sm">
                                 {{ $poll->answers->count() }} answers

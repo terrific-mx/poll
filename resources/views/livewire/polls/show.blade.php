@@ -6,7 +6,7 @@ new class extends Component {
     public Poll $poll;
 }; ?>
 
-<div class="mx-auto max-w-4xl">
+<div class="mx-auto max-w-5xl">
     <flux:breadcrumbs>
         <flux:breadcrumbs.item :href="route('polls.index')" wire:navigate>Polls</flux:breadcrumbs.item>
         <flux:breadcrumbs.item>{{ $poll->name }}</flux:breadcrumbs.item>
@@ -17,7 +17,7 @@ new class extends Component {
         <div class="max-sm:w-full sm:flex-1">
             <flux:heading size="xl" level="1">{{ $poll->question }}</flux:heading>
         </div>
-        <flux:button href="{{ route('polls.respond', $poll) }}" variant="primary">View</flux:button>
+        <flux:button href="{{ route('polls.respond', $poll) }}" variant="primary" class="-my-1">View</flux:button>
     </div>
 
     <!-- Summary grid -->
