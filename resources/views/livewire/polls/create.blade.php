@@ -64,7 +64,7 @@ new class extends Component {
         <flux:breadcrumbs.item>Create</flux:breadcrumbs.item>
     </flux:breadcrumbs>
 
-    <flux:heading level="1" size="lg" class="mt-8">Create Poll</flux:heading>
+    <flux:heading level="1" size="xl" class="mt-8">Create Poll</flux:heading>
 
     <form wire:submit="submit" class="space-y-6 mt-8">
         <flux:input
