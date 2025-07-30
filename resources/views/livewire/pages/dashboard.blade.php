@@ -37,8 +37,13 @@ new class extends Component {
     }
 }; ?>
 
-<div class="max-w-5xl mx-auto">
-    <flux:heading size="xl">Polls</flux:heading>
+<div class="max-w-6xl mx-auto">
+    <div class="flex items-end justify-between gap-4">
+        <flux:heading size="xl">Polls</flux:heading>
+        <flux:modal.trigger name="create-poll">
+            <flux:button variant="primary">Create Poll</flux:button>
+        </flux:modal.trigger>
+    </div>
     @if($polls)
         <ul>
             @foreach ($polls as $poll)
@@ -67,13 +72,20 @@ new class extends Component {
         <div class="text-center text-zinc-500 py-10">No polls found.</div>
     @endif
 
-    <form wire:submit="createPoll" class="space-y-6">
-        <flux:input wire:model="pollName" label="Poll Name" />
-        <flux:input wire:model="pollQuestion" label="Poll Question" />
-        <flux:input wire:model="pollOptions.0" label="Poll Option 1" />
-        <flux:input wire:model="pollOptions.1" label="Poll Option 2" />
-        <div>
-            <flux:button type="submit">{{ __('Create Poll') }}</flux:button>
-        </div>
-    </form>
+    <flux:modal name="create-poll" class="md:w-96">
+        <form wire:submit="createPoll" class="space-y-6">
+            <div>
+                <flux:heading size="lg">Create a New Poll</flux:heading>
+                <flux:text class="mt-2">Fill in the details below to create a new poll.</flux:text>
+            </div>
+            <flux:input wire:model="pollName" label="Poll Name" />
+            <flux:input wire:model="pollQuestion" label="Poll Question" />
+            <flux:input wire:model="pollOptions.0" label="Poll Option 1" />
+            <flux:input wire:model="pollOptions.1" label="Poll Option 2" />
+            <div class="flex">
+                <flux:spacer />
+                <flux:button type="submit" variant="primary">{{ __('Create Poll') }}</flux:button>
+            </div>
+        </form>
+    </flux:modal>
 </div>
