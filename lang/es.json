@@ -1,0 +1,13 @@
+{
+  "Polls": "Encuestas",
+  "Create Poll": "Crear encuesta",
+  "Options:": "Opciones:",
+  "No options": "Sin opciones",
+  "No polls found.": "No se encontraron encuestas.",
+  "Create a New Poll": "Crear una nueva encuesta",
+  "Fill in the details below to create a new poll.": "Llena los siguientes datos para crear una nueva encuesta.",
+  "Poll Name": "Nombre de la encuesta",
+  "Poll Question": "Pregunta de la encuesta",
+  "Poll Option 1": "Opción 1",
+  "Poll Option 2": "Opción 2"
+}
