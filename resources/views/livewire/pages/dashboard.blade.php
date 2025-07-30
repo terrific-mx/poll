@@ -14,7 +14,7 @@ new class extends Component {
 
     public function mount()
     {
-        $this->polls = Auth::user()->polls()->get();
+        $this->loadPolls();
     }
 
     public function createPoll()
@@ -36,11 +36,16 @@ new class extends Component {
                 ->all()
         );
 
-        $this->polls = Auth::user()->polls()->get();
+        $this->loadPolls();
 
         Flux::modal('create-poll')->close();
 
         $this->reset('pollName', 'pollQuestion', 'pollOptions');
+    }
+
+    private function loadPolls()
+    {
+        $this->polls = Auth::user()->polls()->get();
     }
 }; ?>
 
