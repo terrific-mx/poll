@@ -29,12 +29,12 @@ new class extends Component {
     }
 }; ?>
 
-<form class="space-y-6">
+<form wire:submit="createPoll" class="space-y-6">
     <flux:input wire:model="pollName" label="Poll Name" />
     <flux:input wire:model="pollQuestion" label="Poll Question" />
     <flux:input wire:model="pollOptions.0" label="Poll Option 1" />
     <flux:input wire:model="pollOptions.1" label="Poll Option 2" />
     <div>
-        <flux:button>{{ __('Create Poll') }}</flux:button>
+        <flux:button type="submit">{{ __('Create Poll') }}</flux:button>
     </div>
 </form>
