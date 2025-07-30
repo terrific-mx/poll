@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Poll;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Volt\Volt;
@@ -21,10 +22,10 @@ it('creates a poll with a name a question and at least two poll options', functi
         expect($poll->name)->toBe('Poll Name');
         expect($poll->question)->toBe('Poll Question');
         expect($poll->options)->toHaveCount(2);
-        expect($poll->options[0]->name)->toBe('Option 1');
-        expect($poll->options[1]->name)->toBe('Option 2');
+        expect($poll->options[0]->label)->toBe('Option 1');
+        expect($poll->options[1]->label)->toBe('Option 2');
     });
-})->todo();
+});
 
 todo('create an endpoint to view the poll like /p/{pollUuid}');
 todo('store visitor responses to the poll');
