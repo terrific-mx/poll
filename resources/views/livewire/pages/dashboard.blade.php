@@ -17,6 +17,9 @@ new class extends Component {
         $this->loadPolls();
     }
 
+    /**
+     * Handle poll creation with options.
+     */
     public function createPoll()
     {
         $this->validate([
@@ -25,22 +28,38 @@ new class extends Component {
             'pollOptions.*' => 'required|string|max:255',
         ]);
 
-        $poll = Auth::user()->polls()->create([
-            'name' => $this->pollName,
-            'question' => $this->pollQuestion,
-        ]);
-
-        $poll->options()->createMany(
-            collect($this->pollOptions)
-                ->map(fn($option) => ['label' => $option])
-                ->all()
-        );
+        $this->createPollWithOptions($this->pollName, $this->pollQuestion, $this->pollOptions);
 
         $this->loadPolls();
 
         Flux::modal('create-poll')->close();
 
         $this->reset('pollName', 'pollQuestion', 'pollOptions');
+    }
+
+    /**
+     * Create a poll and its options for the authenticated user.
+     */
+    private function createPollWithOptions(string $name, string $question, array $options)
+    {
+        $poll = Auth::user()->polls()->create([
+            'name' => $name,
+            'question' => $question,
+        ]);
+
+        $poll->options()->createMany($this->formatPollOptions($options));
+
+        return $poll;
+    }
+
+    /**
+     * Format poll options for database insertion.
+     */
+    private function formatPollOptions(array $options): array
+    {
+        return collect($options)
+            ->map(fn($option) => ['label' => $option])
+            ->all();
     }
 
     private function loadPolls()
