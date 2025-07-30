@@ -1,5 +1,6 @@
 <?php
 
+use Flux\Flux;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Volt\Component;
@@ -34,6 +35,12 @@ new class extends Component {
                 ->map(fn($option) => ['label' => $option])
                 ->all()
         );
+
+        $this->polls = Auth::user()->polls()->get();
+
+        Flux::modal('create-poll')->close();
+
+        $this->reset('pollName', 'pollQuestion', 'pollOptions');
     }
 }; ?>
 
