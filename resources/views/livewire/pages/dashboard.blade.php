@@ -75,30 +75,31 @@ new class extends Component {
             <flux:button variant="primary">{{ __('Create Poll') }}</flux:button>
         </flux:modal.trigger>
     </div>
-    @if($polls)
-        <ul>
-            @foreach ($polls as $poll)
-                <li>
-                    @unless($loop->first) <flux:separator /> @endunless
-                    <div class="flex items-center justify-between">
-                        <div class="flex gap-6 py-6">
-                            <div class="space-y-1.5">
-                                <div class="text-base/6 font-semibold">{{ $poll->name }}</div>
-                                <div class="text-xs/6 text-zinc-500">{{ $poll->question }}</div>
-                                <div class="text-xs/6 text-zinc-600">
-                                    @if($poll->options && $poll->options->count())
-                                        <span class="font-medium">{{ __('Options:') }}</span>
-                                        {{ $poll->options->pluck('label')->join(', ') }}
-                                    @else
-                                        <span class="italic text-zinc-400">{{ __('No options') }}</span>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            @endforeach
-        </ul>
+
+    @if($polls && $polls->count())
+        <flux:table class="mt-10">
+            <flux:table.columns>
+                <flux:table.column>Name</flux:table.column>
+                <flux:table.column>Question</flux:table.column>
+                <flux:table.column>Options</flux:table.column>
+            </flux:table.columns>
+
+            <flux:table.rows>
+                @foreach ($polls as $poll)
+                    <flux:table.row>
+                        <flux:table.cell>{{ $poll->name }}</flux:table.cell>
+                        <flux:table.cell>{{ $poll->question }}</flux:table.cell>
+                        <flux:table.cell>
+                            @if($poll->options && $poll->options->count())
+                                {{ $poll->options->pluck('label')->join(', ') }}
+                            @else
+                                <span class="italic text-zinc-400">{{ __('No options') }}</span>
+                            @endif
+                        </flux:table.cell>
+                    </flux:table.row>
+                @endforeach
+            </flux:table.rows>
+        </flux:table>
     @else
         <div class="text-center text-zinc-500 py-10">{{ __('No polls found.') }}</div>
     @endif
