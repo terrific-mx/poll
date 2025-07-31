@@ -68,7 +68,7 @@ new class extends Component {
     }
 }; ?>
 
-<div class="max-w-6xl mx-auto">
+<div class="max-w-5xl mx-auto">
     <div class="flex items-end justify-between gap-4">
         <flux:heading size="xl">{{ __('Polls') }}</flux:heading>
         <flux:modal.trigger name="create-poll">
@@ -79,9 +79,9 @@ new class extends Component {
     @if($polls && $polls->count())
         <flux:table class="mt-10">
             <flux:table.columns>
-                <flux:table.column>Name</flux:table.column>
-                <flux:table.column>Question</flux:table.column>
-                <flux:table.column>Options</flux:table.column>
+                <flux:table.column>{{ __('Name') }}</flux:table.column>
+                <flux:table.column>{{ __('Question') }}</flux:table.column>
+                <flux:table.column>{{ __('Options') }}</flux:table.column>
             </flux:table.columns>
 
             <flux:table.rows>
