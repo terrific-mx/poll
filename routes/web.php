@@ -7,8 +7,12 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Volt::route('p/{poll}', 'pages.polls.vote')->name('polls.vote');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Volt::route('dashboard', 'pages.dashboard')->name('dashboard');
+
+    Volt::route('polls/{poll}', 'pages.polls.show')->name('polls.show');
 });
 
 Route::middleware(['auth'])->group(function () {

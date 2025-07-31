@@ -87,7 +87,9 @@ new class extends Component {
             <flux:table.rows>
                 @foreach ($polls as $poll)
                     <flux:table.row>
-                        <flux:table.cell>{{ $poll->name }}</flux:table.cell>
+                        <flux:table.cell>
+                            <flux:link :href="route('polls.show', $poll)">{{ $poll->name }}</flux:link>
+                        </flux:table.cell>
                         <flux:table.cell>{{ $poll->question }}</flux:table.cell>
                         <flux:table.cell>
                             @if($poll->options && $poll->options->count())

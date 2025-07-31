@@ -34,7 +34,7 @@ new class extends Component {
         <div class="font-medium">{{ $poll->question }}</div>
         <ul class="mt-6 text-sm space-y-2 list-disc ml-6">
             @foreach ($poll->options as $option)
-                <li><a href="#" class="underline">{{ $option->label }}</a></li>
+                <li><a href="{{ route('polls.vote', ['poll' => $poll, 'option' => $option->id]) }}" class="underline">{{ $option->label }}</a></li>
             @endforeach
         </ul>
     </div>
