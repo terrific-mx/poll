@@ -1,10 +1,17 @@
 <?php
 
 use App\Models\Poll;
+use Illuminate\Database\Eloquent\Collection;
 use Livewire\Volt\Component;
 
 new class extends Component {
     public Poll $poll;
+    public Collection $options;
+
+    public function mount()
+    {
+        $this->options = $this->poll->options()->withCount('responses')->get();
+    }
 }; ?>
 
 <div class="max-w-5xl mx-auto" x-data="{
@@ -37,5 +44,29 @@ new class extends Component {
                 <li><a href="{{ route('polls.vote', ['poll' => $poll, 'option' => $option->id]) }}" class="underline">{{ $option->label }}</a></li>
             @endforeach
         </ul>
+    </div>
+
+    <div class="mt-10">
+        <flux:heading>{{ __('Responses') }}</flux:heading>
+
+        @if($options->count())
+            <flux:table class="mt-2">
+                <flux:table.columns>
+                    <flux:table.column>{{ __('Option') }}</flux:table.column>
+                    <flux:table.column>{{ __('Count') }}</flux:table.column>
+                </flux:table.columns>
+
+                <flux:table.rows>
+                    @foreach ($options as $option)
+                        <flux:table.row>
+                            <flux:table.cell>{{ $option->label }}</flux:table.cell>
+                            <flux:table.cell>{{ $option->responses_count }}</flux:table.cell>
+                        </flux:table.row>
+                    @endforeach
+                </flux:table.rows>
+            </flux:table>
+        @else
+            <flux:text>{{ __('No responses yet.') }}</flux:text>
+        @endif
     </div>
 </div>
