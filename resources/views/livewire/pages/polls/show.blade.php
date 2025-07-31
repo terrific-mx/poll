@@ -11,23 +11,12 @@ new class extends Component {
     copied: false,
     copyEmbed() {
         const html = this.$refs.embed.innerHTML;
-        // Try to use Clipboard API for HTML (rich text)
+
         if (navigator.clipboard && window.ClipboardItem) {
             const blob = new Blob([html], { type: 'text/html' });
             const item = new ClipboardItem({ 'text/html': blob });
+
             navigator.clipboard.write([item]).then(() => {
-                this.copied = true;
-                setTimeout(() => this.copied = false, 1500);
-            }).catch(() => {
-                // Fallback to plain text if HTML copy fails
-                navigator.clipboard.writeText(html).then(() => {
-                    this.copied = true;
-                    setTimeout(() => this.copied = false, 1500);
-                });
-            });
-        } else {
-            // Fallback for older browsers
-            navigator.clipboard.writeText(html).then(() => {
                 this.copied = true;
                 setTimeout(() => this.copied = false, 1500);
             });
@@ -37,8 +26,7 @@ new class extends Component {
     <div class="flex items-end justify-between gap-4">
         <flux:heading size="xl">{{ $poll->name }}</flux:heading>
         <div class="relative">
-            <flux:button variant="primary" @click="copyEmbed">{{ __('Copy embed code') }}</flux:button>
-            <span x-show="copied" x-transition class="absolute left-0 mt-2 text-xs text-green-600 bg-white border rounded px-2 py-1 shadow">Copied!</span>
+            <flux:button variant="primary" @click="copyEmbed" x-text="copied ? '{{ __('Copied!') }}' : '{{ __('Copy embed code') }}'">{{ __('Copy embed code') }}</flux:button>
         </div>
     </div>
 
