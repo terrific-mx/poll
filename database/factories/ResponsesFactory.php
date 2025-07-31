@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Poll;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Option>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Responses>
  */
-class OptionFactory extends Factory
+class ResponsesFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +17,7 @@ class OptionFactory extends Factory
     public function definition(): array
     {
         return [
-            'poll_id' => Poll::factory(),
-            'label' => 'Test Option',
+            //
         ];
     }
 }
