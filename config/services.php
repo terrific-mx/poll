@@ -36,7 +36,7 @@ return [
     ],
 
     'stripe' => [
-        'price_id' => env('STRIPE_PRICE_ID', 'price_basic_monthly'), // <-- Add your actual price id in .env
+        'price_id' => env('STRIPE_PRICE_ID', 'price_basic_monthly'),
     ],
 
 ];
