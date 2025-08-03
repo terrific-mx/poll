@@ -13,6 +13,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Volt::route('dashboard', 'pages.dashboard')->name('dashboard');
 
     Volt::route('polls/{poll}', 'pages.polls.show')->name('polls.show');
+
+    Volt::route('subscribe', 'pages.subscribe')->name('subscribe');
 });
 
 Route::middleware(['auth'])->group(function () {
