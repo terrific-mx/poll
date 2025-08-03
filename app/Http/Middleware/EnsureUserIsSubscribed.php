@@ -17,7 +17,7 @@ class EnsureUserIsSubscribed
     {
         $user = $request->user();
 
-        if (!$user || !$user->subscribed()) {
+        if (! $user || ! $user->subscribed()) {
             return redirect()->route('subscription-required');
         }
 

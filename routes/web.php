@@ -21,7 +21,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Volt::route('subscription-required', 'pages.subscription-required')->name('subscription-required');
 });
 
-
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
