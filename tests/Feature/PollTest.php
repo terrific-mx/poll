@@ -24,6 +24,8 @@ it('creates a poll with a name a question and at least two poll options', functi
         expect($poll->options)->toHaveCount(2);
         expect($poll->options[0]->label)->toBe('Option 1');
         expect($poll->options[1]->label)->toBe('Option 2');
+        expect($poll->ulid)->not->toBeNull();
+        expect(strlen($poll->ulid))->toBe(26);
     });
 });
 
