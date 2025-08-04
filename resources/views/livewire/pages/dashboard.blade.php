@@ -26,7 +26,7 @@ new class extends Component {
             'pollName' => 'required|string|max:255',
             'pollQuestion' => 'required|string|max:255',
             'pollOptions' => 'required|array|min:2|max:10',
-            'pollOptions.*' => 'required|string|max:255',
+            'pollOptions.*' => 'nullable|string|max:255',
         ]);
 
         // Remove empty options before creating the poll
@@ -133,22 +133,31 @@ new class extends Component {
             </div>
             <flux:input wire:model="pollName" :label="__('Poll Name')" />
             <flux:input wire:model="pollQuestion" :label="__('Poll Question')" />
-            @for ($i = 0; $i < 10; $i++)
-                <div x-show="optionVisible[{{ $i }}]" style="display: none;" class="flex items-center gap-2">
-                    <flux:input wire:model="pollOptions.{{ $i }}" :label="__('Poll Option ' . ($i + 1))" x-bind:disabled="!optionVisible[{{ $i }}]" />
-                    @if ($i > 1)
-                        <button type="button" @click="removeOption({{ $i }})" class="ml-2 px-2 py-1 rounded bg-red-100 hover:bg-red-200 text-red-700 text-xs">
-                            {{ __('Remove') }}
-                        </button>
-                    @endif
+            <flux:fieldset>
+                <flux:legend class="text-sm!">{{ __('Poll Options') }}</flux:legend>
+                <div class="space-y-4">
+                    @for ($i = 0; $i < 10; $i++)
+                        <div x-show="optionVisible[{{ $i }}]" style="display: none;" class="flex items-center gap-2">
+                            <flux:input wire:model="pollOptions.{{ $i }}" x-bind:disabled="!optionVisible[{{ $i }}]">
+                                @if ($i > 1)
+                                    <x-slot name="iconTrailing">
+                                        <flux:button type="button" @click="removeOption({{ $i }})" size="sm" variant="subtle" icon="x-mark" class="-mr-1" />
+                                    </x-slot>
+                                @endif
+                            </flux:input>
+                        </div>
+                    @endfor
+
+                    <flux:error name="pollOptions" />
+
+                    <template x-if="visibleCount < 10">
+                        <flux:button type="button" @click="showNextOption()" size="sm">
+                            {{ __('Add another option') }}
+                        </flux:button>
+                    </template>
                 </div>
-            @endfor
+            </flux:fieldset>
             <div class="flex items-center gap-2">
-                <template x-if="visibleCount < 10">
-                    <button type="button" @click="showNextOption()" class="px-3 py-1 rounded bg-zinc-200 hover:bg-zinc-300 text-zinc-700 text-sm">
-                        {{ __('Add another option') }}
-                    </button>
-                </template>
                 <flux:spacer />
                 <flux:button type="submit" variant="primary">{{ __('Create Poll') }}</flux:button>
             </div>
