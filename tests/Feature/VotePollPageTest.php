@@ -10,9 +10,9 @@ use function Pest\Laravel\get;
 uses(Refreshdatabase::class);
 
 it('shows the vote poll page', function () {
-    Poll::factory()->create();
+    Poll::factory()->create(['id' => '01HZYXTESTULID1234567890']);
 
-    get('p/1')->assertOk();
+    get('p/01HZYXTESTULID1234567890')->assertOk();
 });
 
 it('saves the vote', function () {
