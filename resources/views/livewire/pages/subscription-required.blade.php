@@ -13,7 +13,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
         $this->redirect(Auth::user()->newSubscription('default', $stripePriceId)
             ->trialDays(31)
             ->checkout([
-                'success_url' => route('dashboard'),
+                'success_url' => route('settings.profile'),
                 'cancel_url' => route('subscription-required'),
             ])->asStripeCheckoutSession()->url, navigate: false);
     }
