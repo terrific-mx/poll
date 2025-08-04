@@ -25,4 +25,6 @@ Terrific Poll aún está en una fase temprana de desarrollo, pero la solución a
 
 Es una funcionalidad sencilla, pero creo que puede serte muy útil para incorporar encuestas fácilmente en tus emails o newsletters.
 
+Terrific Poll es completamente open source bajo la licencia MIT. Puedes revisar el código, contribuir o simplemente ver cómo funciona en el repositorio GitHub: [https://github.com/terrific-mx/poll](https://github.com/terrific-mx/poll)
+
 Puedes probar Terrific Poll y crear tu primera encuesta en: [https://poll.terrific.com.mx](https://poll.terrific.com.mx)
