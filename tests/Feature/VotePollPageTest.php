@@ -26,3 +26,17 @@ it('saves the vote', function () {
     expect($poll->responses()->count())->toBe(1);
     expect($poll->responses()->first()->option_id)->toBe($option->id);
 });
+
+it('saves the contact email with the vote', function () {
+    $poll = Poll::factory()->create();
+    $option = Option::factory()->for($poll)->create();
+    $email = 'test@example.com';
+
+    Volt::test('pages.polls.vote', ['poll' => $poll])
+        ->set('option', $option->id)
+        ->set('contact_email', $email)
+        ->call('vote');
+
+    $response = $poll->responses()->first();
+    expect($response->contact_email)->toBe($email);
+});
