@@ -12,6 +12,8 @@ Route::middleware(['auth', 'verified', EnsureUserIsSubscribed::class])->group(fu
     Volt::route('dashboard', 'pages.dashboard')->name('dashboard');
 
     Volt::route('polls/{poll}', 'pages.polls.show')->name('polls.show');
+
+    Volt::route('billing-portal', 'billing-portal')->name('billing.portal');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
