@@ -45,8 +45,8 @@ new #[Layout('components.layouts.guest')] class extends Component {
             <flux:input
                 type="email"
                 wire:model="contact_email"
-                label="{{ __('Your email (optional)') }}"
-                placeholder="you@example.com"
+                label="{{ __('Your email') }}"
+                badge="{{ __('Optional') }}"
             />
 
             <flux:button type="submit" variant="primary">
