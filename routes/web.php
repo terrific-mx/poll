@@ -9,6 +9,7 @@ Route::get('/', function () {
 })->name('home');
 
 Volt::route('p/{poll}', 'pages.polls.vote')->name('polls.vote');
+Volt::route('test', 'pages.welcome')->name('test');
 
 Route::middleware(['auth', 'verified', EnsureUserIsSubscribed::class])->group(function () {
     Volt::route('dashboard', 'pages.dashboard')->name('dashboard');
