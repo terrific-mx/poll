@@ -14,7 +14,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
             ->trialDays(31)
             ->checkout([
                 'success_url' => route('dashboard'),
-                'cancel_url' => route('settings.profile'),
+                'cancel_url' => route('subscription-required'),
             ])->asStripeCheckoutSession()->url, navigate: false);
     }
 
