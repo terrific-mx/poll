@@ -6,6 +6,13 @@ use Illuminate\Support\Facades\Auth;
 use App\Livewire\Actions\Logout;
 
 new #[Layout('components.layouts.auth')] class extends Component {
+    public function mount()
+    {
+        if (Auth::user()?->subscribed('default')) {
+            $this->redirect(route('dashboard'), navigate: true);
+        }
+    }
+
     public function goToCheckout()
     {
         $stripePriceId = config('services.stripe.price_id');
