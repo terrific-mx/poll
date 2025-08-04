@@ -13,6 +13,9 @@ new #[Layout('components.layouts.guest')] class extends Component {
     #[Validate('required|exists:options,id')]
     public $option = '';
 
+    #[Validate('nullable|email')]
+    public $contact_email = '';
+
     public $submitted = false;
 
     public function vote()
@@ -21,6 +24,7 @@ new #[Layout('components.layouts.guest')] class extends Component {
 
         $this->poll->responses()->create([
             'option_id' => $this->option,
+            'contact_email' => $this->contact_email,
         ]);
 
         $this->submitted = true;
@@ -37,6 +41,13 @@ new #[Layout('components.layouts.guest')] class extends Component {
                     <flux:radio value="{{ $option->id }}" label="{{ $option->label }}" />
                 @endforeach
             </flux:radio.group>
+
+            <flux:input
+                type="email"
+                wire:model="contact_email"
+                label="{{ __('Your email (optional)') }}"
+                placeholder="you@example.com"
+            />
 
             <flux:button type="submit" variant="primary">
                 {{ __('Submit') }}
