@@ -12,20 +12,20 @@ new #[Layout('components.layouts.site')] class extends Component {
     @if (Route::has('login'))
         <p>
             @auth
-                <flux:link href="{{ route('dashboard') }}">Dashboard</flux:link>
+                <flux:link href="{{ route('dashboard') }}">Panel</flux:link>
             @else
-                <flux:link href="{{ route('login') }}">Log In</flux:link>
-                <flux:link href="{{ route('register') }}">Register</flux:link>
+                <flux:link href="{{ route('login') }}">Iniciar sesión</flux:link>
+                <flux:link href="{{ route('register') }}">Registrarse</flux:link>
             @endauth
         </p>
     @endif
-    <h1 class="font-medium">Welcome to Terrific Poll</h1>
-    <p class="font-medium">Terrific Poll makes it easy to create interactive polls for your audience.</p>
+    <h1 class="font-medium">Bienvenido a Terrific Poll</h1>
+    <p class="font-medium">Terrific Poll facilita la creación de encuestas interactivas para tu audiencia.</p>
     <ul class="list-disc pl-6 space-y-2">
-        <li>Create polls in seconds with a simple interface.</li>
-        <li>Embed polls directly into your emails or newsletters.</li>
-        <li>Collect responses and analyze results in real time.</li>
-        <li>No coding or technical skills required.</li>
+        <li>Crea encuestas en segundos con una interfaz sencilla.</li>
+        <li>Inserta encuestas directamente en tus correos electrónicos o newsletters.</li>
+        <li>Recoge respuestas y analiza resultados en tiempo real.</li>
+        <li>No se requieren conocimientos técnicos ni de programación.</li>
     </ul>
-    <p class="font-medium">Get started today and boost engagement with your audience!</p>
+    <p class="font-medium">¡Comienza hoy y aumenta la participación de tu audiencia!</p>
 </div>
