@@ -29,9 +29,7 @@ new class extends Component {
             'pollOptions.*' => 'required|string|max:255',
         ]);
 
-        // Remove empty options before creating the poll
-        $filteredOptions = array_filter($this->pollOptions, fn($option) => !is_null($option) && trim($option) !== '');
-        $this->createPollWithOptions($this->pollName, $this->pollQuestion, $filteredOptions);
+        $this->createPollWithOptions($this->pollName, $this->pollQuestion, $this->pollOptions);
 
         $this->loadPolls();
 
@@ -120,7 +118,9 @@ new class extends Component {
             removeOption(idx) {
                 if (idx > 1) {
                     this.optionVisible[idx] = false;
-                    $wire.set('pollOptions.' + idx, '');
+                    let options = [...$wire.pollOptions];
+                    options.splice(idx, 1);
+                    $wire.pollOptions = options;
                 }
             },
             get visibleCount() {
