@@ -26,7 +26,7 @@ new class extends Component {
             'pollName' => 'required|string|max:255',
             'pollQuestion' => 'required|string|max:255',
             'pollOptions' => 'required|array|min:2|max:10',
-            'pollOptions.*' => 'nullable|string|max:255',
+            'pollOptions.*' => 'required|string|max:255',
         ]);
 
         // Remove empty options before creating the poll
