@@ -11,7 +11,7 @@ uses(Refreshdatabase::class);
 
 it('shows the poll page', function () {
     /** @var User */
-    $user = User::factory()->create();
+    $user = User::factory()->withSubscription()->create();
     Poll::factory()->for($user)->create();
 
     actingAs($user)->get('polls/1')->assertOk();
