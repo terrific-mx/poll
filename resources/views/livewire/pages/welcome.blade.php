@@ -6,7 +6,7 @@ use Livewire\Volt\Component;
 
 new
 #[Layout('components.layouts.site')]
-#[Title('Crea encuestas interactivas fácilmente para tu audiencia')]
+#[Title('Terrific Poll — Crea encuestas interactivas fácilmente para tu audiencia')]
 class extends Component {
     //
 };
