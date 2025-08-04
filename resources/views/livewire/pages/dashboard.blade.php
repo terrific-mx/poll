@@ -3,6 +3,7 @@
 use Flux\Flux;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Livewire\Volt\Component;
 
 new class extends Component {
@@ -46,6 +47,7 @@ new class extends Component {
         $poll = Auth::user()->polls()->create([
             'name' => $name,
             'question' => $question,
+            'ulid' => Str::ulid(),
         ]);
 
         $poll->options()->createMany($this->formatPollOptions($options));
