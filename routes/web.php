@@ -6,7 +6,7 @@ use Livewire\Volt\Volt;
 
 Volt::route('/', 'pages.welcome')->name('home');
 
-Volt::route('p/{poll}', 'pages.polls.vote')->name('polls.vote');
+Volt::route('p/{poll:ulid}', 'pages.polls.vote')->name('polls.vote');
 
 Route::middleware(['auth', 'verified', EnsureUserIsSubscribed::class])->group(function () {
     Volt::route('dashboard', 'pages.dashboard')->name('dashboard');
