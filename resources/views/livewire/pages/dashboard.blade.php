@@ -25,10 +25,13 @@ new class extends Component {
         $this->validate([
             'pollName' => 'required|string|max:255',
             'pollQuestion' => 'required|string|max:255',
+            'pollOptions' => 'required|array|min:2|max:10',
             'pollOptions.*' => 'required|string|max:255',
         ]);
 
-        $this->createPollWithOptions($this->pollName, $this->pollQuestion, $this->pollOptions);
+        // Remove empty options before creating the poll
+        $filteredOptions = array_filter($this->pollOptions, fn($option) => !is_null($option) && trim($option) !== '');
+        $this->createPollWithOptions($this->pollName, $this->pollQuestion, $filteredOptions);
 
         $this->loadPolls();
 
@@ -58,6 +61,7 @@ new class extends Component {
     private function formatPollOptions(array $options): array
     {
         return collect($options)
+            ->filter(fn($option) => !is_null($option) && trim($option) !== '')
             ->map(fn($option) => ['label' => $option])
             ->all();
     }
@@ -107,16 +111,44 @@ new class extends Component {
     @endif
 
     <flux:modal name="create-poll" class="md:w-96">
-        <form wire:submit="createPoll" class="space-y-6">
+        <form wire:submit="createPoll" class="space-y-6" x-data="{
+            optionVisible: [true, true, false, false, false, false, false, false, false, false],
+            showNextOption() {
+                const idx = this.optionVisible.findIndex(v => v === false);
+                if (idx !== -1) this.optionVisible[idx] = true;
+            },
+            removeOption(idx) {
+                if (idx > 1) {
+                    this.optionVisible[idx] = false;
+                    $wire.set('pollOptions.' + idx, '');
+                }
+            },
+            get visibleCount() {
+                return this.optionVisible.filter(Boolean).length;
+            }
+        }">
             <div>
                 <flux:heading size="lg">{{ __('Create a New Poll') }}</flux:heading>
                 <flux:text class="mt-2">{{ __('Fill in the details below to create a new poll.') }}</flux:text>
             </div>
             <flux:input wire:model="pollName" :label="__('Poll Name')" />
             <flux:input wire:model="pollQuestion" :label="__('Poll Question')" />
-            <flux:input wire:model="pollOptions.0" :label="__('Poll Option 1')" />
-            <flux:input wire:model="pollOptions.1" :label="__('Poll Option 2')" />
-            <div class="flex">
+            @for ($i = 0; $i < 10; $i++)
+                <div x-show="optionVisible[{{ $i }}]" style="display: none;" class="flex items-center gap-2">
+                    <flux:input wire:model="pollOptions.{{ $i }}" :label="__('Poll Option ' . ($i + 1))" x-bind:disabled="!optionVisible[{{ $i }}]" />
+                    @if ($i > 1)
+                        <button type="button" @click="removeOption({{ $i }})" class="ml-2 px-2 py-1 rounded bg-red-100 hover:bg-red-200 text-red-700 text-xs">
+                            {{ __('Remove') }}
+                        </button>
+                    @endif
+                </div>
+            @endfor
+            <div class="flex items-center gap-2">
+                <template x-if="visibleCount < 10">
+                    <button type="button" @click="showNextOption()" class="px-3 py-1 rounded bg-zinc-200 hover:bg-zinc-300 text-zinc-700 text-sm">
+                        {{ __('Add another option') }}
+                    </button>
+                </template>
                 <flux:spacer />
                 <flux:button type="submit" variant="primary">{{ __('Create Poll') }}</flux:button>
             </div>
