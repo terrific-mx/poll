@@ -1,16 +1,28 @@
 <?php
 
+use App\Models\Option;
 use App\Models\Poll;
+use Flux\Flux;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Volt\Component;
 
 new class extends Component {
     public Poll $poll;
     public Collection $options;
+    public $selectedOption = null;
+    public $selectedResponses = null;
 
     public function mount()
     {
         $this->options = $this->poll->options()->withCount('responses')->get();
+    }
+
+    public function showResponses(Option $option)
+    {
+        $this->selectedOption = $option;
+        $this->selectedResponses = $this->selectedOption->responses()->latest()->get();
+
+        Flux::modal('show-responses-modal')->show();
     }
 }; ?>
 
@@ -62,34 +74,7 @@ new class extends Component {
                             <flux:table.cell>{{ $option->label }}</flux:table.cell>
                             <flux:table.cell>{{ $option->responses_count }}</flux:table.cell>
                             <flux:table.cell>
-                                <flux:modal.trigger name="show-responses-{{ $option->id }}">
-                                    <flux:button variant="ghost" size="sm" icon="ellipsis-horizontal" inset="top bottom"></flux:button>
-                                </flux:modal.trigger>
-                                <flux:modal name="show-responses-{{ $option->id }}" class="md:w-96" variant="flyout">
-                                    <div class="space-y-6">
-                                        <div>
-                                            <flux:heading size="lg">{{ __('Responses for') }} {{ $option->label }}</flux:heading>
-                                        </div>
-                                        @if($option->responses && $option->responses->count())
-                                            <flux:table>
-                                                <flux:table.columns>
-                                                    <flux:table.column>{{ __('Email') }}</flux:table.column>
-                                                    <flux:table.column>{{ __('Date') }}</flux:table.column>
-                                                </flux:table.columns>
-                                                <flux:table.rows>
-                                                    @foreach($option->responses as $response)
-                                                        <flux:table.row :key="$response->id">
-                                                            <flux:table.cell>{{ $response->contact_email ?? __('Anonymous') }}</flux:table.cell>
-                                                            <flux:table.cell>{{ $response->created_at->format('Y-m-d') }}</flux:table.cell>
-                                                        </flux:table.row>
-                                                    @endforeach
-                                                </flux:table.rows>
-                                            </flux:table>
-                                        @else
-                                            <flux:text>{{ __('No responses for this option yet.') }}</flux:text>
-                                        @endif
-                                    </div>
-                                </flux:modal>
+                                <flux:button variant="ghost" size="sm" icon="ellipsis-horizontal" inset="top bottom" wire:click="showResponses({{ $option->id }})"></flux:button>
                             </flux:table.cell>
                         </flux:table.row>
                     @endforeach
@@ -99,4 +84,30 @@ new class extends Component {
             <flux:text>{{ __('No responses yet.') }}</flux:text>
         @endif
     </div>
+
+    <flux:modal name="show-responses-modal" class="md:w-96" variant="flyout">
+        <div class="space-y-6">
+            <div>
+                <flux:heading size="lg">{{ __('Responses for') }} {{ $selectedOption?->label }}</flux:heading>
+            </div>
+            @if($selectedResponses && $selectedResponses->count())
+                <flux:table>
+                    <flux:table.columns>
+                        <flux:table.column>{{ __('Email') }}</flux:table.column>
+                        <flux:table.column>{{ __('Date') }}</flux:table.column>
+                    </flux:table.columns>
+                    <flux:table.rows>
+                        @foreach($selectedResponses as $response)
+                            <flux:table.row :key="$response->id">
+                                <flux:table.cell>{{ $response->contact_email ?? __('Anonymous') }}</flux:table.cell>
+                                <flux:table.cell>{{ $response->created_at->format('Y-m-d') }}</flux:table.cell>
+                            </flux:table.row>
+                        @endforeach
+                    </flux:table.rows>
+                </flux:table>
+            @else
+                <flux:text>{{ __('No responses for this option yet.') }}</flux:text>
+            @endif
+        </div>
+    </flux:modal>
 </div>
