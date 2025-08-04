@@ -1,23 +1,27 @@
 <?php
 
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Volt\Component;
 
-new #[Layout('components.layouts.site')] class extends Component {
+new
+#[Layout('components.layouts.site')]
+#[Title('Crea encuestas interactivas fácilmente para tu audiencia')]
+class extends Component {
     //
 };
 ?>
 
 <div class="space-y-12">
     @if (Route::has('login'))
-        <p>
+        <div class="flex gap-4">
             @auth
                 <flux:link href="{{ route('dashboard') }}">Panel</flux:link>
             @else
                 <flux:link href="{{ route('login') }}">Iniciar sesión</flux:link>
                 <flux:link href="{{ route('register') }}">Registrarse</flux:link>
             @endauth
-        </p>
+        </div>
     @endif
     <h1 class="font-medium">Bienvenido a Terrific Poll</h1>
     <p class="font-medium">Terrific Poll facilita la creación de encuestas interactivas para tu audiencia.</p>
