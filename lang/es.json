@@ -60,5 +60,9 @@
     "Update the appearance settings for your account": "Actualiza la configuración de apariencia de tu cuenta",
     "Update your name and email address": "Actualiza tu nombre y correo electrónico",
     "You need to subscribe to our service to continue.": "Necesitas suscribirte a nuestro servicio para continuar.",
-    "Your email address is unverified.": "Tu correo electrónico no está verificado."
+    "Your email address is unverified.": "Tu correo electrónico no está verificado.",
+    "Question": "Pregunta",
+    "Options": "Opciones",
+    "Poll Options": "Opciones de la encuesta",
+    "Add another option": "Agregar otra opción"
 }
