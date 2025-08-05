@@ -145,8 +145,8 @@ new class extends Component {
     }">
         <div class="space-y-6">
             <div>
-                <flux:heading size="lg">Embed in Newsletter</flux:heading>
-                <flux:text class="mt-2">Copy and paste this markup into your newsletter platform. The links will prepopulate the contact email field for each subscriber.</flux:text>
+                <flux:heading size="lg">{{ __('Embed in Newsletter') }}</flux:heading>
+                <flux:text class="mt-2">{{ __('Copy and paste this markup into your newsletter platform. The links will prepopulate the contact email field for each subscriber.') }}</flux:text>
             </div>
             <flux:tab.group>
                 <div class="overflow-x-scroll">
@@ -180,8 +180,8 @@ new class extends Component {
                                 type="button"
                                 variant="primary"
                                 @click="copyNewsletter('newsletter{{ ucfirst($key) }}')"
-                                x-text="copied ? 'Copied!' : 'Copy'"
-                            >Copy</flux:button>
+                                x-text="copied ? '{{ __('Copied!') }}' : '{{ __('Copy') }}'"
+                            >{{ __('Copy') }}</flux:button>
                         </div>
                     </flux:tab.panel>
                 @endforeach

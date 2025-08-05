@@ -9,6 +9,7 @@
     "Confirm Password": "Confirmar contraseña",
     "Copied!": "¡Copiado!",
     "Copy embed code": "Copiar código de inserción",
+    "Copy": "Copiar",
     "Count": "Cantidad",
     "Create a New Poll": "Crear una nueva encuesta",
     "Create account": "Crear cuenta",
@@ -72,5 +73,7 @@
     "Responses for": "Respuestas para",
     "Date": "Fecha",
     "No responses for this option yet.": "Aún no hay respuestas para esta opción.",
-    "Anonymous": "Anónimo"
+    "Anonymous": "Anónimo",
+    "Embed in Newsletter": "Insertar en newsletter",
+    "Copy and paste this markup into your newsletter platform. The links will prepopulate the contact email field for each subscriber.": "Copia y pega este marcado en tu plataforma de newsletter. Los enlaces rellenarán automáticamente el campo de correo electrónico para cada suscriptor."
 }
