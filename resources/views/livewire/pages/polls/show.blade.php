@@ -59,7 +59,7 @@ new class extends Component {
             <flux:modal.trigger name="embed-newsletter">
                 <flux:button>{{ __('Embed in Newsletter') }}</flux:button>
             </flux:modal.trigger>
-            <flux:button :href="route('polls.vote', ['poll' => $poll])" target="_blank">{{ __('Open Poll') }}</flux:button>
+            <flux:button :href="route('polls.vote', $poll)" target="_blank">{{ __('Open Poll') }}</flux:button>
             <flux:button variant="primary" @click="copyHtml('embed')" x-text="copied ? '{{ __('Copied!') }}' : '{{ __('Copy embed code') }}'">{{ __('Copy embed code') }}</flux:button>
         </div>
     </div>
