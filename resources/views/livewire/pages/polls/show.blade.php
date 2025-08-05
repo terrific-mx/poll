@@ -75,6 +75,7 @@ new class extends Component {
 
     <div class="mt-10">
         <flux:heading size="lg">{{ $poll->question }}</flux:heading>
+        <flux:text class="mt-1">{{ __('Total responses') }}: {{ $options->sum('responses_count') }}</flux:text>
 
         @if($options->count())
             <flux:table class="mt-2">
