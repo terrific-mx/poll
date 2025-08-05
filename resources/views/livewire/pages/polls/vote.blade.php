@@ -13,6 +13,7 @@ new #[Layout('components.layouts.guest')] class extends Component {
     #[Validate('required|exists:options,id')]
     public $option = '';
 
+    #[Url]
     #[Validate('nullable|email')]
     public $contact_email = '';
 
@@ -42,12 +43,22 @@ new #[Layout('components.layouts.guest')] class extends Component {
                 @endforeach
             </flux:radio.group>
 
-            <flux:input
-                type="email"
-                wire:model="contact_email"
-                label="{{ __('Your email') }}"
-                badge="{{ __('Optional') }}"
-            />
+            <div x-data>
+                <flux:input
+                    type="email"
+                    wire:model="contact_email"
+                    label="{{ __('Your email') }}"
+                    badge="{{ __('Optional') }}"
+                >
+                    <x-slot name="iconTrailing">
+                        <flux:button
+                            type="button"
+                            @click="$wire.contact_email = ''"
+                            size="sm" variant="subtle" icon="x-mark" class="-mr-1"
+                        />
+                    </x-slot>
+                </flux:input>
+            </div>
 
             <flux:button type="submit" variant="primary">
                 {{ __('Submit') }}
