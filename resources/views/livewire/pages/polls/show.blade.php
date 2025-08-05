@@ -12,9 +12,19 @@ new class extends Component {
     public $selectedOption = null;
     public $selectedResponses = null;
 
+    public array $newsletterServices = [];
+    public string $pollUlid;
+
     public function mount()
     {
         $this->options = $this->poll->options()->withCount('responses')->get();
+        $this->newsletterServices = [
+            'kit' => ['label' => 'Kit', 'merge' => '{{ subscriber.email_address }}'],
+            'beehiiv' => ['label' => 'Beehiiv', 'merge' => '{{ email }}'],
+            'mailerlite' => ['label' => 'MailerLite', 'merge' => '{{ subscriber.email }}'],
+            'custom' => ['label' => 'Custom', 'merge' => 'EMAIL_MERGE_TAG'],
+        ];
+        $this->pollUlid = $this->poll->ulid ?? $this->poll->id;
     }
 
     public function showResponses(Option $option)
@@ -121,23 +131,13 @@ new class extends Component {
                 <flux:heading size="lg">Embed in Newsletter</flux:heading>
                 <flux:text class="mt-2">Copy and paste this markup into your newsletter platform. The links will prepopulate the contact email field for each subscriber.</flux:text>
             </div>
-            @php
-                $newsletterServices = [
-                    'kit' => ['label' => 'Kit', 'merge' => '{{ subscriber.email_address }}'],
-                    'beehiiv' => ['label' => 'Beehiiv', 'merge' => '{{ email }}'],
-                    'mailerlite' => ['label' => 'MailerLite', 'merge' => '{{ subscriber.email }}'],
-                    'custom' => ['label' => 'Custom', 'merge' => 'EMAIL_MERGE_TAG'],
-                ];
-                $pollUlid = $poll->ulid ?? $poll->id;
-            @endphp
-
             <flux:tab.group>
                 <flux:tabs>
-                    @foreach ($newsletterServices as $key => $service)
+                    @foreach ($this->newsletterServices as $key => $service)
                         <flux:tab name="{{ $key }}">{{ $service['label'] }}</flux:tab>
                     @endforeach
                 </flux:tabs>
-                @foreach ($newsletterServices as $key => $service)
+                @foreach ($this->newsletterServices as $key => $service)
                     <flux:tab.panel name="{{ $key }}">
                         <div class="flex items-center justify-between mb-2">
                             <span class="font-semibold">{{ $service['label'] }}</span>
@@ -159,7 +159,7 @@ new class extends Component {
                             <ul style="margin-top:8px;">
                                 @foreach ($poll->options as $option)
                                     <li style="margin-bottom:4px;">
-                                        <a href="{{ url('/p/' . $pollUlid) }}?option={{ $option->id }}&contact_email={{ $service['merge'] }}">
+                                        <a href="{{ url('/p/' . $this->pollUlid) }}?option={{ $option->id }}&contact_email={{ $service['merge'] }}">
                                             {{ $option->label }}
                                         </a>
                                     </li>
