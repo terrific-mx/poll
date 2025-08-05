@@ -122,7 +122,26 @@ new class extends Component {
         </div>
     </flux:modal>
 
-    <flux:modal name="embed-newsletter" class="md:w-96">
+    <flux:modal name="embed-newsletter" class="md:w-96" x-data="{
+    copied: false,
+    copyNewsletter(ref) {
+        const ul = this.$refs[ref];
+        if (!ul) return;
+        const html = ul.outerHTML;
+        if (navigator.clipboard && window.ClipboardItem) {
+            const blob = new Blob([html], { type: 'text/html' });
+            const item = new ClipboardItem({ 'text/html': blob });
+            navigator.clipboard.write([item]).then(() => {
+                this.copied = true;
+                setTimeout(() => this.copied = false, 1500);
+            });
+        } else {
+            navigator.clipboard.writeText(html);
+            this.copied = true;
+            setTimeout(() => this.copied = false, 1500);
+        }
+    }
+}">
         <div class="space-y-6">
             <div>
                 <flux:heading size="lg">Embed in Newsletter</flux:heading>
@@ -138,7 +157,7 @@ new class extends Component {
                     <flux:tab.panel name="{{ $key }}">
                         <div class="newsletter-embed-{{ $key }}">
                             <div class="font-medium">{{ $poll->question }}</div>
-                            <ul class="mt-6 text-sm space-y-2 list-disc ml-6">
+                            <ul class="mt-6 text-sm space-y-2 list-disc ml-6" x-ref="newsletter{{ ucfirst($key) }}">
                                 @foreach ($poll->options as $option)
                                     <li>
                                         <a href="{{ route('polls.vote', [
@@ -157,14 +176,8 @@ new class extends Component {
                             <flux:button
                                 type="button"
                                 variant="primary"
-                                onclick="const html = this.closest('.mb-6').querySelector('.newsletter-embed-{{ $key }}').outerHTML;
-                                    if (navigator.clipboard && window.ClipboardItem) {
-                                        const blob = new Blob([html], { type: 'text/html' });
-                                        const item = new ClipboardItem({ 'text/html': blob });
-                                        navigator.clipboard.write([item]);
-                                    } else {
-                                        navigator.clipboard.writeText(html);
-                                    }"
+                                @click="copyNewsletter('newsletter{{ ucfirst($key) }}')"
+                                x-text="copied ? 'Copied!' : 'Copy'"
                             >Copy</flux:button>
                         </div>
                     </flux:tab.panel>
