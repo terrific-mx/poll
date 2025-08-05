@@ -13,17 +13,25 @@ class extends Component {
 ?>
 
 <div class="space-y-12">
-    @if (Route::has('login'))
-        <div class="flex gap-4">
+    <header class="space-y-2">
+        <x-app-logo-icon class="h-4" />
+        <h1 class="font-medium">Bienvenido a Terrific Poll</h1>
+    </header>
+
+    <nav class="flex flex-wrap gap-4">
+        <flux:link href="#" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20">Tarifas</flux:link>
+        <flux:link href="#" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20">Connect</flux:link>
+        <flux:link href="#" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20">Changelog</flux:link>
+        @if (Route::has('login'))
             @auth
-                <flux:link href="{{ route('dashboard') }}">Panel</flux:link>
+                <flux:link href="{{ route('dashboard') }}" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20">Panel</flux:link>
             @else
-                <flux:link href="{{ route('login') }}">Iniciar sesión</flux:link>
-                <flux:link href="{{ route('register') }}">Registrarse</flux:link>
+                <flux:link href="{{ route('login') }}" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20">Iniciar sesión</flux:link>
+                <flux:link href="{{ route('register') }}" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20">Registrarse</flux:link>
             @endauth
-        </div>
-    @endif
-    <h1 class="font-medium">Bienvenido a Terrific Poll</h1>
+        @endif
+    </nav>
+
     <p class="font-medium">Terrific Poll facilita la creación de encuestas interactivas para tu audiencia.</p>
     <ul class="list-disc pl-6 space-y-2">
         <li>Crea encuestas en segundos con una interfaz sencilla.</li>
