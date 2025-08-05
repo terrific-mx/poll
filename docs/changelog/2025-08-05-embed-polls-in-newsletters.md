@@ -1,4 +1,4 @@
-# Prellenado y anonimato en encuestas de newsletters
+# Prellenado automático del correo de contacto en encuestas incrustadas en newsletters
 
 Hasta ahora, tus destinatarios visitaban la página de votación de una encuesta de [Terrific Poll](https://poll.terrific.com.mx), debían ingresar manualmente su dirección de correo electrónico en el [campo email de contacto](./2025-08-04-contact-email-and-response-table.md) si querían dejarlo. Este paso adicional podía generar fricción y dificultar el seguimiento individual de las respuestas provenientes de tus campañas de newsletter.
 
