@@ -43,7 +43,7 @@ new #[Layout('components.layouts.guest')] class extends Component {
                 @endforeach
             </flux:radio.group>
 
-            <div x-data>
+            <div>
                 <flux:input
                     type="email"
                     wire:model="contact_email"
