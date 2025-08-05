@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+- "Open Poll" button to the poll show page
+- Total responses and percent for each poll option
+- Visual percentage indicator bar, dark mode friendly
+
+### Changed
+- Refactored percentage calculation logic to the Option model
+- Applied PHP code style fixes with Pint
+
+
 ## [2025-08-05]
 
 ### Added
