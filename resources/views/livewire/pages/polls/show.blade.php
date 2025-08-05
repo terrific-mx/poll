@@ -92,11 +92,12 @@ new class extends Component {
                             <flux:table.cell>{{ $option->responses_count }}</flux:table.cell>
                         <flux:table.cell>
                             <div class="flex items-center gap-2">
-    <div class="flex-1 h-2 bg-zinc-200 rounded">
-        <div class="h-2 bg-blue-500 rounded" style="width: {{ $option->percent() }}%;"></div>
-    </div>
-    <span class="w-8 text-right shrink-0 tabular-nums">{{ $option->percent() }}%</span>
-</div>                        </flux:table.cell>
+                                <div class="flex-1 h-2 bg-zinc-200 dark:bg-zinc-700 rounded">
+                                    <div class="h-2 bg-blue-500 dark:bg-blue-400 rounded" style="width: {{ $option->percent() }}%;"></div>
+                                </div>
+                                <span class="w-8 text-right shrink-0 tabular-nums">{{ $option->percent() }}%</span>
+                            </div>
+                        </flux:table.cell>
                         <flux:table.cell align="end">
                                 <flux:button variant="ghost" size="sm" icon="ellipsis-horizontal" inset="top bottom" wire:click="showResponses({{ $option->id }})"></flux:button>
                             </flux:table.cell>
