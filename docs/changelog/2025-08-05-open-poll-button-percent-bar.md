@@ -1,13 +1,13 @@
-# Rediseño de la página de encuestas: todo en una sola tabla, totales y botón para abrir
+# Ahora verás tus resultados de encuesta mucho más claros y visuales
 
-Durante los últimos días fui agregando nuevas funciones a la página de resultados de las encuestas, pero la presentación de la información no era la ideal. Antes, la pregunta de la encuesta se mostraba con enlaces a cada opción, pero esto resultaba redundante porque también teníamos una tabla con las opciones y sus datos.
+En los últimos días, agregué varias funciones nuevas a la página de resultados de tus encuestas, pero comencé a notar que la información no era tan clara como debería. Antes, veías la pregunta de la encuesta con enlaces a cada opción, pero esto era redundante porque también tenías una tabla con las opciones y sus datos.
 
-Por eso, opté por simplificar y consolidar toda la información relevante directamente en la tabla de opciones. Ahora:
+Por eso, ahora todo está mucho más simple y útil para ti:
 
-- Se eliminó la pregunta de la encuesta con enlaces redundantes.
-- La tabla de opciones muestra el total de respuestas recibidas para la encuesta.
-- Se agregó una nueva columna que cuenta todas las respuestas recibidas para cada opción.
-- Ahora cada opción tiene un indicador visual de porcentaje, lo que permite identificar rápidamente cuál es la opción más popular.
-- Como ya no está la pregunta con enlaces, agregué un botón “Abrir encuesta” para que puedas abrir la encuesta en una nueva pestaña fácilmente.
+- Toda la información relevante está consolidada en la tabla de opciones.
+- Ya no verás la pregunta con enlaces repetidos.
+- Ahora puedes ver el total de respuestas que recibió tu encuesta, justo arriba de la tabla.
+- Cada opción muestra cuántas respuestas recibió y un indicador visual de porcentaje, para que identifiques rápidamente cuál es la más popular.
+- ¿Quieres abrir la encuesta para compartirla o verla como la ven tus usuarios? Ahora tienes un botón “Abrir encuesta” que la abre en una nueva pestaña.
 
-Este rediseño hace que la página de resultados sea mucho más clara, visual y útil para interpretar los resultados de tus encuestas.
+Con estos cambios, interpretar los resultados de tus encuestas es más fácil, visual y directo.
