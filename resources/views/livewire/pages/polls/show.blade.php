@@ -53,9 +53,9 @@ new class extends Component {
         }
     }
 }">
-    <div class="flex items-end justify-between gap-4">
+    <div class="flex flex-wrap items-end justify-between gap-4">
         <flux:heading size="xl">{{ $poll->name }}</flux:heading>
-        <div class="flex gap-2">
+        <div class="flex flex-wrap gap-2">
             <flux:modal.trigger name="embed-newsletter">
                 <flux:button>{{ __('Embed in Newsletter') }}</flux:button>
             </flux:modal.trigger>
@@ -81,27 +81,27 @@ new class extends Component {
             <flux:table class="mt-2">
                 <flux:table.columns>
                     <flux:table.column>{{ __('Option') }}</flux:table.column>
+                    <flux:table.column>{{ __('Percent') }}</flux:table.column>
                     <flux:table.column>{{ __('Responses') }}</flux:table.column>
-<flux:table.column>{{ __('Percent') }}</flux:table.column>
                 </flux:table.columns>
 
                 <flux:table.rows>
                     @foreach ($options as $option)
                         <flux:table.row>
                             <flux:table.cell variant="strong">{{ $option->label }}</flux:table.cell>
-                            <flux:table.cell>{{ $option->responses_count }}</flux:table.cell>
-                        <flux:table.cell>
-                            <div class="flex items-center gap-2">
-                                <div class="flex-1 h-2 bg-zinc-200 dark:bg-zinc-700 rounded">
-                                    <div class="h-2 bg-blue-500 dark:bg-blue-400 rounded" style="width: {{ $option->percent() }}%;"></div>
+                            <flux:table.cell>
+                                <div class="flex items-center gap-2">
+                                    <div class="flex-1 h-2 bg-zinc-200 dark:bg-zinc-700 rounded">
+                                        <div class="h-2 bg-blue-500 dark:bg-blue-400 rounded" style="width: {{ $option->percent() }}%;"></div>
+                                    </div>
+                                    <span class="w-8 text-right shrink-0 tabular-nums">{{ $option->percent() }}%</span>
                                 </div>
-                                <span class="w-8 text-right shrink-0 tabular-nums">{{ $option->percent() }}%</span>
-                            </div>
-                        </flux:table.cell>
-                        <flux:table.cell align="end">
-                                <flux:button variant="ghost" size="sm" icon="ellipsis-horizontal" inset="top bottom" wire:click="showResponses({{ $option->id }})"></flux:button>
                             </flux:table.cell>
-                        </flux:table.row>
+                            <flux:table.cell>{{ $option->responses_count }}</flux:table.cell>
+                            <flux:table.cell align="end">
+                                    <flux:button variant="ghost" size="sm" icon="ellipsis-horizontal" inset="top bottom" wire:click="showResponses({{ $option->id }})"></flux:button>
+                                </flux:table.cell>
+                            </flux:table.row>
                     @endforeach
                 </flux:table.rows>
             </flux:table>
