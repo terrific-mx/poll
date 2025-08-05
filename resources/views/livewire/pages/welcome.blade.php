@@ -15,7 +15,7 @@ class extends Component {
 <div class="space-y-12">
     <header class="space-y-2">
         <x-app-logo-icon class="h-4" />
-        <h1 class="font-medium">Bienvenido a Terrific Poll</h1>
+        <h1 class="font-medium">Agrega encuestas interactivas a tus emails y newsletters, incluso si tu proveedor no lo permite</h1>
     </header>
 
     <nav class="flex flex-wrap gap-4">
