@@ -81,7 +81,7 @@ new class extends Component {
             <flux:table class="mt-2">
                 <flux:table.columns>
                     <flux:table.column>{{ __('Option') }}</flux:table.column>
-                    <flux:table.column>{{ __('Count') }}</flux:table.column>
+                    <flux:table.column>{{ __('Responses') }}</flux:table.column>
 <flux:table.column>{{ __('Percent') }}</flux:table.column>
                 </flux:table.columns>
 
