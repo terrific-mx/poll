@@ -47,7 +47,7 @@ new class extends Component {
         <div class="flex gap-2">
             <flux:button variant="primary" @click="copyEmbed" x-text="copied ? '{{ __('Copied!') }}' : '{{ __('Copy embed code') }}'">{{ __('Copy embed code') }}</flux:button>
             <flux:modal.trigger name="embed-newsletter">
-                <flux:button variant="secondary" icon="book-open-text">{{ __('Embed in Newsletter') }}</flux:button>
+                <flux:button icon="book-open-text">{{ __('Embed in Newsletter') }}</flux:button>
             </flux:modal.trigger>
         </div>
     </div>
@@ -101,9 +101,9 @@ new class extends Component {
             <div>
                 <label class="block text-sm font-medium mb-1">Newsletter Service</label>
                 <select x-model="service" class="w-full rounded border-zinc-300">
-                    <option value="kit">Kit ({{'{{ subscriber.email_address }}'}})</option>
-                    <option value="beehiiv">Beehiiv ({{'{{ email }}'}})</option>
-                    <option value="mailerlite">MailerLite ({{'{{ subscriber.email }}'}})</option>
+                    <option value="kit">Kit</option>
+                    <option value="beehiiv">Beehiiv</option>
+                    <option value="mailerlite">MailerLite</option>
                     <option value="custom">Custom</option>
                 </select>
             </div>
@@ -122,9 +122,9 @@ new class extends Component {
                 service: 'kit',
                 generateMarkup(service) {
                     const mergeTags = {
-                        kit: '{{ subscriber.email_address }}',
-                        beehiiv: '{{ email }}',
-                        mailerlite: '{{ subscriber.email }}',
+                        kit: '@{{ subscriber.email_address }}',
+                        beehiiv: '@{{ email }}',
+                        mailerlite: '@{{ subscriber.email }}',
                         custom: 'EMAIL_MERGE_TAG',
                     };
                     const pollUlid = '{{ $poll->ulid ?? $poll->id }}';
