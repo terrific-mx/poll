@@ -11,9 +11,7 @@ new class extends Component {
     public Collection $options;
     public $selectedOption = null;
     public $selectedResponses = null;
-
     public array $newsletterServices = [];
-    public string $pollUlid;
 
     public function mount()
     {
@@ -24,7 +22,6 @@ new class extends Component {
             'mailerlite' => ['label' => 'MailerLite', 'merge' => '{{ subscriber.email }}'],
             'custom' => ['label' => 'Custom', 'merge' => 'EMAIL_MERGE_TAG'],
         ];
-        $this->pollUlid = $this->poll->ulid ?? $this->poll->id;
     }
 
     public function showResponses(Option $option)
@@ -159,7 +156,11 @@ new class extends Component {
                             <ul style="margin-top:8px;">
                                 @foreach ($poll->options as $option)
                                     <li style="margin-bottom:4px;">
-                                        <a href="{{ route('polls.vote', ['poll' => $this->pollUlid]) }}?option={{ $option->id }}&contact_email={{ $service['merge'] }}">
+                                        <a href="{{ route('polls.vote', [
+                                            'poll' => $this->poll,
+                                            'option' => $option->id,
+                                            'contact_email' => $service['merge']
+                                        ]) }}">
                                             {{ $option->label }}
                                         </a>
                                     </li>
@@ -169,7 +170,6 @@ new class extends Component {
                     </flux:tab.panel>
                 @endforeach
             </flux:tab.group>
-
         </div>
     </flux:modal>
 </div>
