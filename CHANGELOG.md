@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - Poll voting page now allows prepopulating and clearing the contact_email field via URL and UI, improving the experience for newsletter recipients.
 - Improved embed/copy UX on poll show page: refactored copy functionality, updated UI logic for copying HTML and modal triggers, and ensured poll options refresh when showing responses.
+- Fixed: The "Copy embed code" button on the poll show page now uses the correct handler to copy the embed HTML.
 
 ## [2025-08-04]
 
