@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [2025-08-05]
+
+### Added
+- Embed polls in newsletters: new modal on poll page provides ready-to-copy HTML for Beehiiv, Brevo, EmailOctopus, Ghost, HubSpot, Kit, Loops, MailerLite, and Sendy, each with the correct merge tag to prepopulate the contact email field for each subscriber.
+- Copy-to-clipboard button for newsletter embed HTML, with support for rich markup.
+- All new UI and strings are fully translatable and available in Spanish.
+
+### Changed
+- Poll voting page now allows prepopulating and clearing the contact_email field via URL and UI, improving the experience for newsletter recipients.
+
 ## [2025-08-04]
 
 ### Added
