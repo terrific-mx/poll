@@ -1,6 +1,6 @@
 # Prellenado automático del correo de contacto en encuestas incrustadas en newsletters
 
-Hasta ahora, cuando los destinatarios visitaban la página de votación de una encuesta de Terrific Poll, debían opcionalmente ingresar manualmente su dirección de correo electrónico en el campo email de contacto. Este paso adicional generaba fricción y dificultaba el seguimiento individual de las respuestas provenientes de campañas de newsletter.
+Hasta ahora, cuando los destinatarios visitaban la página de votación de una encuesta de [Terrific Poll](https://poll.terrific.com.mx), debían opcionalmente ingresar manualmente su dirección de correo electrónico en el [campo email de contacto](./2025-08-04-contact-email-and-response-table.md). Este paso adicional generaba fricción y dificultaba el seguimiento individual de las respuestas provenientes de campañas de newsletter.
 
 Para resolverlo, ahora es posible prellenar automáticamente el campo email de contacto utilizando los merge tags que ofrecen las principales plataformas de newsletter (como Beehiiv, Brevo, EmailOctopus, Ghost, HubSpot, Kit, Loops, MailerLite y Sendy). Cada servicio utiliza su propio merge tag para insertar dinámicamente el correo del suscriptor.
 
