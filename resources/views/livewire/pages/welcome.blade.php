@@ -13,7 +13,7 @@ class extends Component {
 ?>
 
 <div class="space-y-12">
-    <header class="space-y-2">
+    <header class="space-y-8">
         <x-app-logo-icon class="h-4" />
         <h1 class="font-medium">Agrega encuestas interactivas a tus emails y newsletters</h1>
     </header>
@@ -30,8 +30,8 @@ class extends Component {
     <p class="text-zinc-700 dark:text-zinc-200">Terrific Poll te permite agregar encuestas interactivas a tus emails y newsletters, incluso si tu proveedor de newsletters no lo permite. Es la forma más fácil de aumentar la participación y recopilar feedback de tu audiencia.</p>
 
     @auth
-        <flux:button href="{{ route('dashboard') }}" variant="primary">Ir al panel</flux:button>
+        <flux:link href="{{ route('dashboard') }}" variant="primary">Ir al panel</flux:link>
     @else
-        <flux:button href="{{ route('register') }}" variant="primary">Comenzar ahora</flux:button>
+        <flux:link href="{{ route('register') }}">Comenzar ahora</flux:link>
     @endauth
 </div>
