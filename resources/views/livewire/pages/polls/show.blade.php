@@ -136,11 +136,27 @@ new class extends Component {
                 </flux:tabs>
                 @foreach ($this->newsletterServices as $key => $service)
                     <flux:tab.panel name="{{ $key }}">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="font-semibold">{{ $service['label'] }}</span>
-                            <button
+                        <div class="newsletter-embed-{{ $key }}">
+                            <div class="font-medium">{{ $poll->question }}</div>
+                            <ul class="mt-6 text-sm space-y-2 list-disc ml-6">
+                                @foreach ($poll->options as $option)
+                                    <li>
+                                        <a href="{{ route('polls.vote', [
+                                            'poll' => $this->poll,
+                                            'option' => $option->id,
+                                            'contact_email' => $service['merge']
+                                        ]) }}" class="underline">
+                                            {{ $option->label }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <flux:spacer />
+                            <flux:button
                                 type="button"
-                                class="text-xs px-2 py-1 rounded bg-zinc-200 hover:bg-zinc-300"
+                                variant="primary"
                                 onclick="const html = this.closest('.mb-6').querySelector('.newsletter-embed-{{ $key }}').outerHTML;
                                     if (navigator.clipboard && window.ClipboardItem) {
                                         const blob = new Blob([html], { type: 'text/html' });
@@ -149,23 +165,7 @@ new class extends Component {
                                     } else {
                                         navigator.clipboard.writeText(html);
                                     }"
-                            >Copy</button>
-                        </div>
-                        <div class="newsletter-embed-{{ $key }}">
-                            <strong>{{ $poll->question }}</strong>
-                            <ul style="margin-top:8px;">
-                                @foreach ($poll->options as $option)
-                                    <li style="margin-bottom:4px;">
-                                        <a href="{{ route('polls.vote', [
-                                            'poll' => $this->poll,
-                                            'option' => $option->id,
-                                            'contact_email' => $service['merge']
-                                        ]) }}">
-                                            {{ $option->label }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
+                            >Copy</flux:button>
                         </div>
                     </flux:tab.panel>
                 @endforeach
