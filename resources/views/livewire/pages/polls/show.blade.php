@@ -125,7 +125,7 @@ new class extends Component {
                     <flux:table.rows>
                         @foreach($selectedResponses as $response)
                             <flux:table.row :key="$response->id">
-                                <flux:table.cell>{{ $response->contact_email ?? __('Anonymous') }}</flux:table.cell>
+                                <flux:table.cell>{{ empty($response->contact_email) ? __('Anonymous') : $response->contact_email }}</flux:table.cell>
                                 <flux:table.cell>{{ $response->created_at->format('Y-m-d') }}</flux:table.cell>
                             </flux:table.row>
                         @endforeach
