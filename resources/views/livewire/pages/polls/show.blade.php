@@ -17,10 +17,15 @@ new class extends Component {
     {
         $this->options = $this->poll->options()->withCount('responses')->get();
         $this->newsletterServices = [
+            'beehiiv' => ['label' => 'Beehiiv', 'merge' => '{{email}}'],
+            'brevo' => ['label' => 'Brevo', 'merge' => '{{contact.EMAIL}}'],
+            'emailoctopus' => ['label' => 'EmailOctopus', 'merge' => '{{EmailAddress}}'],
+            'ghost' => ['label' => 'Ghost', 'merge' => '{{email}}'],
+            'hubspot' => ['label' => 'HubSpot', 'merge' => '{{personalization_token(\'contact.email\',\'\')}}'],
             'kit' => ['label' => 'Kit', 'merge' => '{{ subscriber.email_address }}'],
-            'beehiiv' => ['label' => 'Beehiiv', 'merge' => '{{ email }}'],
-            'mailerlite' => ['label' => 'MailerLite', 'merge' => '{{ subscriber.email }}'],
-            'custom' => ['label' => 'Custom', 'merge' => 'EMAIL_MERGE_TAG'],
+            'loops' => ['label' => 'Loops', 'merge' => '{email}'],
+            'mailerlite' => ['label' => 'MailerLite', 'merge' => '{$email}'],
+            'sendy' => ['label' => 'Sendy', 'merge' => '[Email]'],
         ];
     }
 
@@ -144,11 +149,13 @@ new class extends Component {
                 <flux:text class="mt-2">Copy and paste this markup into your newsletter platform. The links will prepopulate the contact email field for each subscriber.</flux:text>
             </div>
             <flux:tab.group>
-                <flux:tabs>
-                    @foreach ($this->newsletterServices as $key => $service)
-                        <flux:tab name="{{ $key }}">{{ $service['label'] }}</flux:tab>
-                    @endforeach
-                </flux:tabs>
+                <div class="overflow-x-scroll">
+                    <flux:tabs>
+                        @foreach ($this->newsletterServices as $key => $service)
+                            <flux:tab name="{{ $key }}">{{ $service['label'] }}</flux:tab>
+                        @endforeach
+                    </flux:tabs>
+                </div>
                 @foreach ($this->newsletterServices as $key => $service)
                     <flux:tab.panel name="{{ $key }}">
                         <div x-ref="newsletter{{ ucfirst($key) }}">
