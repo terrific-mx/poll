@@ -33,6 +33,7 @@ new class extends Component {
     {
         $this->selectedOption = $option;
         $this->selectedResponses = $this->selectedOption->responses()->latest()->get();
+        $this->options = $this->poll->options()->withCount('responses')->get();
 
         Flux::modal('show-responses-modal')->show();
     }
@@ -40,13 +41,11 @@ new class extends Component {
 
 <div class="max-w-5xl mx-auto" x-data="{
     copied: false,
-    copyEmbed() {
-        const html = this.$refs.embed.innerHTML;
-
+    copyHtml(ref) {
+        const html = this.$refs[ref].innerHTML;
         if (navigator.clipboard && window.ClipboardItem) {
             const blob = new Blob([html], { type: 'text/html' });
             const item = new ClipboardItem({ 'text/html': blob });
-
             navigator.clipboard.write([item]).then(() => {
                 this.copied = true;
                 setTimeout(() => this.copied = false, 1500);
@@ -57,10 +56,10 @@ new class extends Component {
     <div class="flex items-end justify-between gap-4">
         <flux:heading size="xl">{{ $poll->name }}</flux:heading>
         <div class="flex gap-2">
-            <flux:button variant="primary" @click="copyEmbed" x-text="copied ? '{{ __('Copied!') }}' : '{{ __('Copy embed code') }}'">{{ __('Copy embed code') }}</flux:button>
             <flux:modal.trigger name="embed-newsletter">
                 <flux:button>{{ __('Embed in Newsletter') }}</flux:button>
             </flux:modal.trigger>
+            <flux:button variant="primary" @click="copyEmbed" x-text="copied ? '{{ __('Copied!') }}' : '{{ __('Copy embed code') }}'">{{ __('Copy embed code') }}</flux:button>
         </div>
     </div>
 
