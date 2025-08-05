@@ -59,7 +59,7 @@ new class extends Component {
         <div class="flex gap-2">
             <flux:button variant="primary" @click="copyEmbed" x-text="copied ? '{{ __('Copied!') }}' : '{{ __('Copy embed code') }}'">{{ __('Copy embed code') }}</flux:button>
             <flux:modal.trigger name="embed-newsletter">
-                <flux:button icon="book-open-text">{{ __('Embed in Newsletter') }}</flux:button>
+                <flux:button>{{ __('Embed in Newsletter') }}</flux:button>
             </flux:modal.trigger>
         </div>
     </div>
