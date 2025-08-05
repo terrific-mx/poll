@@ -159,7 +159,7 @@ new class extends Component {
                             <ul style="margin-top:8px;">
                                 @foreach ($poll->options as $option)
                                     <li style="margin-bottom:4px;">
-                                        <a href="{{ url('/p/' . $this->pollUlid) }}?option={{ $option->id }}&contact_email={{ $service['merge'] }}">
+                                        <a href="{{ route('polls.vote', ['poll' => $this->pollUlid]) }}?option={{ $option->id }}&contact_email={{ $service['merge'] }}">
                                             {{ $option->label }}
                                         </a>
                                     </li>
