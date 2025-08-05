@@ -19,11 +19,11 @@ class extends Component {
     </header>
 
     <nav class="flex flex-wrap gap-4">
-        <flux:link :href="route('pricing')" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20">Tarifas</flux:link>
-        <flux:link href="#" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20">Connect</flux:link>
-        <flux:link href="#" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20">Changelog</flux:link>
+        <flux:link :href="route('pricing')" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20" wire:navigate>Tarifas</flux:link>
+        <flux:link href="#" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20" wire:navigate>Connect</flux:link>
+        <flux:link href="#" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20" wire:navigate>Changelog</flux:link>
         @if (Route::has('login'))
-            <flux:link href="{{ route('login') }}" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20">Iniciar sesión</flux:link>
+            <flux:link href="{{ route('login') }}" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20" wire:navigate>Iniciar sesión</flux:link>
         @endif
     </nav>
 
