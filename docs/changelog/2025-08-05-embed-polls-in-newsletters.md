@@ -1,15 +1,9 @@
-# Inserta encuestas en newsletters y prellena el correo de contacto
+# Prellenado automático del correo de contacto en encuestas incrustadas en newsletters
 
-Ahora puedes insertar fácilmente tus encuestas de Terrific Poll en plataformas de newsletter como Beehiiv, Brevo, EmailOctopus, Ghost, HubSpot, Kit, Loops, MailerLite y Sendy. Desde la página de cada encuesta, encontrarás un nuevo botón "Insertar en newsletter" que abre un modal con el código HTML listo para copiar y pegar en tu plataforma favorita.
+Hasta ahora, cuando los destinatarios visitaban la página de votación de una encuesta de Terrific Poll, debían opcionalmente ingresar manualmente su dirección de correo electrónico en el campo email de contacto. Este paso adicional generaba fricción y dificultaba el seguimiento individual de las respuestas provenientes de campañas de newsletter.
 
-Cada servicio utiliza su propio merge tag para prellenar el campo de correo de contacto de cada suscriptor, facilitando el seguimiento de respuestas individuales sin fricción para el usuario. El modal permite copiar el HTML con un solo clic y está completamente traducido al español.
+Para resolverlo, ahora es posible prellenar automáticamente el campo email de contacto utilizando los merge tags que ofrecen las principales plataformas de newsletter (como Beehiiv, Brevo, EmailOctopus, Ghost, HubSpot, Kit, Loops, MailerLite y Sendy). Cada servicio utiliza su propio merge tag para insertar dinámicamente el correo del suscriptor.
 
-Además, la página de votación ahora permite prellenar y limpiar el campo de correo de contacto mediante la URL o un botón en la interfaz, mejorando la experiencia para quienes responden desde newsletters.
+Desde la página de cada encuesta, encontrarás un nuevo botón “Insertar en newsletter” que abre un modal con fragmentos de HTML listos para copiar y pegar en tu plataforma favorita, usando el merge tag adecuado para prellenar el correo de contacto. El modal permite copiar el HTML con un solo clic.
 
-**Mejoras incluidas:**
-- Modal para insertar encuestas en newsletters con soporte para múltiples servicios y merge tags.
-- Copia rápida del HTML personalizado para cada plataforma.
-- Prellenado automático del correo de contacto en la página de votación.
-- Todo el nuevo UI es traducible y funciona en español.
-
-¡Ahora es más fácil que nunca recolectar respuestas personalizadas desde tus campañas de email!
+Además, la página de votación ahora permite prellenar y limpiar el campo de correo de contacto mediante la URL o un botón en la interfaz, facilitando la respuesta de los destinatarios sin necesidad de ingreso manual.
