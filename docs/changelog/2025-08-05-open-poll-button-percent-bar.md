@@ -10,4 +10,4 @@ Por eso, ahora todo está mucho más simple y útil para ti:
 - Cada opción muestra cuántas respuestas recibió y un indicador visual de porcentaje, para que identifiques rápidamente cuál es la más popular.
 - ¿Quieres abrir la encuesta para compartirla o verla como la ven tus usuarios? Ahora tienes un botón “Abrir encuesta” que la abre en una nueva pestaña.
 
-Con estos cambios, interpretar los resultados de tus encuestas es más fácil, visual y directo.
+Con estos cambios, interpretar los resultados de tus [encuestas](https://poll.terrific.com.mx) es más fácil, visual y directo.
