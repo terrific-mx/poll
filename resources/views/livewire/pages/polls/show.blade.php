@@ -93,15 +93,14 @@ new class extends Component {
                         <flux:table.cell>
                             @php
                                 $total = $options->sum('responses_count');
-                                $percent = $total > 0 ? round(($option->responses_count / $total) * 100, 1) : 0;
+                                $percent = $total > 0 ? round(($option->responses_count / $total) * 100, 0) : 0;
                             @endphp
-                            <div class="flex flex-col gap-1">
-                                <span>{{ $percent }}%</span>
-                                <div class="w-full h-2 bg-zinc-200 rounded">
-                                    <div class="h-2 bg-blue-500 rounded" style="width: {{ $percent }}%;"></div>
-                                </div>
-                            </div>
-                        </flux:table.cell>
+<div class="flex items-center gap-1">
+    <div class="flex-1 h-2 bg-zinc-200 rounded">
+        <div class="h-2 bg-blue-500 rounded" style="width: {{ $percent }}%;"></div>
+    </div>
+    <span class="ml-2 w-12 text-right shrink-0 tabular-nums">{{ $percent }}%</span>
+</div>                        </flux:table.cell>
                         <flux:table.cell align="end">
                                 <flux:button variant="ghost" size="sm" icon="ellipsis-horizontal" inset="top bottom" wire:click="showResponses({{ $option->id }})"></flux:button>
                             </flux:table.cell>
