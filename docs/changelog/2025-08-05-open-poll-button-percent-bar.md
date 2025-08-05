@@ -1,4 +1,4 @@
-# Ahora verás tus resultados de encuesta mucho más claros y visuales
+# ¡Tus encuestas, más visuales y útiles que nunca!
 
 En los últimos días, agregué varias funciones nuevas a la página de resultados de tus encuestas, pero comencé a notar que la información no era tan clara como debería. Antes, veías la pregunta de la encuesta con enlaces a cada opción, pero esto era redundante porque también tenías una tabla con las opciones y sus datos.
 
