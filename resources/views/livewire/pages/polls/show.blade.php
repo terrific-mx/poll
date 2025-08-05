@@ -90,18 +90,19 @@ new class extends Component {
                         <flux:table.row>
                             <flux:table.cell variant="strong">{{ $option->label }}</flux:table.cell>
                             <flux:table.cell>{{ $option->responses_count }}</flux:table.cell>
-<flux:table.cell>
-    @php
-        $total = $options->sum('responses_count');
-        $percent = $total > 0 ? round(($option->responses_count / $total) * 100, 1) : 0;
-    @endphp
-    <div class="flex flex-col gap-1">
-        <span>{{ $percent }}%</span>
-        <div class="w-full h-2 bg-gray-200 rounded">
-            <div class="h-2 bg-blue-500 rounded" style="width: {{ $percent }}%;" role="progressbar" aria-valuenow="{{ $percent }}" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-    </div>
-</flux:table.cell>                            <flux:table.cell align="end">
+                        <flux:table.cell>
+                            @php
+                                $total = $options->sum('responses_count');
+                                $percent = $total > 0 ? round(($option->responses_count / $total) * 100, 1) : 0;
+                            @endphp
+                            <div class="flex flex-col gap-1">
+                                <span>{{ $percent }}%</span>
+                                <div class="w-full h-2 bg-zinc-200 rounded">
+                                    <div class="h-2 bg-blue-500 rounded" style="width: {{ $percent }}%;"></div>
+                                </div>
+                            </div>
+                        </flux:table.cell>
+                        <flux:table.cell align="end">
                                 <flux:button variant="ghost" size="sm" icon="ellipsis-horizontal" inset="top bottom" wire:click="showResponses({{ $option->id }})"></flux:button>
                             </flux:table.cell>
                         </flux:table.row>
