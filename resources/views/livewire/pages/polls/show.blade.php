@@ -131,37 +131,44 @@ new class extends Component {
                 $pollUlid = $poll->ulid ?? $poll->id;
             @endphp
 
-            @foreach ($newsletterServices as $key => $service)
-                <div class="mb-6 border rounded p-4 bg-zinc-50">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="font-semibold">{{ $service['label'] }}</span>
-                        <button
-                            type="button"
-                            class="text-xs px-2 py-1 rounded bg-zinc-200 hover:bg-zinc-300"
-                            onclick="const html = this.closest('.mb-6').querySelector('.newsletter-embed-{{ $key }}').outerHTML;
-if (navigator.clipboard && window.ClipboardItem) {
-    const blob = new Blob([html], { type: 'text/html' });
-    const item = new ClipboardItem({ 'text/html': blob });
-    navigator.clipboard.write([item]);
-} else {
-    navigator.clipboard.writeText(html);
-}"
-                        >Copy</button>
-                    </div>
-                    <div class="newsletter-embed-{{ $key }}">
-                        <strong>{{ $poll->question }}</strong>
-                        <ul style="margin-top:8px;">
-                            @foreach ($poll->options as $option)
-                                <li style="margin-bottom:4px;">
-                                    <a href="{{ url('/p/' . $pollUlid) }}?option={{ $option->id }}&contact_email={{ $service['merge'] }}">
-                                        {{ $option->label }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            @endforeach
+            <flux:tab.group>
+                <flux:tabs>
+                    @foreach ($newsletterServices as $key => $service)
+                        <flux:tab name="{{ $key }}">{{ $service['label'] }}</flux:tab>
+                    @endforeach
+                </flux:tabs>
+                @foreach ($newsletterServices as $key => $service)
+                    <flux:tab.panel name="{{ $key }}">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-semibold">{{ $service['label'] }}</span>
+                            <button
+                                type="button"
+                                class="text-xs px-2 py-1 rounded bg-zinc-200 hover:bg-zinc-300"
+                                onclick="const html = this.closest('.mb-6').querySelector('.newsletter-embed-{{ $key }}').outerHTML;
+                                    if (navigator.clipboard && window.ClipboardItem) {
+                                        const blob = new Blob([html], { type: 'text/html' });
+                                        const item = new ClipboardItem({ 'text/html': blob });
+                                        navigator.clipboard.write([item]);
+                                    } else {
+                                        navigator.clipboard.writeText(html);
+                                    }"
+                            >Copy</button>
+                        </div>
+                        <div class="newsletter-embed-{{ $key }}">
+                            <strong>{{ $poll->question }}</strong>
+                            <ul style="margin-top:8px;">
+                                @foreach ($poll->options as $option)
+                                    <li style="margin-bottom:4px;">
+                                        <a href="{{ url('/p/' . $pollUlid) }}?option={{ $option->id }}&contact_email={{ $service['merge'] }}">
+                                            {{ $option->label }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </flux:tab.panel>
+                @endforeach
+            </flux:tab.group>
 
         </div>
     </flux:modal>
