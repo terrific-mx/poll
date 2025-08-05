@@ -2,29 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [2025-08-05]
 
 ### Added
 - "Open Poll" button to the poll show page
 - Total responses and percent for each poll option
 - Visual percentage indicator bar, dark mode friendly
-
-### Changed
-- Refactored percentage calculation logic to the Option model
-- Applied PHP code style fixes with Pint
-
-
-## [2025-08-05]
-
-### Added
 - Embed polls in newsletters: new modal on poll page provides ready-to-copy HTML for Beehiiv, Brevo, EmailOctopus, Ghost, HubSpot, Kit, Loops, MailerLite, and Sendy, each with the correct merge tag to prepopulate the contact email field for each subscriber.
 - Copy-to-clipboard button for newsletter embed HTML, with support for rich markup.
 - All new UI and strings are fully translatable and available in Spanish.
 
 ### Changed
+- Refactored percentage calculation logic to the Option model
+- Applied PHP code style fixes with Pint
 - Poll voting page now allows prepopulating and clearing the contact_email field via URL and UI, improving the experience for newsletter recipients.
 - Improved embed/copy UX on poll show page: refactored copy functionality, updated UI logic for copying HTML and modal triggers, and ensured poll options refresh when showing responses.
 - Fixed: The "Copy embed code" button on the poll show page now uses the correct handler to copy the embed HTML.
+
 
 ## [2025-08-04]
 
