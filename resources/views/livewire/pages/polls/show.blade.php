@@ -44,8 +44,11 @@ new class extends Component {
 }">
     <div class="flex items-end justify-between gap-4">
         <flux:heading size="xl">{{ $poll->name }}</flux:heading>
-        <div class="relative">
+        <div class="flex gap-2">
             <flux:button variant="primary" @click="copyEmbed" x-text="copied ? '{{ __('Copied!') }}' : '{{ __('Copy embed code') }}'">{{ __('Copy embed code') }}</flux:button>
+            <flux:modal.trigger name="embed-newsletter">
+                <flux:button variant="secondary" icon="book-open-text">{{ __('Embed in Newsletter') }}</flux:button>
+            </flux:modal.trigger>
         </div>
     </div>
 
@@ -89,7 +92,60 @@ new class extends Component {
         <div class="space-y-6">
             <div>
                 <flux:heading size="lg">{{ __('Responses for') }} {{ $selectedOption?->label }}</flux:heading>
+    <flux:modal name="embed-newsletter" class="md:w-96">
+        <div class="space-y-6">
+            <div>
+                <flux:heading size="lg">Embed in Newsletter</flux:heading>
+                <flux:text class="mt-2">Copy and paste this markup into your newsletter platform. The links will prepopulate the contact email field for each subscriber.</flux:text>
             </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Newsletter Service</label>
+                <select x-model="service" class="w-full rounded border-zinc-300">
+                    <option value="kit">Kit ({{'{{ subscriber.email_address }}'}})</option>
+                    <option value="beehiiv">Beehiiv ({{'{{ email }}'}})</option>
+                    <option value="mailerlite">MailerLite ({{'{{ subscriber.email }}'}})</option>
+                    <option value="custom">Custom</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-1">Embed Markup</label>
+                <textarea readonly class="w-full font-mono text-xs rounded border-zinc-300 p-2 bg-zinc-50" rows="8" x-ref="embedMarkup" x-text="generateMarkup(service)"></textarea>
+            </div>
+            <div class="flex">
+                <flux:spacer />
+                <flux:button type="button" variant="primary" @click="copyMarkup">Copy</flux:button>
+            </div>
+        </div>
+        <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('newsletterEmbed', () => ({
+                service: 'kit',
+                generateMarkup(service) {
+                    const mergeTags = {
+                        kit: '{{ subscriber.email_address }}',
+                        beehiiv: '{{ email }}',
+                        mailerlite: '{{ subscriber.email }}',
+                        custom: 'EMAIL_MERGE_TAG',
+                    };
+                    const pollUlid = '{{ $poll->ulid ?? $poll->id }}';
+                    const question = @json($poll->question);
+                    const options = @json($poll->options->map(fn($o) => ['id' => $o->id, 'label' => $o->label]));
+                    let html = `<div><strong>${question}</strong><ul style="margin-top:8px;">`;
+                    options.forEach(option => {
+                        html += `<li style="margin-bottom:4px;"><a href="{{ url('/p/') }}${pollUlid}/?option=${option.id}&contact_email=${mergeTags[service]}">${option.label}</a></li>`;
+                    });
+                    html += '</ul></div>';
+                    return html;
+                },
+                copyMarkup() {
+                    const markup = this.generateMarkup(this.service);
+                    navigator.clipboard.writeText(markup);
+                }
+            }));
+        });
+        </script>
+    </flux:modal>
+</div>
             @if($selectedResponses && $selectedResponses->count())
                 <flux:table>
                     <flux:table.columns>
