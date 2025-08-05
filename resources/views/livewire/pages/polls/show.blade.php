@@ -123,9 +123,9 @@ new class extends Component {
             </div>
             @php
                 $newsletterServices = [
-                    'kit' => ['label' => 'Kit', 'merge' => '@{{ subscriber.email_address }}'],
-                    'beehiiv' => ['label' => 'Beehiiv', 'merge' => '@{{ email }}'],
-                    'mailerlite' => ['label' => 'MailerLite', 'merge' => '@{{ subscriber.email }}'],
+                    'kit' => ['label' => 'Kit', 'merge' => '{{ subscriber.email_address }}'],
+                    'beehiiv' => ['label' => 'Beehiiv', 'merge' => '{{ email }}'],
+                    'mailerlite' => ['label' => 'MailerLite', 'merge' => '{{ subscriber.email }}'],
                     'custom' => ['label' => 'Custom', 'merge' => 'EMAIL_MERGE_TAG'],
                 ];
                 $pollUlid = $poll->ulid ?? $poll->id;
@@ -138,7 +138,14 @@ new class extends Component {
                         <button
                             type="button"
                             class="text-xs px-2 py-1 rounded bg-zinc-200 hover:bg-zinc-300"
-                            onclick="navigator.clipboard.writeText(this.closest('.mb-6').querySelector('.newsletter-embed-{{ $key }}').outerHTML)"
+                            onclick="const html = this.closest('.mb-6').querySelector('.newsletter-embed-{{ $key }}').outerHTML;
+if (navigator.clipboard && window.ClipboardItem) {
+    const blob = new Blob([html], { type: 'text/html' });
+    const item = new ClipboardItem({ 'text/html': blob });
+    navigator.clipboard.write([item]);
+} else {
+    navigator.clipboard.writeText(html);
+}"
                         >Copy</button>
                     </div>
                     <div class="newsletter-embed-{{ $key }}">
