@@ -63,7 +63,7 @@ new class extends Component {
         </div>
     </div>
 
-    <div class="mt-10" x-ref="embed">
+    <div class="mt-10 hidden" x-ref="embed">
         <div class="font-medium">{{ $poll->question }}</div>
         <ul class="mt-6 text-sm space-y-2 list-disc ml-6">
             @foreach ($poll->options as $option)
@@ -73,7 +73,7 @@ new class extends Component {
     </div>
 
     <div class="mt-10">
-        <flux:heading>{{ __('Responses') }}</flux:heading>
+        <flux:heading size="lg">{{ $poll->question }}</flux:heading>
 
         @if($options->count())
             <flux:table class="mt-2">
@@ -85,9 +85,9 @@ new class extends Component {
                 <flux:table.rows>
                     @foreach ($options as $option)
                         <flux:table.row>
-                            <flux:table.cell>{{ $option->label }}</flux:table.cell>
+                            <flux:table.cell variant="strong">{{ $option->label }}</flux:table.cell>
                             <flux:table.cell>{{ $option->responses_count }}</flux:table.cell>
-                            <flux:table.cell>
+                            <flux:table.cell align="end">
                                 <flux:button variant="ghost" size="sm" icon="ellipsis-horizontal" inset="top bottom" wire:click="showResponses({{ $option->id }})"></flux:button>
                             </flux:table.cell>
                         </flux:table.row>
