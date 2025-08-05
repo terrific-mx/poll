@@ -23,12 +23,7 @@ class extends Component {
         <flux:link href="#" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20">Connect</flux:link>
         <flux:link href="#" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20">Changelog</flux:link>
         @if (Route::has('login'))
-            @auth
-                <flux:link href="{{ route('dashboard') }}" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20">Panel</flux:link>
-            @else
-                <flux:link href="{{ route('login') }}" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20">Iniciar sesión</flux:link>
-                <flux:link href="{{ route('register') }}" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20">Registrarse</flux:link>
-            @endauth
+            <flux:link href="{{ route('login') }}" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20">Iniciar sesión</flux:link>
         @endif
     </nav>
 
