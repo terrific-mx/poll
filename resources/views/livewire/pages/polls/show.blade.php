@@ -92,7 +92,53 @@ new class extends Component {
         <div class="space-y-6">
             <div>
                 <flux:heading size="lg">{{ __('Responses for') }} {{ $selectedOption?->label }}</flux:heading>
-    <flux:modal name="embed-newsletter" class="md:w-96">
+            </div>
+
+            @if($selectedResponses && $selectedResponses->count())
+                <flux:table>
+                    <flux:table.columns>
+                        <flux:table.column>{{ __('Email') }}</flux:table.column>
+                        <flux:table.column>{{ __('Date') }}</flux:table.column>
+                    </flux:table.columns>
+                    <flux:table.rows>
+                        @foreach($selectedResponses as $response)
+                            <flux:table.row :key="$response->id">
+                                <flux:table.cell>{{ $response->contact_email ?? __('Anonymous') }}</flux:table.cell>
+                                <flux:table.cell>{{ $response->created_at->format('Y-m-d') }}</flux:table.cell>
+                            </flux:table.row>
+                        @endforeach
+                    </flux:table.rows>
+                </flux:table>
+            @else
+                <flux:text>{{ __('No responses for this option yet.') }}</flux:text>
+            @endif
+        </div>
+    </flux:modal>
+
+    <flux:modal name="embed-newsletter" class="md:w-96" x-data="{
+        service: 'kit',
+        generateMarkup(service) {
+            const mergeTags = {
+                kit: '@{{ subscriber.email_address }}',
+                beehiiv: '@{{ email }}',
+                mailerlite: '@{{ subscriber.email }}',
+                custom: 'EMAIL_MERGE_TAG',
+            };
+            const pollUlid = '{{ $poll->ulid ?? $poll->id }}';
+            const question = @json($poll->question);
+            const options = @json($poll->options->map(fn($o) => ['id' => $o->id, 'label' => $o->label]));
+            let html = `<div><strong>${question}</strong><ul style=\"margin-top:8px;\">`;
+            options.forEach(option => {
+                html += `<li style=\"margin-bottom:4px;\"><a href=\"{{ url('/p/') }}${pollUlid}/?option=${option.id}&contact_email=${mergeTags[service]}\">${option.label}</a></li>`;
+            });
+            html += '</ul></div>';
+            return html;
+        },
+        copyMarkup() {
+            const markup = this.generateMarkup(this.service);
+            navigator.clipboard.writeText(markup);
+        }
+    }">
         <div class="space-y-6">
             <div>
                 <flux:heading size="lg">Embed in Newsletter</flux:heading>
@@ -115,55 +161,6 @@ new class extends Component {
                 <flux:spacer />
                 <flux:button type="button" variant="primary" @click="copyMarkup">Copy</flux:button>
             </div>
-        </div>
-        <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('newsletterEmbed', () => ({
-                service: 'kit',
-                generateMarkup(service) {
-                    const mergeTags = {
-                        kit: '@{{ subscriber.email_address }}',
-                        beehiiv: '@{{ email }}',
-                        mailerlite: '@{{ subscriber.email }}',
-                        custom: 'EMAIL_MERGE_TAG',
-                    };
-                    const pollUlid = '{{ $poll->ulid ?? $poll->id }}';
-                    const question = @json($poll->question);
-                    const options = @json($poll->options->map(fn($o) => ['id' => $o->id, 'label' => $o->label]));
-                    let html = `<div><strong>${question}</strong><ul style="margin-top:8px;">`;
-                    options.forEach(option => {
-                        html += `<li style="margin-bottom:4px;"><a href="{{ url('/p/') }}${pollUlid}/?option=${option.id}&contact_email=${mergeTags[service]}">${option.label}</a></li>`;
-                    });
-                    html += '</ul></div>';
-                    return html;
-                },
-                copyMarkup() {
-                    const markup = this.generateMarkup(this.service);
-                    navigator.clipboard.writeText(markup);
-                }
-            }));
-        });
-        </script>
-    </flux:modal>
-</div>
-            @if($selectedResponses && $selectedResponses->count())
-                <flux:table>
-                    <flux:table.columns>
-                        <flux:table.column>{{ __('Email') }}</flux:table.column>
-                        <flux:table.column>{{ __('Date') }}</flux:table.column>
-                    </flux:table.columns>
-                    <flux:table.rows>
-                        @foreach($selectedResponses as $response)
-                            <flux:table.row :key="$response->id">
-                                <flux:table.cell>{{ $response->contact_email ?? __('Anonymous') }}</flux:table.cell>
-                                <flux:table.cell>{{ $response->created_at->format('Y-m-d') }}</flux:table.cell>
-                            </flux:table.row>
-                        @endforeach
-                    </flux:table.rows>
-                </flux:table>
-            @else
-                <flux:text>{{ __('No responses for this option yet.') }}</flux:text>
-            @endif
         </div>
     </flux:modal>
 </div>
