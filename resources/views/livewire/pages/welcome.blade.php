@@ -14,7 +14,9 @@ class extends Component {
 
 <div class="space-y-12">
     <header class="space-y-8">
-        <x-app-logo-icon class="h-4" />
+        <a href="{{ route('home') }}" class="block" wire:navigate>
+            <x-app-logo-icon class="h-4" />
+        </a>
         <h1 class="font-medium">Agrega encuestas interactivas a tus emails y newsletters</h1>
     </header>
 
