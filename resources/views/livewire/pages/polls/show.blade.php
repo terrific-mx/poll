@@ -121,20 +121,41 @@ new class extends Component {
                 <flux:heading size="lg">Embed in Newsletter</flux:heading>
                 <flux:text class="mt-2">Copy and paste this markup into your newsletter platform. The links will prepopulate the contact email field for each subscriber.</flux:text>
             </div>
-            <div>
-                <label class="block text-sm font-medium mb-1">Newsletter Service</label>
-                <select x-model="service" class="w-full rounded border-zinc-300">
-                    <option value="kit">Kit</option>
-                    <option value="beehiiv">Beehiiv</option>
-                    <option value="mailerlite">MailerLite</option>
-                    <option value="custom">Custom</option>
-                </select>
-            </div>
+            @php
+                $newsletterServices = [
+                    'kit' => ['label' => 'Kit', 'merge' => '@{{ subscriber.email_address }}'],
+                    'beehiiv' => ['label' => 'Beehiiv', 'merge' => '@{{ email }}'],
+                    'mailerlite' => ['label' => 'MailerLite', 'merge' => '@{{ subscriber.email }}'],
+                    'custom' => ['label' => 'Custom', 'merge' => 'EMAIL_MERGE_TAG'],
+                ];
+                $pollUlid = $poll->ulid ?? $poll->id;
+            @endphp
 
-            <div class="flex">
-                <flux:spacer />
-                <flux:button type="button" variant="primary" @click="copyMarkup">Copy</flux:button>
-            </div>
+            @foreach ($newsletterServices as $key => $service)
+                <div class="mb-6 border rounded p-4 bg-zinc-50">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-semibold">{{ $service['label'] }}</span>
+                        <button
+                            type="button"
+                            class="text-xs px-2 py-1 rounded bg-zinc-200 hover:bg-zinc-300"
+                            onclick="navigator.clipboard.writeText(this.closest('.mb-6').querySelector('.newsletter-embed-{{ $key }}').outerHTML)"
+                        >Copy</button>
+                    </div>
+                    <div class="newsletter-embed-{{ $key }}">
+                        <strong>{{ $poll->question }}</strong>
+                        <ul style="margin-top:8px;">
+                            @foreach ($poll->options as $option)
+                                <li style="margin-bottom:4px;">
+                                    <a href="{{ url('/p/' . $pollUlid) }}?option={{ $option->id }}&contact_email={{ $service['merge'] }}">
+                                        {{ $option->label }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endforeach
+
         </div>
     </flux:modal>
 </div>
