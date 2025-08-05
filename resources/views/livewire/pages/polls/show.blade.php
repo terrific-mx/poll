@@ -115,30 +115,7 @@ new class extends Component {
         </div>
     </flux:modal>
 
-    <flux:modal name="embed-newsletter" class="md:w-96" x-data="{
-        service: 'kit',
-        generateMarkup(service) {
-            const mergeTags = {
-                kit: '@{{ subscriber.email_address }}',
-                beehiiv: '@{{ email }}',
-                mailerlite: '@{{ subscriber.email }}',
-                custom: 'EMAIL_MERGE_TAG',
-            };
-            const pollUlid = '{{ $poll->ulid ?? $poll->id }}';
-            const question = @json($poll->question);
-            const options = @json($poll->options->map(fn($o) => ['id' => $o->id, 'label' => $o->label]));
-            let html = `<div><strong>${question}</strong><ul style=\"margin-top:8px;\">`;
-            options.forEach(option => {
-                html += `<li style=\"margin-bottom:4px;\"><a href=\"{{ url('/p/') }}${pollUlid}/?option=${option.id}&contact_email=${mergeTags[service]}\">${option.label}</a></li>`;
-            });
-            html += '</ul></div>';
-            return html;
-        },
-        copyMarkup() {
-            const markup = this.generateMarkup(this.service);
-            navigator.clipboard.writeText(markup);
-        }
-    }">
+    <flux:modal name="embed-newsletter" class="md:w-96">
         <div class="space-y-6">
             <div>
                 <flux:heading size="lg">Embed in Newsletter</flux:heading>
@@ -153,10 +130,7 @@ new class extends Component {
                     <option value="custom">Custom</option>
                 </select>
             </div>
-            <div>
-                <label class="block text-sm font-medium mb-1">Embed Markup</label>
-                <textarea readonly class="w-full font-mono text-xs rounded border-zinc-300 p-2 bg-zinc-50" rows="8" x-ref="embedMarkup" x-text="generateMarkup(service)"></textarea>
-            </div>
+
             <div class="flex">
                 <flux:spacer />
                 <flux:button type="button" variant="primary" @click="copyMarkup">Copy</flux:button>
