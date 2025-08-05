@@ -21,4 +21,17 @@ class Option extends Model
     {
         return $this->hasMany(Response::class);
     }
+
+    public function percent(): int
+    {
+        $total = Response::where('poll_id', $this->poll_id)->count();
+
+        if ($total === 0) {
+            return 0;
+        }
+
+        $count = Response::where('option_id', $this->id)->count();
+
+        return round(($count / $total) * 100, 0);
+    }
 }
