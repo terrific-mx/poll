@@ -82,6 +82,7 @@ new class extends Component {
                 <flux:table.columns>
                     <flux:table.column>{{ __('Option') }}</flux:table.column>
                     <flux:table.column>{{ __('Count') }}</flux:table.column>
+<flux:table.column>{{ __('Percent') }}</flux:table.column>
                 </flux:table.columns>
 
                 <flux:table.rows>
@@ -89,6 +90,13 @@ new class extends Component {
                         <flux:table.row>
                             <flux:table.cell variant="strong">{{ $option->label }}</flux:table.cell>
                             <flux:table.cell>{{ $option->responses_count }}</flux:table.cell>
+                            <flux:table.cell>
+                                @if($options->sum('responses_count') > 0)
+                                    {{ number_format(($option->responses_count / $options->sum('responses_count')) * 100, 2) }}%
+                                @else
+                                    0%
+                                @endif
+                            </flux:table.cell>
                             <flux:table.cell align="end">
                                 <flux:button variant="ghost" size="sm" icon="ellipsis-horizontal" inset="top bottom" wire:click="showResponses({{ $option->id }})"></flux:button>
                             </flux:table.cell>
