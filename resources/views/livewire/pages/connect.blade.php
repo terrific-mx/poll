@@ -29,7 +29,7 @@ class extends Component {
                 external
             >Email</flux:link>
         </flux:tooltip>
-        <flux:tooltip content="+52 (334) 474-7654">
+        <flux:tooltip content="+52 33 4474 7654">
             <flux:link
                 href="tel:+523344747654"
                 external
