@@ -23,14 +23,18 @@ class extends Component {
             href="https://x.com/oliverservinX"
             external
         >X</flux:link>
-        <flux:link
-            href="mailto:oliver@terrific.com.mx"
-            external
-        >Email</flux:link>
-        <flux:link
-            href="tel:+523344747654"
-            external
-        >Teléfono</flux:link>
+        <flux:tooltip content="oliver@terrific.com.mx">
+            <flux:link
+                href="mailto:oliver@terrific.com.mx"
+                external
+            >Email</flux:link>
+        </flux:tooltip>
+        <flux:tooltip content="+52 (334) 474-7654">
+            <flux:link
+                href="tel:+523344747654"
+                external
+            >Teléfono</flux:link>
+        </flux:tooltip>
         <flux:link
             href="https://wa.me/523344747654"
             external
