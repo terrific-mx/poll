@@ -18,7 +18,6 @@ class extends Component {
 
     <h1 class="font-medium">Tarifa única, sin límites</h1>
     <p class="text-zinc-700 dark:text-zinc-200">Crea encuestas ilimitadas y recibe respuestas ilimitadas por solo <span class="font-medium text-zinc-800 dark:text-zinc-300">$79 pesos mexicanos (MXN) al año</span>.</p>
-<p class="text-xs text-zinc-500 dark:text-zinc-400">El precio es en pesos mexicanos (MXN).</p>
 
     <ul class="text-zinc-700 dark:text-zinc-200 space-y-2 mt-1 list-disc ml-5">
         <li>Encuestas ilimitadas</li>
