@@ -31,7 +31,7 @@ class extends Component {
         </flux:tooltip>
         <flux:tooltip content="+52 33 4474 7654">
             <flux:link
-                href="tel:+523344747654"
+                href="tel:+52 33 4474 7654"
                 external
             >Teléfono</flux:link>
         </flux:tooltip>
