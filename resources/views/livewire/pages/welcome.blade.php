@@ -48,16 +48,6 @@ class extends Component {
             >Presentación</flux:link>
         </div>
 
-        <flux:card class="bg-zinc-50 dark:bg-zinc-800">
-            <form class="space-y-6">
-                <flux:radio.group label="¿Qué tan probable es que recomiendes nuestro newsletter a un amigo?">
-                    <flux:radio label="Muy probable" checked />
-                    <flux:radio label="Algo probable" />
-                    <flux:radio label="Nada probable" />
-                </flux:radio.group>
-
-                <flux:button type="button" variant="primary" disabled>Enviar (Demo)</flux:button>
-            </form>
-        </flux:card>
+        <livewire:pages.demo-poll />
     </div>
 </div>
