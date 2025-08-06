@@ -26,8 +26,11 @@ class extends Component {
         <flux:link :href="route('changelog')" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20" wire:navigate>Changelog</flux:link>
 
         <flux:link :href="route('connect')" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20" wire:navigate>Contacto</flux:link>
+
         @if (Route::has('login'))
-            <flux:link href="{{ route('login') }}" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20" wire:navigate>Iniciar sesión</flux:link>
+            @guest
+                <flux:link href="{{ route('login') }}" variant="subtle" class="underline decoration-zinc-800/20 dark:decoration-white/20" wire:navigate>Iniciar sesión</flux:link>
+            @endif
         @endif
     </nav>
 
