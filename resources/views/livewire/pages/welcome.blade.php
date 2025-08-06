@@ -57,24 +57,24 @@ class extends Component {
                 external
             >Presentación</flux:link>
         </div>
-
-        <flux:card class="bg-zinc-50 dark:bg-zinc-800">
-            @if ($demoSubmitted)
-                <div class="p-6 text-center text-zinc-700 dark:text-zinc-200">
-                    <strong>¡Gracias por tu respuesta!</strong>
-                    <div>Así funciona una encuesta demo en Terrific Poll.</div>
-                </div>
-            @else
-                <form wire:submit="demoSubmit" class="space-y-6">
-                    <flux:radio.group wire:model="demoResponse" label="¿Qué tan probable es que recomiendes nuestro newsletter a un amigo?" required>
-                        <flux:radio value="very" label="Muy probable" />
-                        <flux:radio value="somewhat" label="Algo probable" />
-                        <flux:radio value="not_at_all" label="Nada probable" />
-                    </flux:radio.group>
-
-                    <flux:button type="submit" variant="primary">Enviar</flux:button>
-                </form>
-            @endif
-        </flux:card>
     </div>
+
+    <flux:card class="bg-zinc-50 dark:bg-zinc-800">
+        @if ($demoSubmitted)
+            <div class="p-6 text-center text-zinc-700 dark:text-zinc-200">
+                <strong>¡Gracias por tu respuesta!</strong>
+                <div>Así funciona una encuesta demo en Terrific Poll.</div>
+            </div>
+        @else
+            <form wire:submit="demoSubmit" class="space-y-6">
+                <flux:radio.group wire:model="demoResponse" label="¿Qué tan probable es que recomiendes nuestro newsletter a un amigo?" required>
+                    <flux:radio value="very" label="Muy probable" />
+                    <flux:radio value="somewhat" label="Algo probable" />
+                    <flux:radio value="not_at_all" label="Nada probable" />
+                </flux:radio.group>
+
+                <flux:button type="submit" variant="primary">Enviar</flux:button>
+            </form>
+        @endif
+    </flux:card>
 </div>
