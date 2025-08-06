@@ -73,7 +73,7 @@ class extends Component {
                     <flux:radio value="not_at_all" label="Nada probable" />
                 </flux:radio.group>
 
-                <flux:button type="submit" variant="primary">Enviar</flux:button>
+                <flux:button type="submit">Enviar</flux:button>
             </form>
         @endif
     </flux:card>
