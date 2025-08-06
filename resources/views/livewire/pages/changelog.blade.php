@@ -17,7 +17,6 @@ class extends Component {
     </a>
 
     <h1 class="font-medium">Changelog</h1>
-    <p class="text-zinc-700 dark:text-zinc-200">Últimos cambios y mejoras en Terrific Poll.</p>
 
     <ul class="space-y-4 flex flex-col">
         <flux:link
