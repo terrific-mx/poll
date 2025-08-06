@@ -47,5 +47,17 @@ class extends Component {
                 external
             >Presentación</flux:link>
         </div>
+
+        <flux:card class="bg-zinc-50 dark:bg-zinc-800">
+            <form class="space-y-6">
+                <flux:radio.group label="¿Qué tan probable es que recomiendes nuestro newsletter a un amigo?">
+                    <flux:radio value="muy_probable" label="Muy probable" checked />
+                    <flux:radio value="algo_probable" label="Algo probable" />
+                    <flux:radio value="nada_probable" label="Nada probable" />
+                </flux:radio.group>
+
+                <flux:button type="button" variant="primary" disabled>Enviar (Demo)</flux:button>
+            </form>
+        </flux:card>
     </div>
 </div>
