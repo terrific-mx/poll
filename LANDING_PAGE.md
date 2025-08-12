@@ -2,10 +2,6 @@
 
 **Descubre una forma innovadora de conectar con tu audiencia, sin importar qué servicio de correo o newsletter utilices.**
 
----
-
-## La manera más práctica de agregar encuestas a tus correos
-
 En México, muchas plataformas de newsletters limitan la interacción o cobran de más por funciones avanzadas. Ahora tienes la oportunidad de crear encuestas interactivas que funcionan en cualquier servicio de correo o newsletter, incluso si no ofrecen soporte para encuestas.
 
 No necesitas integraciones complicadas ni conocimientos técnicos. Todo está pensado para que puedas empezar de inmediato y sin obstáculos.
