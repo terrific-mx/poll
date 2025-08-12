@@ -22,19 +22,19 @@
             [&>p]:text-lg
             [&>p>strong]:text-zinc-950
         ">
-            <h1>Agrega encuestas interactivas a tus emails y newsletters</h1>
+            <h1>La baja participación en emails y newsletters limita tu crecimiento</h1>
 <p class="max-w-lg mx-auto mt-6" data-lead>
-    Consigue más respuestas y conoce mejor a tu audiencia con un solo clic.
+    Las plataformas tradicionales dificultan obtener feedback real porque no permiten encuestas interactivas.
 </p>
 <div class="mt-6 text-center text-sm">
     Creado por <span class="text-zinc-950">Oliver Servín</span>
 </div>
 
             <p class="mt-48">
-    Esta plataforma funciona en la nube y está diseñada para que puedas crear y compartir encuestas en minutos, sin complicaciones.
+    Esta herramienta elimina las barreras: crea encuestas interactivas y agrégalas fácilmente a cualquier email o newsletter, sin integraciones complicadas ni procesos manuales.
 </p>
 <p class="mt-6">
-    Olvídate de procesos manuales o integraciones complejas: simplemente crea tu encuesta, copia el enlace o el bloque de código, y agrégalo a tu email o newsletter.
+    Olvídate de tasas de respuesta bajas y de depender de plataformas externas: ahora puedes preguntar y recibir respuestas en el mismo lugar donde tu audiencia ya te lee.
 </p>
 
             <flux:card class="min-h-72 mt-10 flex flex-col">
@@ -47,26 +47,26 @@
 
             <h2 class="mt-20">Todo lo que necesitas para encuestar a tu audiencia</h2>
 <p class="mt-6">
-    Crea encuestas atractivas y agrégalas fácilmente a tus emails y newsletters, sin importar qué plataforma uses.
+    Haz que tu audiencia participe sin salir de su bandeja de entrada, sin importar qué plataforma uses.
 </p>
 <p class="mt-6">
-    Recibe respuestas en tiempo real y obtén feedback valioso de tu audiencia con solo un clic.
+    Recibe respuestas en tiempo real y obtén feedback valioso sin fricción ni pasos extra.
 </p>
 <p class="mt-6">
-    Un panel de analíticas te muestra la participación y los resultados de tus encuestas para que puedas tomar mejores decisiones.
+    Visualiza la participación y los resultados de tus encuestas al instante para tomar mejores decisiones.
 </p>
 
             <h2 class="mt-20">Empieza en minutos</h2>
 <p class="mt-6">
-    Solo regístrate, crea tu primera encuesta y compártela con tu audiencia. No necesitas conocimientos técnicos ni configuraciones avanzadas.
+    Crea tu primera encuesta en minutos, sin conocimientos técnicos ni configuraciones avanzadas.
 </p>
 <p class="mt-6">
-    El panel te permite ver todas tus encuestas, analizar resultados y mejorar la participación de tus lectores fácilmente.
+    Gestiona todas tus encuestas y resultados desde un solo lugar, y mejora la participación de tus lectores fácilmente.
 </p>
 
             <h2 class="mt-20">Aumenta la participación y obtén feedback real</h2>
 <p class="mt-6">
-    Tus lectores pueden responder encuestas directamente desde su email, sin salir de su bandeja de entrada.
+    Tus lectores pueden responder encuestas directamente desde su email, sin redireccionamientos ni fricción.
 </p>
 <p class="mt-6">
     Recibe resultados al instante y descubre qué piensan realmente sobre tu contenido, productos o ideas.
@@ -77,7 +77,7 @@
 
             <h2 class="mt-20">Comienza gratis hoy mismo</h2>
 <p class="mt-6">
-    Prueba la herramienta sin compromiso y descubre lo fácil que es aumentar la participación en tus emails y newsletters.
+    Prueba la herramienta sin compromiso y comprueba cómo puedes obtener feedback real y aumentar la participación en tus emails y newsletters.
 </p>
 <p class="mt-6">
     No necesitas tarjeta de crédito. Empieza a recibir feedback de tu audiencia desde el primer día.
