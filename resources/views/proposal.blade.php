@@ -9,7 +9,7 @@
                 <flux:button :href="route('dashboard')" variant="primary" color="amber" size="sm" wire:navigate>{{ __('Dashboard') }}</flux:button>
             @else
                 <flux:button :href="route('login')" variant="subtle" size="sm" wire:navigate>Iniciar sesión</flux:button>
-<flux:button :href="route('register')" variant="primary" color="amber" size="sm" wire:navigate>Comenzar ahora</flux:button>
+                <flux:button :href="route('register')" variant="primary" color="amber" size="sm" wire:navigate>Comenzar ahora</flux:button>
             @endauth
         </header>
 
@@ -22,28 +22,45 @@
             [&>p]:text-lg
             [&>p>strong]:text-zinc-950
         ">
-            <h1>La baja participación en emails y newsletters limita tu crecimiento</h1>
-<p class="max-w-lg mx-auto mt-6" data-lead>
-    Las plataformas tradicionales dificultan obtener feedback real porque no permiten encuestas interactivas.
-</p>
-<div class="mt-6 text-center text-sm">
-    Creado por <span class="text-zinc-950">Oliver Servín</span>
-</div>
+            <h1>
+                Haz que tu audiencia hable: agrega encuestas interactivas a cualquier newsletter, sin complicaciones técnicas
+            </h1>
+            <p class="max-w-lg mx-auto mt-6" data-lead>
+                Crea, inserta y analiza encuestas en tus correos electrónicos, aunque tu plataforma no las soporte. Sin código, sin límites, sin dolores de cabeza.
+            </p>
+
+            <h2 class="mt-48">Ideal para</h2>
+
+            <p class="mt-6">
+                Creadores de newsletters, equipos de marketing, agencias y organizaciones que quieren conocer la opinión de su audiencia—sin importar qué servicio de email utilicen.
+            </p>
+
+            <h2 class="mt-48">¿Te gustaría saber qué piensa tu audiencia, pero tu plataforma de newsletters no permite encuestas?</h2>
+
+            <p class="mt-6">
+                ¿Cansado de soluciones complicadas, formularios externos o costosos upgrades?
+            </p>
+
 
             <p class="mt-48">
-    Esta herramienta elimina las barreras: crea encuestas interactivas y agrégalas fácilmente a cualquier email o newsletter, sin integraciones complicadas ni procesos manuales.
-</p>
-<p class="mt-6">
-    Olvídate de tasas de respuesta bajas y de depender de plataformas externas: ahora puedes preguntar y recibir respuestas en el mismo lugar donde tu audiencia ya te lee.
-</p>
+                ¿Te gustaría saber qué piensa tu audiencia, pero tu plataforma de newsletters no permite encuestas?
+            </p>
 
-            <flux:card class="min-h-72 mt-10 flex flex-col">
-                <div class="flex-1 flex flex-col justify-end">
-                    <div class="flex justify-center">
-                        <flux:button size="sm">{{ __('Start demo') }}</flux:button>
-                    </div>
-                </div>
-            </flux:card>
+            <p class="mt-6">
+                ¿Cansado de soluciones complicadas, formularios externos o costosos upgrades?
+            </p>
+
+            <p class="mt-6">
+                Imagina poder insertar una encuesta atractiva en tu próximo correo, sin cambiar de plataforma, sin pagar extras y sin tocar una sola línea de código.
+            </p>
+
+            <p class="mt-6">
+                Con Terrific Poll, solo tienes que escribir tu pregunta, elegir hasta 10 opciones y copiar el contenido generado.
+            </p>
+
+            <p class="mt-6">
+                Pega la encuesta en tu newsletter—funciona con Beehiiv, Brevo, EmailOctopus, Ghost, HubSpot, Kit, Loops, MailerLite, Sendy y más.
+            </p>
 
             <h2 class="mt-20">Todo lo que necesitas para encuestar a tu audiencia</h2>
 <p class="mt-6">
