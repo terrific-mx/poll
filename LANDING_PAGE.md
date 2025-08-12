@@ -34,7 +34,7 @@ Aquí, la interacción es directa, efectiva y sin complicaciones.
 
 ## Precios
 
-Disfruta de todas las funciones por solo **$79 MXN al mes**. Incluye una prueba gratuita de 30 días para que puedas probar el servicio sin compromiso.
+Disfruta de todas las funciones por solo **$79 MXN al mes**. Incluye una prueba gratuita de 30 días para que puedas probar el servicio sin compromiso. Puedes cancelar en cualquier momento, sin ataduras ni cargos ocultos.
 
 ¿Qué obtienes con tu suscripción?
 
