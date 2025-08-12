@@ -1,49 +1,56 @@
 # Encuestas fáciles para cualquier correo o newsletter
 
-**Crea encuestas atractivas para tu audiencia, sin importar qué servicio de correo o newsletter utilices.**
+**Descubre una forma innovadora de conectar con tu audiencia, sin importar qué servicio de correo o newsletter utilices.**
 
 ---
 
-## La forma más sencilla de agregar encuestas a tus correos
+## La manera más práctica de agregar encuestas a tus correos
 
-En México, muchas plataformas de newsletters no permiten agregar encuestas, o requieren pagar extras y actualizaciones costosas.
+En México, muchas plataformas de newsletters limitan la interacción o cobran de más por funciones avanzadas. Ahora tienes la oportunidad de crear encuestas interactivas que funcionan en cualquier servicio de correo o newsletter, incluso si no ofrecen soporte para encuestas.
 
-Ahora puedes crear encuestas interactivas que funcionan en cualquier servicio de correo o newsletter, incluso si no tienen soporte para encuestas.
-
-No necesitas integraciones, ni saber programar, ni complicarte con configuraciones técnicas.
+No necesitas integraciones complicadas ni conocimientos técnicos. Todo está pensado para que puedas empezar de inmediato y sin obstáculos.
 
 ---
 
 ## ¿Cómo funciona?
 
-Solo tienes que crear tu encuesta escribiendo la pregunta y las opciones de respuesta que desees.
+Solo redacta tu pregunta y elige las opciones de respuesta que prefieras. Al finalizar, obtienes enlaces personalizados para cada opción, listos para copiar y pegar en tu correo o newsletter, usando el editor que ya conoces.
 
-Al terminar, obtienes enlaces listos para cada respuesta, que puedes copiar y pegar directamente en tu correo o newsletter usando el editor de tu plataforma favorita.
+Tus lectores podrán participar fácilmente: al hacer clic en su respuesta, verán una página clara para confirmar su voto y su elección quedará registrada al instante.
 
-Cuando tus lectores reciben el correo y dan clic en la opción que prefieren, se les muestra una página sencilla para confirmar su voto y su respuesta queda registrada al instante.
-
-Desde tu panel de control puedes ver en tiempo real cuál opción es la más popular y consultar el detalle de todas las respuestas recibidas.
+Desde tu panel de control, puedes seguir los resultados en tiempo real y analizar cada respuesta recibida, lo que te permite conocer mejor a tu audiencia y tomar decisiones informadas.
 
 ---
 
-## Ventajas principales
+## Ventajas que marcan la diferencia
 
-Funciona en cualquier plataforma de correo o newsletter, sin importar el proveedor que uses.
+Esta solución es compatible con cualquier plataforma de correo o newsletter, sin importar cuál utilices. Olvídate de pagar de más o de cambiar de servicio solo para poder interactuar con tus lectores.
 
-No tienes que pagar funciones premium ni cambiar de servicio.
+El proceso es ágil y sencillo: en menos de un minuto puedes crear, compartir y empezar a recibir respuestas. Además, tendrás acceso a estadísticas en tiempo real y a un registro detallado de todas las respuestas.
 
-El proceso es rápido y sencillo: puedes crear, copiar y enviar tu encuesta en menos de un minuto.
-
-Además, tendrás acceso a estadísticas en tiempo real y a un registro detallado de todas las respuestas, siempre respetando la privacidad de tus usuarios, ya que no se usan rastreadores ni scripts invasivos.
-
-Solo encuestas simples y efectivas.
+Aquí, la interacción es directa, efectiva y sin complicaciones.
 
 ---
 
-## ¡Comienza ahora!
+## Precios
 
-¿Quieres que tus correos sean más interactivos y conocer mejor a tu audiencia?
+Disfruta de todas las funciones por solo **$79 MXN al mes**. Incluye una prueba gratuita de 30 días para que puedas probar el servicio sin compromiso.
 
-Regístrate hoy y crea tu primera encuesta en cuestión de segundos.
+¿Qué obtienes con tu suscripción?
 
-La forma más fácil de recibir opiniones de tu audiencia, donde sea que estén.
+- Encuestas ilimitadas
+- Respuestas ilimitadas
+- Acceso completo a todas las funciones
+- Panel de control con estadísticas en tiempo real
+- Visualización clara de resultados por pregunta
+- Historial de todas tus encuestas
+- Soporte prioritario por correo electrónico
+- Actualizaciones automáticas de nuevas funciones
+
+---
+
+## Empieza hoy mismo
+
+Haz que tus correos sean más atractivos y conoce a fondo las opiniones de tu audiencia. Regístrate y crea tu primera encuesta en cuestión de segundos.
+
+Es la forma más sencilla y moderna de recibir retroalimentación, estés donde estés.
