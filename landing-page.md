@@ -11,6 +11,7 @@ Creadores de newsletters, equipos de marketing, agencias y organizaciones que qu
 ---
 
 ### ¿Te gustaría saber qué piensa tu audiencia, pero tu plataforma de newsletters no permite encuestas?
+
 ¿Cansado de soluciones complicadas, formularios externos o costosos upgrades?
 
 Imagina poder insertar una encuesta atractiva en tu próximo correo, sin cambiar de plataforma, sin pagar extras y sin tocar una sola línea de código.
