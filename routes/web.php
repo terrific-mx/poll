@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 Volt::route('/', 'pages.welcome')->name('home');
+Route::view('/proposal', 'proposal')->name('proposal');
 Volt::route('pricing', 'pages.pricing')->name('pricing');
 Volt::route('changelog', 'pages.changelog')->name('changelog');
 Volt::route('connect', 'pages.connect')->name('connect');
