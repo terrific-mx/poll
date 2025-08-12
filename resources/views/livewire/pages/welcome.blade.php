@@ -2,24 +2,13 @@
 
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
-use Livewire\Attributes\Validate;
 use Livewire\Volt\Component;
 
 new
 #[Layout('components.layouts.site')]
 #[Title('Terrific Poll — Crea encuestas interactivas fácilmente para tu audiencia')]
 class extends Component {
-    public $demoSubmitted = false;
-
-    #[Validate('required')]
-    public $demoResponse = '';
-
-    public function demoSubmit()
-    {
-        $this->validate();
-
-        $this->demoSubmitted = true;
-    }
+    //
 }; ?>
 
 <div class="space-y-12">

@@ -4,8 +4,7 @@ use App\Http\Middleware\EnsureUserIsSubscribed;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-Volt::route('/', 'pages.welcome')->name('home');
-Route::view('/proposal', 'proposal')->name('proposal');
+Route::view('/', 'welcome')->name('home');
 Volt::route('pricing', 'pages.pricing')->name('pricing');
 Volt::route('changelog', 'pages.changelog')->name('changelog');
 Volt::route('connect', 'pages.connect')->name('connect');

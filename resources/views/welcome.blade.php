@@ -28,7 +28,7 @@
                 Haz que tu audiencia hable
             </h1>
             <p class="max-w-lg mx-auto mt-6" data-lead>
-                Agrega <strong>encuestas interactivas</strong> a cualquier newsletter, <strong>sin complicaciones técnicas</strong>
+                Agrega encuestas interactivas a cualquier newsletter, sin complicaciones técnicas.
             </p>
 
             <p class="mt-48">
