@@ -21,21 +21,22 @@
             [&>[data-lead]]:text-center [&>[data-lead]]:text-xl [&>[data-lead]]:text-zinc-900
             [&>p]:text-lg
             [&>ul]:text-lg
-            [&>p>strong]:text-zinc-950
+            [&>p>strong]:text-zinc-950 [&>p>strong]:font-medium
+            [&>ul>li>p>strong]:text-zinc-950 [&>ul>li>p>strong]:font-medium
         ">
             <h1>
                 Haz que tu audiencia hable
             </h1>
             <p class="max-w-lg mx-auto mt-6" data-lead>
-                Agrega encuestas interactivas a cualquier newsletter, sin complicaciones técnicas
+                Agrega <strong>encuestas interactivas</strong> a cualquier newsletter, <strong>sin complicaciones técnicas</strong>
             </p>
 
             <p class="mt-48">
-                Crea, inserta y analiza encuestas en tus correos electrónicos, aunque tu plataforma no las soporte. Sin código, sin límites, sin dolores de cabeza.
+                <strong>Crea</strong>, <strong>inserta</strong> y <strong>analiza encuestas</strong> en tus correos electrónicos, aunque tu plataforma no las soporte. <strong>Sin código, sin límites, sin dolores de cabeza.</strong>
             </p>
 
             <p class="mt-6">
-                Ideal para creadores de newsletters, equipos de marketing, agencias y organizaciones que quieren conocer la opinión de su audiencia—sin importar qué servicio de email utilicen.
+                <strong>Ideal para creadores de newsletters, equipos de marketing, agencias y organizaciones</strong> que quieren conocer la opinión de su audiencia—sin importar qué servicio de email utilicen.
             </p>
 
             <h2 class="mt-20">¿Te gustaría saber qué piensa tu audiencia, pero tu plataforma de newsletters no permite encuestas?</h2>
@@ -49,77 +50,83 @@
             </p>
 
             <p class="mt-6">
-                Con Terrific Poll, solo tienes que escribir tu pregunta, elegir hasta 10 opciones y copiar el contenido generado. Pega la encuesta en tu newsletter—funciona con Beehiiv, Brevo, EmailOctopus, Ghost, HubSpot, Kit, Loops, MailerLite, Sendy y más.
+                Con Terrific Poll, solo tienes que <strong>escribir tu pregunta</strong>, <strong>elegir hasta 10 opciones</strong> y <strong>copiar el contenido generado</strong>. <strong>Pega la encuesta en tu newsletter</strong>—funciona con Beehiiv, Brevo, EmailOctopus, Ghost, HubSpot, Kit, Loops, MailerLite, Sendy y más.
             </p>
 
             <p class="mt-6">
-                Tus lectores solo hacen clic en su respuesta favorita. Automáticamente, se abre una página de confirmación con su correo prellenado (gracias a los merge tags de tu plataforma). Un clic más, y su voto queda registrado.
+                Tus lectores <strong>solo hacen clic</strong> en su respuesta favorita. <strong>Automáticamente</strong>, se abre una página de confirmación con su <strong>correo prellenado</strong> (gracias a los merge tags de tu plataforma). Un clic más, y su voto queda registrado.
             </p>
 
             <p class="mt-6">
-                Tú ves los resultados en tiempo real:
+                <strong>Tú ves los resultados en tiempo real:</strong>
             </p>
 
             <ul class="mt-6 space-y-1 list-disc ml-6">
-                <li>Número de respuestas por opción</li>
-                <li>Porcentajes visuales</li>
-                <li>Tabla detallada con fecha y correo (si está disponible)</li>
+                <li>
+                    <p><strong>Número de respuestas por opción</strong></p>
+                </li>
+                <li>
+                    <p><strong>Porcentajes visuales</strong></p>
+                </li>
+                <li>
+                    <p><strong>Tabla detallada</strong> con fecha y correo (si está disponible)</p>
+                </li>
             </ul>
 
             <p class="mt-6">
-                Exporta los datos cuando quieras. Sin bloqueos, sin ataduras, sin sorpresas.
+                <strong>Exporta los datos cuando quieras.</strong> Sin bloqueos, sin ataduras, sin sorpresas.
             </p>
 
-            <h2 class="mt-20">Pruébalo gratis por 30 días</h2>
+            <h2 class="mt-20"><strong>Pruébalo gratis por 30 días</strong></h2>
 
             <p class="mt-6">
-                Después, paga solo <strong>$79 MXN al año</strong>. Cancela cuando quieras, sin letras chiquitas ni cargos ocultos.
+                Después, paga solo <strong>$79 MXN al año</strong>. <strong>Cancela cuando quieras</strong>, sin letras chiquitas ni cargos ocultos.
             </p>
 
             <h2 class="mt-20">Resuelve tus dudas</h2>
 
             <ul class="mt-6">
-                <li class="text-base">
-                    <h3 class="font-medium text-lg text-zinc-950">¿Te preocupa la entregabilidad?</h3>
-                    <p class="mt-4">Terrific Poll utiliza enlaces limpios y seguros, compatibles con todos los proveedores de correo. No hay archivos adjuntos ni redirecciones sospechosas.</p>
+                <li>
+                    <h3 class="font-medium text-zinc-950 text-base">¿Te preocupa la entregabilidad?</h3>
+                    <p class="mt-4 text-base">Terrific Poll utiliza enlaces limpios y seguros, compatibles con todos los proveedores de correo. No hay archivos adjuntos ni redirecciones sospechosas.</p>
                 </li>
-                <li class="mt-6 text-base">
-                    <h3 class="font-medium text-lg text-zinc-950">¿Te inquieta la privacidad?</h3>
-                    <p class="mt-4">Tus datos y los de tu audiencia están cifrados y protegidos. Cumplimos con GDPR y nunca compartimos tu información.</p>
+                <li class="mt-6">
+                    <h3 class="font-medium text-zinc-950 text-base">¿Te inquieta la privacidad?</h3>
+                    <p class="mt-4 text-base">Tus datos y los de tu audiencia están cifrados y protegidos. Cumplimos con GDPR y nunca compartimos tu información.</p>
                 </li>
-                <li class="mt-6 text-base">
-                    <h3 class="font-medium text-lg text-zinc-950">¿Quieres personalizar la experiencia?</h3>
-                    <p class="mt-4">La página de confirmación es neutra y sin marcas visibles. El foco siempre está en tu pregunta.</p>
+                <li class="mt-6">
+                    <h3 class="font-medium text-zinc-950 text-base">¿Quieres personalizar la experiencia?</h3>
+                    <p class="mt-4 text-base">La página de confirmación es neutra y sin marcas visibles. El foco siempre está en tu pregunta.</p>
                 </li>
-                <li class="mt-6 text-base">
-                    <h3 class="font-medium text-lg text-zinc-950">¿Tu plataforma no soporta merge tags?</h3>
-                    <p class="mt-4">No pasa nada: tus lectores pueden ingresar su correo manualmente. Siempre tendrás una solución.</p>
+                <li class="mt-6">
+                    <h3 class="font-medium text-zinc-950 text-base">¿Tu plataforma no soporta merge tags?</h3>
+                    <p class="mt-4 text-base">No pasa nada: tus lectores pueden ingresar su correo manualmente. Siempre tendrás una solución.</p>
                 </li>
-                <li class="mt-6 text-base">
-                    <h3 class="font-medium text-lg text-zinc-950">¿Temes votos duplicados?</h3>
-                    <p class="mt-4">El sistema detecta posibles repeticiones y te muestra los detalles para que tomes decisiones informadas.</p>
+                <li class="mt-6">
+                    <h3 class="font-medium text-zinc-950 text-base">¿Temes votos duplicados?</h3>
+                    <p class="mt-4 text-base">El sistema detecta posibles repeticiones y te muestra los detalles para que tomes decisiones informadas.</p>
                 </li>
-                <li class="mt-6 text-base">
-                    <h3 class="font-medium text-lg text-zinc-950">¿Necesitas exportar tus resultados?</h3>
-                    <p class="mt-4">Descarga todo en CSV, cuando quieras. Tus datos son tuyos.</p>
+                <li class="mt-6">
+                    <h3 class="font-medium text-zinc-950 text-base">¿Necesitas exportar tus resultados?</h3>
+                    <p class="mt-4 text-base">Descarga todo en CSV, cuando quieras. Tus datos son tuyos.</p>
                 </li>
-                <li class="mt-6 text-base">
-                    <h3 class="font-medium text-lg text-zinc-950">¿Buscas soporte rápido?</h3>
-                    <p class="mt-4">Resolvemos la mayoría de las dudas en menos de un día hábil, por correo o chat.</p>
+                <li class="mt-6">
+                    <h3 class="font-medium text-zinc-950 text-base">¿Buscas soporte rápido?</h3>
+                    <p class="mt-4 text-base">Resolvemos la mayoría de las dudas en menos de un día hábil, por correo o chat.</p>
                 </li>
-                <li class="mt-6 text-base">
-                    <h3 class="font-medium text-lg text-zinc-950">¿Te preocupa la accesibilidad?</h3>
-                    <p class="mt-4">Las encuestas y páginas cumplen con los estándares modernos para que todos puedan participar.</p>
+                <li class="mt-6">
+                    <h3 class="font-medium text-zinc-950 text-base">¿Te preocupa la accesibilidad?</h3>
+                    <p class="mt-4 text-base">Las encuestas y páginas cumplen con los estándares modernos para que todos puedan participar.</p>
                 </li>
-                <li class="mt-6 text-base">
-                    <h3 class="font-medium text-lg text-zinc-950">¿No quieres compromisos?</h3>
-                    <p class="mt-4">Disfruta 30 días gratis y cancela en cualquier momento. Sin riesgos, sin presiones.</p>
+                <li class="mt-6">
+                    <h3 class="font-medium text-zinc-950 text-base">¿No quieres compromisos?</h3>
+                    <p class="mt-4 text-base">Disfruta 30 días gratis y cancela en cualquier momento. Sin riesgos, sin presiones.</p>
                 </li>
             </ul>
 
             <flux:card class="max-w-lg mx-auto mt-20">
-                <h2 class="text-2xl font-medium tracking-tight text-zinc-950 text-center mt-2">Convierte tu próxima newsletter en una conversación</h2>
-                <p class="text-center mt-4">Crea tu encuesta gratis con Terrific Poll.</p>
+                <h2 class="text-2xl font-medium tracking-tight text-zinc-950 text-center mt-2"><strong>Convierte tu próxima newsletter en una conversación</strong></h2>
+                <p class="text-center mt-4">Crea tu encuesta <strong class="font-medium text-zinc-950">gratis</strong> con Terrific Poll.</p>
                 <ul class="mt-9 gap-3 md:grid md:grid-cols-2 md:gap-6 text-sm">
                     <li class="flex gap-2">
                         <flux:icon.check-circle variant="mini" class="text-green-500" />
@@ -147,12 +154,12 @@
                     </li>
                 </ul>
                 <flux:button :href="route('register')" variant="primary" color="amber" class="mt-9 w-full text-base!">
-                    Empieza ahora — 30 días gratis
+                    Empieza ahora — <strong>30 días gratis</strong>
                 </flux:button>
             </flux:card>
 
             <p class="mt-20">
-                ¿Listo para escuchar a tu audiencia? Regístrate, crea tu encuesta y obtén respuestas hoy mismo—incluso si tu plataforma nunca ha soportado encuestas.
+                ¿Listo para <strong>escuchar a tu audiencia</strong>? <strong>Regístrate</strong>, <strong>crea tu encuesta</strong> y <strong>obtén respuestas hoy mismo</strong>—incluso si tu plataforma nunca ha soportado encuestas.
             </p>
 
             <div class="mt-64 flex items-center justify-between text-zinc-400">
