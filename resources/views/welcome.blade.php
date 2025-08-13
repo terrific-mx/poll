@@ -165,7 +165,7 @@
             <div class="mt-64 flex items-center justify-between text-zinc-400">
                 <p class="text-sm flex items-center gap-2.5">
                     <x-app-logo-icon class="size-4 text-zinc-300" />
-                    <span><strong class="font-medium">flowpilot</strong>.com</span>
+                    <span><strong class="font-medium">poll.terrific</strong>.com.mx</span>
                 </p>
                 <p class="text-sm">by <strong class="font-medium">Oliver Servín</strong></p>
             </div>
