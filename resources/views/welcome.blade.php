@@ -16,11 +16,11 @@
         <main class="
             mx-auto mb-8 max-w-3xl px-4 mt-20
             text-zinc-700
-            [&>h1]:text-center [&>h1]:font-medium [&>h1]:text-5xl [&>h1]:tracking-tight [&>h1]:text-zinc-950
-            [&>h2]:font-medium [&>h2]:tracking-tight [&>h2]:text-2xl [&>h2]:text-zinc-950
-            [&>[data-lead]]:text-center [&>[data-lead]]:text-xl [&>[data-lead]]:text-zinc-900
-            [&>p]:text-lg
-            [&>ul]:text-lg
+            [&>h1]:text-center [&>h1]:font-medium [&>h1]:text-5xl [&>h1]:tracking-tight [&>h1]:text-zinc-950 max-sm:[&>h1]:text-4xl
+            [&>h2]:font-medium [&>h2]:tracking-tight [&>h2]:text-2xl [&>h2]:text-zinc-950 max-sm:[&>h2]:text-xl
+            [&>[data-lead]]:text-center [&>[data-lead]]:text-xl [&>[data-lead]]:text-zinc-900 max-sm:[&>[data-lead]]:text-lg
+            [&>p]:text-lg max-sm:[&>p]:text-base
+            [&>ul]:text-lg max-sm:[&>ul]:text-base
             [&>p>strong]:text-zinc-950 [&>p>strong]:font-medium
             [&>ul>li>p>strong]:text-zinc-950 [&>ul>li>p>strong]:font-medium
         ">
@@ -125,9 +125,9 @@
             </ul>
 
             <flux:card class="max-w-lg mx-auto mt-20">
-                <h2 class="text-2xl font-medium tracking-tight text-zinc-950 text-center mt-2"><strong>Convierte tu próxima newsletter en una conversación</strong></h2>
+                <h2 class="text-2xl max-sm:text-xl font-medium tracking-tight text-zinc-950 text-center mt-2"><strong>Convierte tu próxima newsletter en una conversación</strong></h2>
                 <p class="text-center mt-4">Crea tu encuesta <strong class="font-medium text-zinc-950">gratis</strong> con Terrific Poll.</p>
-                <ul class="mt-9 gap-3 md:grid md:grid-cols-2 md:gap-6 text-sm">
+                <ul class="mt-10 gap-3 grid md:grid-cols-2 md:gap-6 text-sm">
                     <li class="flex gap-2">
                         <flux:icon.check-circle variant="mini" class="text-green-500" />
                         Compatible con +8 plataformas populares de newsletters
@@ -153,7 +153,7 @@
                         $79 MXN al año después de la prueba gratuita
                     </li>
                 </ul>
-                <flux:button :href="route('register')" variant="primary" color="amber" class="mt-9 w-full text-base!">
+                <flux:button :href="route('register')" variant="primary" color="amber" class="mt-10 w-full text-base!">
                     Empieza ahora — <strong>30 días gratis</strong>
                 </flux:button>
             </flux:card>
