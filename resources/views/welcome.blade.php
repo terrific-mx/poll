@@ -127,10 +127,14 @@
             <flux:card class="max-w-lg mx-auto mt-20">
                 <h2 class="text-2xl max-sm:text-xl font-medium tracking-tight text-zinc-950 text-center mt-2"><strong>Convierte tu próxima newsletter en una conversación</strong></h2>
                 <p class="text-center mt-4">Crea tu encuesta <strong class="font-medium text-zinc-950">gratis</strong> con Terrific Poll.</p>
-                <ul class="mt-10 gap-3 grid md:grid-cols-2 md:gap-6 text-sm">
+                <ul class="mt-10 gap-3 grid md:grid-cols-2 md:gap-x-6 md:gap-y-3 text-sm">
                     <li class="flex gap-2">
                         <flux:icon.check-circle variant="mini" class="text-green-500" />
                         Compatible con +8 plataformas populares de newsletters
+                    </li>
+                    <li class="flex gap-2">
+                        <flux:icon.check-circle variant="mini" class="text-green-500" />
+                        Más de 95% de entregabilidad reportada por usuarios
                     </li>
                     <li class="flex gap-2">
                         <flux:icon.check-circle variant="mini" class="text-green-500" />
@@ -139,10 +143,6 @@
                     <li class="flex gap-2">
                         <flux:icon.check-circle variant="mini" class="text-green-500" />
                         Resultados en tiempo real y exportables en CSV
-                    </li>
-                    <li class="flex gap-2">
-                        <flux:icon.check-circle variant="mini" class="text-green-500" />
-                        Más de 95% de entregabilidad reportada por usuarios
                     </li>
                     <li class="flex gap-2">
                         <flux:icon.check-circle variant="mini" class="text-green-500" />
