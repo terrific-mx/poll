@@ -4,7 +4,8 @@ use App\Http\Middleware\EnsureUserIsSubscribed;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-Route::view('/', 'welcome')->name('home');
+Route::redirect('/', 'https://terrific.com.mx/poll')->name('home');
+
 Volt::route('pricing', 'pages.pricing')->name('pricing');
 Volt::route('changelog', 'pages.changelog')->name('changelog');
 Volt::route('connect', 'pages.connect')->name('connect');
