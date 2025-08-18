@@ -6,10 +6,6 @@ use Livewire\Volt\Volt;
 
 Route::redirect('/', 'https://terrific.com.mx/poll')->name('home');
 
-Volt::route('pricing', 'pages.pricing')->name('pricing');
-Volt::route('changelog', 'pages.changelog')->name('changelog');
-Volt::route('connect', 'pages.connect')->name('connect');
-
 Volt::route('p/{poll:ulid}', 'pages.polls.vote')->name('polls.vote');
 
 Route::middleware(['auth', 'verified', EnsureUserIsSubscribed::class])->group(function () {
